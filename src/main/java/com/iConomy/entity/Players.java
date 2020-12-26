@@ -110,3 +110,106 @@ public class Players implements Listener{
         }
 
         if (iConomy.hasPermissions(player, "iConomy.admin.stats")) {
+            Messaging.send("`G  /money `gstats &e Check all economic stats.");
+        }
+
+        Messaging.send(" ");
+    }
+
+    /**
+     * Help documentation for iConomy all in one method.
+     *
+     * Allows us to easily utilize all throughout the class without having multiple
+     * instances of the same help lines.
+     */
+    private void getBankHelp(CommandSender player) {
+        Messaging.send("&e ");
+        Messaging.send("&f iConomy (&c" + Constants.Codename + "&f)");
+        Messaging.send("&e ");
+        Messaging.send("&f [] Required, () Optional");
+        Messaging.send(" ");
+        Messaging.send("`G  /bank &e Check your bank accounts");
+        Messaging.send("`G  /bank `g? &e For help & Information");
+
+        if (iConomy.hasPermissions(player, "iConomy.bank.list")) {
+            Messaging.send("`G  /bank `glist `G(`w#`G) &e Paged list of banks.");
+        }
+
+        if (iConomy.hasPermissions(player, "iConomy.bank.main")) {
+            Messaging.send("`G  /bank `gmain &e View your main bank.");
+        }
+
+        if (iConomy.hasPermissions(player, "iConomy.bank.main.view")) {
+            Messaging.send("`G  /bank `gmain `G[`waccount`G] &e View an accounts main bank.");
+        }
+
+        if (iConomy.hasPermissions(player, "iConomy.bank.main.set")) {
+            Messaging.send("`G  /bank `gmain set `G[`wbank`G] &e Set your main bank.");
+        }
+
+        if (iConomy.hasPermissions(player, "iConomy.bank.join")) {
+            Messaging.send("`G  /bank `gjoin `G[`wbank`G] &e Create an account with a bank.");
+        }
+        
+        if (iConomy.hasPermissions(player, "iConomy.bank.leave")) {
+            Messaging.send("`G  /bank `gleave `G[`wbank`G] &e Close an account with a bank.");
+        }
+
+        if (iConomy.hasPermissions(player, "iConomy.bank.transfer")) {
+            Messaging.send("`G  /bank `gsend `G[`wto`G] `r[`wamount`r] &e Send money to another players bank.");
+        }
+
+        if (iConomy.hasPermissions(player, "iConomy.bank.transfer.multiple")) {
+            Messaging.send("`G  /bank `G[`wfrom-bank`G] `gsend `G[`wto`G] `G[`wamount`G]");
+        }
+
+        if (iConomy.hasPermissions(player, "iConomy.bank.transfer.multiple")) {
+            Messaging.send("`G  /bank `G[`wfrom-bank`G] `gsend `G[`wto-bank`G] `G[`wto`G] `G[`wamount`G]");
+        }
+
+        if (iConomy.hasPermissions(player, "iConomy.admin.bank.create")) {
+            Messaging.send("`G  /bank `gcreate `G[`wbank`G] &e Create a bank.");
+        }
+
+        if (iConomy.hasPermissions(player, "iConomy.admin.bank.remove")) {
+            Messaging.send("`G  /bank `gremove `G[`wbank`G] &e Close a bank.");
+        }
+
+        if (iConomy.hasPermissions(player, "iConomy.admin.bank.set")) {
+            Messaging.send("`G  /bank `G[`wbank`G] `gset `G[`wkey`G] `G[`wvalue`G] &e Create a bank.");
+            Messaging.send("`y   Keys: `Yname`y, `Yinitial`y, `Ymajor`y, `Yminor`y, `Yfee");
+        }
+
+        Messaging.send(" ");
+    }
+
+    public boolean setHidden(String name, boolean hidden) {
+        return iConomy.getAccount(name).setHidden(hidden);
+    }
+
+    /**
+     * Account Creation
+     */
+    public void createAccount(String name) {
+        iConomy.getAccount(name);
+        Messaging.send(Template.color("tag.money") + Template.parse("accounts.create", new String[]{ "+name,+n" }, new String[]{ name }));
+    }
+
+    public void createBank(CommandSender sender, String bank) {
+        if(iConomy.Banks.exists(bank)) {
+            Messaging.send(sender, Template.color("error.bank.exists"));
+            return;
+        }
+
+        Bank Bank = iConomy.Banks.create(bank);
+
+        if(Bank == null) {
+            Messaging.send(sender, Template.parse("error.bank.couldnt", new String[]{ "+bank,+b,+name,+n" }, new String[]{ bank }));
+        } else {
+            Messaging.send(sender, Template.parse("banks.create", new String[]{ "+bank,+b,+name,+n" }, new String[]{ bank }));
+        }
+
+        return;
+    }
+
+    public void createBank(CommandSender sender, String bank, Double initial, Double fee) {
