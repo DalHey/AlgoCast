@@ -410,3 +410,99 @@ public class Players implements Listener{
             while(rs.next()) {
                 banks.add(new Bank(rs.getString("name")));
             }
+        } catch (Exception e) {
+            System.out.println("[iConomy] Error while listing banks: " + e.getMessage()); return;
+        } finally {
+            if(ps != null)
+                try { ps.close(); } catch (SQLException ex) { }
+
+            if(conn != null)
+                try { conn.close(); } catch (SQLException ex) { }
+        }
+
+        if(banks.isEmpty()) {
+            Messaging.send(player, Template.parse("list.banks.opening", new String[]{ "+amount,+a", "+total,+t" }, new Object[]{ 0, 0 }));
+            Messaging.send(player, Template.color("list.banks.empty"));
+            return;
+        }
+
+        Messaging.send(player, Template.parse("list.banks.opening", new String[]{ "+amount,+a", "+total,+t" }, new Object[]{ page, totalPages }));
+
+        for(Bank bank : banks) {
+            if(bank == null) continue;
+
+            String major = bank.getMajor().get(1);
+            String minor = bank.getMinor().get(1);
+            
+            Messaging.send(player, Template.parse(
+                entry,
+                new String[]{ "+name,+bank,+b,+n", "+fee,+f", "+initial,+holdings,+i,+h", "+major", "+minor" },
+                new Object[]{ bank.getName(), iConomy.format(bank.getFee()), iConomy.format(bank.getInitialHoldings()), major, minor }
+            ));
+        }
+    }
+
+    /**
+     * Shows the balance to the requesting player.
+     *
+     * @param name The name of the player we are viewing
+     * @param viewing The player who is viewing the account
+     * @param mine Is it the player who is trying to view?
+     */
+    public void showBalance(String name, CommandSender viewing, boolean mine) {
+        if (mine) {
+            Messaging.send(viewing, Template.color("tag.money") + Template.parse("personal.balance", new String[]{"+balance,+b"}, new String[]{ iConomy.format(name) }));
+        } else {
+            Messaging.send(viewing, Template.color("tag.money") + Template.parse("player.balance", new String[]{"+balance,+b", "+name,+n"}, new String[]{ iConomy.format(name), name }));
+        }
+    }
+
+    public void showBankAccounts(CommandSender player, String name) {
+        List<BankAccount> Accounts = null;
+        boolean self = Misc.isSelf(player, name);
+
+        if(!iConomy.hasAccount(name)) {
+            Messaging.send(Template.parse("error.account", new String[]{"+name,+n"}, new String[]{ name }));
+            return;
+        }
+
+        Accounts = iConomy.getAccount(name).getBankAccounts();
+
+        if(Accounts == null || Accounts.isEmpty()) {
+            Messaging.send(Template.color("error.bank.account.none"));
+            return;
+        }
+
+        for(BankAccount account : Accounts) {
+            if(account == null) { continue; }
+
+            Messaging.send(
+                player,
+                Template.color("tag.bank") +
+                Template.parse((self) ? "personal.bank.balance" : "player.bank.balance", new String[]{ "+balance,+holdings,+h", "+bank,+b", "+name,+n" }, new String[]{ account.getHoldings().toString(), account.getBankName(), name })
+            );
+        }
+    }
+
+    public void showBankAccount(CommandSender player, String bank, String name) {
+        Bank Bank = null;
+        BankAccount account = null;
+        Holdings holdings = null;
+        boolean self = Misc.isSelf(player, name);
+
+        if(!iConomy.Banks.exists(bank)) {
+            Messaging.send(player, Template.parse("error.bank.doesnt", new String[]{ "+bank,+name,+n,+b" }, new String[]{ bank }));
+            return;
+        }
+
+        Bank = iConomy.getBank(bank);
+
+        if(Bank == null) {
+            Messaging.send(player, Template.parse("error.bank.doesnt", new String[]{ "+bank,+name,+n,+b" }, new String[]{ bank }));
+            return;
+        }
+
+        if(!Bank.hasAccount(name)) {
+            Messaging.send(player, Template.parse("error.bank.account.doesnt", new String[]{ "+bank,+b", "+name,+n" }, new String[]{ bank, name }));
+            return;
+        }
