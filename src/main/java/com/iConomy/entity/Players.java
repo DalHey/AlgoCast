@@ -318,3 +318,95 @@ public class Players implements Listener{
                 Messaging.send(sender, Template.color("error.bank.account.funds"));
                 return;
             }
+
+            if(bank.createAccount(player)){
+                account.getHoldings().subtract(fee);
+
+                Messaging.send(sender, Template.color("tag.bank") + Template.parse("accounts.bank.create",
+                    new String[] { "+bank,+b", "+name,+n" },
+                    new String[] { name, player })
+                );
+
+                if(count == 0) {
+                    iConomy.getAccount(player).setMainBank(bank.getId());
+                }
+
+                return;
+            } else {
+                Messaging.send(sender, Template.color("error.bank.account.failed"));
+            }
+        } else {
+            Messaging.send(sender, Template.color("error.bank.account.none"));
+        }
+    }
+    
+    /**
+     * Account Removal
+     */
+    public void removeAccount(String name) {
+        iConomy.Accounts.remove(name);
+        Messaging.send(Template.color("tag.money") + Template.parse("accounts.remove", new String[]{ "+name,+n" }, new String[]{ name }));
+    }
+
+    public void removeBankAccount(CommandSender sender, String name, String player) {
+        Bank bank = iConomy.getBank(name);
+
+        if(!iConomy.hasAccount(player)) {
+            Messaging.send(Template.color("error.bank.account.none"));
+            return;
+        }
+
+        if(bank == null) {
+            Messaging.send(Template.parse("error.bank.doesnt", new String[] { "+bank,+name,+b,+n" }, new String[] { name }));
+            return;
+        }
+
+        if(!bank.hasAccount(player)) {
+            Messaging.send(Template.parse("error.bank.account.doesnt", new String[] { "+name,+n" }, new String[] { player }));
+            return;
+        }
+
+        bank.removeAccount(player);
+
+        Messaging.send(Template.color("tag.bank") + Template.parse("accounts.bank.remove",
+            new String[] { "+bank,+b", "+name,+n" },
+            new String[] { name, player })
+        );
+    }
+
+    /**
+     * Show list of banks
+     *
+     * @param player
+     * @param name
+     */
+    public void showBankList(CommandSender player, int current) {
+        Connection conn = null;
+        ResultSet rs = null;
+        PreparedStatement ps = null;
+        LinkedList<Bank> banks = new LinkedList<Bank>();
+        int total = iConomy.Banks.count();
+        int perPage = 7;
+        int page = (current <= 0) ? 1 : current;
+        int totalPages = (int) (((total % perPage) == 0) ? total / perPage : Math.floor(total / perPage) + 1);
+        int start = (page-1) * perPage;
+        String entry = (Constants.BankFee != 0.0) ? (Constants.FormatMinor) ? "list.banks.all-entry" : "list.banks.fee-major-entry" : (Constants.FormatMinor) ? "list.banks.entry" : "list.banks.major-entry";
+
+        page = (page > totalPages) ? totalPages : page;
+
+        if(total == -1){
+            Messaging.send(player, Template.parse("list.banks.opening", new String[]{ "+amount,+a", "+total,+t" }, new Object[]{ 0, 0 }));
+            Messaging.send(player, Template.color("list.banks.empty"));
+            return;
+        }
+
+        try {
+            conn = iConomy.getiCoDatabase().getConnection();
+            ps = conn.prepareStatement("SELECT name FROM " + Constants.SQLTable + "_Banks ORDER BY name ASC LIMIT ?, ?");
+            ps.setInt(1, start);
+            ps.setInt(2, perPage);
+            rs = ps.executeQuery();
+
+            while(rs.next()) {
+                banks.add(new Bank(rs.getString("name")));
+            }
