@@ -213,3 +213,108 @@ public class Players implements Listener{
     }
 
     public void createBank(CommandSender sender, String bank, Double initial, Double fee) {
+        if(iConomy.Banks.exists(bank)) {
+            Messaging.send(sender, Template.color("error.bank.exists"));
+            return;
+        }
+
+        Bank Bank = iConomy.Banks.create(bank);
+
+        if(Bank == null) {
+            Messaging.send(sender, Template.parse("error.bank.couldnt", new String[]{ "+bank,+b,+name,+n" }, new String[]{ bank }));
+        } else {
+            Bank.setInitialHoldings(initial);
+            Bank.setFee(fee);
+
+            Messaging.send(sender, Template.parse("banks.create", new String[]{ "+bank,+b,+name,+n" }, new String[]{ bank }));
+        }
+
+        return;
+    }
+
+    public void setBankValue(CommandSender sender, String bank, String key, Object value) {
+        if(!iConomy.Banks.exists(bank)) {
+            Messaging.send(sender, Template.parse("error.bank.doesnt", new String[]{ "+bank,+b,+name,+n" }, new String[]{ bank }));
+            return;
+        }
+        
+        Bank Bank = iConomy.getBank(bank);
+
+        if(key.equals("initial")) {
+            Double initial = Double.valueOf(value.toString());
+            Bank.setInitialHoldings(initial);
+        } else if(key.equals("major")) {
+            if(!value.toString().contains(",")) {
+                Messaging.send(sender, "`rMajor value is missing seperator between single and plural.");
+                Messaging.send(sender, "`r  Ex: `s/bank [`Sname`s] set `Smajor`s Dollar`S,`sDollars");
+                return;
+            }
+
+            String[] line = value.toString().split(",");
+
+            if(line[0].isEmpty() || line.length < 1 || line[1].isEmpty()) {
+                Messaging.send(sender, "`rMinor value is missing a single `Ror`r plural.");
+                Messaging.send(sender, "`r  Ex: `s/bank [`Sname`s] set `Smajor`s Dollar`S,`sDollars");
+                return;
+            }
+
+            Bank.setMajor(line[0], line[1]);
+        } else if(key.equals("minor")) {
+            if(!value.toString().contains(",")) {
+                Messaging.send(sender, "`rMinor value is missing seperator between single and plural.");
+                Messaging.send(sender, "`r  Ex: `s/bank [`Sname`s] set `Sminor`s Coin`S,`sCoins");
+                return;
+            }
+
+            String[] line = value.toString().split(",");
+
+            if(line[0].isEmpty() || line.length < 1 || line[1].isEmpty()) {
+                Messaging.send(sender, "`rMinor value is missing a single `Ror`r plural.");
+                Messaging.send(sender, "`r  Ex: `s/bank [`Sname`s] set `Sminor`s Coin`S,`sCoins");
+                return;
+            }
+
+            Bank.setMinor(line[0], line[1]);
+        } else if(key.equals("fee")) {
+            Double fee = Double.valueOf(value.toString());
+            Bank.setFee(fee);
+        } else if(key.equals("name")) {
+            Bank.setName(value.toString());
+        }
+
+        Messaging.send(sender,
+            Template.color("tag.bank") + Template.parse("banks.set",
+                new String[] { "+bank,+name,+n,+b", "+key,+k", "+value,+val,+v" },
+                new Object[] { bank, key, value }
+            )
+        );
+    }
+
+    public void createBankAccount(CommandSender sender, String name, String player) {
+        Bank bank = iConomy.getBank(name);
+
+        if(!iConomy.hasAccount(player)) {
+            Messaging.send(sender, Template.color("error.bank.account.none"));
+            return;
+        }
+
+        Account account = iConomy.getAccount(player);
+
+        if(bank == null) {
+            Messaging.send(sender, Template.parse("error.bank.doesnt", new String[] { "+bank,+name,+b,+n" }, new String[] { name }));
+            return;
+        }
+
+        int count = iConomy.Banks.count(player);
+
+        if(count > 1 && !Constants.BankingMultiple || !iConomy.hasPermissions(sender, "iConomy.bank.join.multiple")) {
+            Messaging.send(sender, Template.color("error.bank.account.maxed"));
+            return;
+        }
+
+        if(bank != null) {
+            double fee = bank.getFee();
+            if(fee > account.getHoldings().balance()) {
+                Messaging.send(sender, Template.color("error.bank.account.funds"));
+                return;
+            }
