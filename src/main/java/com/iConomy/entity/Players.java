@@ -602,3 +602,98 @@ public class Players implements Listener{
 
         Bank Bank = null;
         Account Account = iConomy.getAccount(name);
+        BankAccount account = null;
+        Holdings holdings = null;
+        Holdings held = null;
+        boolean self = Misc.isSelf(player, name);
+
+        if(!iConomy.Banks.exists(bank)) {
+            Messaging.send(player, Template.parse("error.bank.doesnt", new String[]{ "+bank,+name,+n,+b" }, new String[]{ bank }));
+            return;
+        }
+
+        Bank = iConomy.getBank(bank);
+
+        if(Bank == null) {
+            Messaging.send(player, Template.parse("error.bank.doesnt", new String[]{ "+bank,+name,+n,+b" }, new String[]{ bank }));
+            return;
+        }
+
+        if(!Bank.hasAccount(name)) {
+            Messaging.send(player, Template.parse("error.bank.account.doesnt", new String[]{ "+bank,+b", "+name,+n" }, new String[]{ bank, name }));
+            return;
+        }
+
+        account = Bank.getAccount(name);
+
+        if(account == null) {
+            Messaging.send(player, Template.parse("error.bank.account.doesnt", new String[]{ "+bank,+b", "+name,+n" }, new String[]{ bank, name }));
+            return;
+        }
+
+        held = Account.getHoldings();
+        holdings = account.getHoldings();
+        Double onHand = held.balance();
+        Double balance = holdings.balance();
+
+        if (onHand < 0.0 || !held.hasEnough(amount)) {
+            if (player != null) {
+                Messaging.send(player, Template.color("error.funds"));
+            }
+        } else {
+            held.subtract(amount);
+            holdings.add(amount);
+
+            onHand = held.balance();
+            balance = holdings.balance();
+
+            iConomy.getTransactions().insert(name, "[Bank] " + bank, onHand, balance, 0.0, 0.0, amount);
+            iConomy.getTransactions().insert("[Bank] " + bank, name, balance, onHand, 0.0, amount, 0.0);
+
+            if (player != null) {
+                Messaging.send(
+                    player,
+                    Template.color("tag.bank") +
+                    Template.parse( "personal.bank.deposit",
+                    new String[]{ "+bank,+b,+name,+n", "+amount,+a" },
+                    new String[]{ bank, iConomy.format(amount) })
+                );
+
+                showBalance(name, player, true);
+                showBankAccount(player, bank, name);
+            }
+        }
+    }
+
+    public void showBankTransaction(CommandSender player, String from, String to, double amount) {
+        if(from.toLowerCase().equalsIgnoreCase(to.toLowerCase())) {
+            Messaging.send(player, Template.color("payment.self"));
+            return;
+        }
+
+        if(!iConomy.hasAccount(from) || !iConomy.hasAccount(to)) {
+            Messaging.send(player, Template.color("error.bank.account.none"));
+            return;
+        }
+
+        Bank Bank = null;
+        Bank from_bank = iConomy.getAccount(from).getMainBank();
+        Bank to_bank = iConomy.getAccount(to).getMainBank();
+        BankAccount from_account = iConomy.getAccount(from).getMainBankAccount();
+        BankAccount to_account = iConomy.getAccount(to).getMainBankAccount();
+        String from_bank_name = from_account.getBankName();
+        String to_bank_name = to_account.getBankName();
+        Holdings from_holdings = null;
+        Holdings to_holdings = null;
+
+        if(from_bank == null || from_account == null) {
+            Messaging.send(player, Template.parse("error.bank.account.doesnt", new String[]{ "+name,+n" }, new String[]{ from }));
+            return;
+        }
+
+        if(to_bank == null || from_account == null) {
+            Messaging.send(player, Template.parse("error.bank.account.doesnt", new String[]{ "+name,+n" }, new String[]{ to }));
+            return;
+        }
+
+        from_holdings = from_account.getHoldings();
