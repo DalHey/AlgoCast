@@ -697,3 +697,95 @@ public class Players implements Listener{
         }
 
         from_holdings = from_account.getHoldings();
+        to_holdings = to_account.getHoldings();
+
+        if (from_holdings.balance() < 0.0 || !from_holdings.hasEnough(amount)) {
+            if (player != null) {
+                Messaging.send(player, Template.color("error.bank.account.funds"));
+            }
+        } else {
+            from_holdings.subtract(amount);
+            to_holdings.add(amount);
+
+            Double from_current = from_holdings.balance();
+            Double to_current = to_holdings.balance();
+
+            iConomy.getTransactions().insert(from, to, to_current, from_current, 0.0, 0.0, amount);
+            iConomy.getTransactions().insert(to, from, from_current, to_current, 0.0, amount, 0.0);
+
+            if (player != null) {
+                Messaging.send(
+                    player,
+                    Template.color("tag.bank") +
+                    Template.parse( (from.equalsIgnoreCase(to)) ? "personal.bank.transfer" : "personal.bank.between",
+                    new String[]{ "+bank,+b", "+bankAlt,+ba,+bA", "+name,+n", "+amount,+a" },
+                    new String[]{ from_bank_name, to_bank_name, to, iConomy.format(amount) })
+                );
+
+                showBankAccount(player, from_bank_name, from);
+            }
+
+            if(!from.equalsIgnoreCase(to)) {
+                Player playerTo = iConomy.getBukkitServer().getPlayer(to);
+
+                if(playerTo != null) {
+                    Messaging.send(
+                        player,
+                        Template.color("tag.bank") +
+                        Template.parse( "personal.bank.recieved",
+                        new String[]{ "+bank,+b", "+amount,+a" },
+                        new String[]{ to_bank_name, iConomy.format(amount) })
+                    );
+                    showBankAccount(playerTo, to_bank_name, to);
+                }
+            }
+        }
+    }
+
+    public void showBankTransfer(CommandSender player, String from, String from_bank, String to, String to_bank, double amount) {
+        Bank Bank = null;
+        Bank fBank = iConomy.getBank(from_bank);
+        Bank tBank = iConomy.getBank(to_bank);
+        Holdings from_holdings = null;
+        Holdings to_holdings = null;
+
+        if(fBank == null) {
+            Messaging.send(player, Template.parse("error.bank.doesnt", new String[]{ "+bank,+name,+n,+b" }, new String[]{ from_bank }));
+            return;
+        }
+
+        if(tBank == null) {
+            Messaging.send(player, Template.parse("error.bank.doesnt", new String[]{ "+bank,+name,+n,+b" }, new String[]{ to_bank }));
+            return;
+        }
+
+        BankAccount fAccount = iConomy.getAccount(from).getMainBankAccount();
+        BankAccount tAccount = iConomy.getAccount(to).getMainBankAccount();
+
+        if(fAccount == null) {
+            Messaging.send(player, Template.parse("error.bank.account.doesnt", new String[]{ "+name,+n" }, new String[]{ from }));
+            return;
+        }
+
+        if(tAccount == null) {
+            Messaging.send(player, Template.parse("error.bank.account.doesnt", new String[]{ "+name,+n" }, new String[]{ to }));
+            return;
+        }
+
+        String from_bank_name = fAccount.getBankName();
+        String to_bank_name = tAccount.getBankName();
+        from_holdings = fAccount.getHoldings();
+        to_holdings = tAccount.getHoldings();
+
+        if (from_holdings.balance() < 0.0 || !from_holdings.hasEnough(amount)) {
+            if (player != null) {
+                Messaging.send(player, Template.color("error.bank.account.funds"));
+            }
+        } else {
+            from_holdings.subtract(amount);
+            to_holdings.add(amount);
+
+            Double from_current = from_holdings.balance();
+            Double to_current = to_holdings.balance();
+
+            iConomy.getTransactions().insert(from, to, to_current, from_current, 0.0, 0.0, amount);
