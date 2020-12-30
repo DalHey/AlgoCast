@@ -789,3 +789,106 @@ public class Players implements Listener{
             Double to_current = to_holdings.balance();
 
             iConomy.getTransactions().insert(from, to, to_current, from_current, 0.0, 0.0, amount);
+            iConomy.getTransactions().insert(to, from, from_current, to_current, 0.0, amount, 0.0);
+
+            if (player != null) {
+                Messaging.send(
+                    player,
+                    Template.color("tag.bank") +
+                    Template.parse( (from.equalsIgnoreCase(to)) ? "personal.bank.transfer" : "personal.bank.between",
+                    new String[]{ "+bank,+b", "+bankAlt,+ba,+bA", "+name,+n", "+amount,+a" },
+                    new String[]{ from_bank_name, to_bank_name, to, iConomy.format(amount) })
+                );
+
+                showBankAccount(player, from_bank_name, from);
+            }
+
+            if(!from.equalsIgnoreCase(to)) {
+                Player playerTo = iConomy.getBukkitServer().getPlayer(to);
+
+                if(playerTo != null) {
+                    Messaging.send(
+                        player,
+                        Template.color("tag.bank") +
+                        Template.parse( "personal.bank.recieved",
+                        new String[]{ "+bank,+b", "+amount,+a" },
+                        new String[]{ to_bank_name, iConomy.format(amount) })
+                    );
+                    
+                    showBankAccount(playerTo, to_bank_name, to);
+                }
+            }
+        }
+    }
+
+
+    /**
+     * Reset a players account easily.
+     *
+     * @param resetting The player being reset. Cannot be null.
+     * @param by The player resetting the account. Cannot be null.
+     * @param notify Do we want to show the updates to each player?
+     */
+    public void showPayment(String from, String to, double amount) {
+        Player paymentFrom = iConomy.getBukkitServer().getPlayer(from);
+        Player paymentTo = iConomy.getBukkitServer().getPlayer(to);
+
+        if(paymentFrom != null) {
+            from = paymentFrom.getName();
+        }
+
+        if(paymentTo != null) {
+            to = paymentTo.getName();
+        }
+
+        Holdings From = iConomy.getAccount(from).getHoldings();
+        Holdings To = iConomy.getAccount(to).getHoldings();
+
+        if (from.equals(to)) {
+            if (paymentFrom != null) {
+                Messaging.send(paymentFrom, Template.color("payment.self"));
+            }
+        } else if (amount < 0.0 || !From.hasEnough(amount)) {
+            if (paymentFrom != null) {
+                Messaging.send(paymentFrom, Template.color("error.funds"));
+            }
+        } else {
+            From.subtract(amount);
+            To.add(amount);
+
+            Double balanceFrom = From.balance();
+            Double balanceTo = To.balance();
+
+            iConomy.getTransactions().insert(from, to, balanceFrom, balanceTo, 0.0, 0.0, amount);
+            iConomy.getTransactions().insert(to, from, balanceTo, balanceFrom, 0.0, amount, 0.0);
+
+            if (paymentFrom != null) {
+                Messaging.send(
+                        paymentFrom,
+                        Template.color("tag.money") + Template.parse(
+                        "payment.to",
+                        new String[]{"+name,+n", "+amount,+a"},
+                        new String[]{to, iConomy.format(amount)}));
+
+                showBalance(from, paymentFrom, true);
+            }
+
+            if (paymentTo != null) {
+                Messaging.send(
+                        paymentTo,
+                        Template.color("tag.money") + Template.parse(
+                        "payment.from",
+                        new String[]{"+name,+n", "+amount,+a"},
+                        new String[]{from, iConomy.format(amount)}));
+
+                showBalance(to, paymentTo, true);
+            }
+        }
+    }
+
+    /**
+     * Reset a players account, accessable via Console & In-Game
+     *
+     * @param account The account we are resetting.
+     * @param controller If set to null, won't display messages.
+     * @param console Is it sent via console?
