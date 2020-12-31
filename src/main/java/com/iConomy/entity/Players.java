@@ -892,3 +892,87 @@ public class Players implements Listener{
      * @param account The account we are resetting.
      * @param controller If set to null, won't display messages.
      * @param console Is it sent via console?
+     */
+    public void showReset(String account, Player controller, boolean console) {
+        Player player = iConomy.getBukkitServer().getPlayer(account);
+
+        if(player != null) {
+            account = player.getName();
+        }
+
+        // Get account
+        Account Account = iConomy.getAccount(account);
+
+        // Log Transaction
+        iConomy.getTransactions().insert(account, "[System]", 0.0, 0.0, 0.0, 0.0, Account.getHoldings().balance());
+
+        // Reset
+        Account.getHoldings().reset();
+
+        if (player != null) {
+            Messaging.send(player, Template.color("personal.reset"));
+        }
+
+        if (controller != null) {
+            Messaging.send(
+                Template.parse(
+                    "player.reset",
+                    new String[]{ "+name,+n" },
+                    new String[]{ account }
+                )
+            );
+        }
+
+        if (console) {
+            System.out.println("Player " + account + "'s account has been reset.");
+        } else {
+            System.out.println(Messaging.bracketize("iConomy") + "Player " + account + "'s account has been reset by " + controller.getName() + ".");
+        }
+    }
+
+    /**
+     *
+     * @param account
+     * @param controller If set to null, won't display messages.
+     * @param amount
+     * @param console Is it sent via console?
+     */
+    public void showGrant(String name, Player controller, double amount, boolean console) {
+        Player online = iConomy.getBukkitServer().getPlayer(name);
+
+        if(online != null) {
+            name = online.getName();
+        }
+
+        Account account = iConomy.getAccount(name);
+
+        if(account != null) {
+            Holdings holdings = account.getHoldings();
+            holdings.add(amount);
+
+            Double balance = holdings.balance();
+
+            if (amount < 0.0) {
+                iConomy.getTransactions().insert("[System]", name, 0.0, balance, 0.0, 0.0, amount);
+            } else {
+                iConomy.getTransactions().insert("[System]", name, 0.0, balance, 0.0, amount, 0.0);
+            }
+
+            if (online != null) {
+                Messaging.send(online,
+                    Template.color("tag.money") + Template.parse(
+                        (amount < 0.0) ? "personal.debit" : "personal.credit",
+                        new String[]{"+by", "+amount,+a"},
+                        new String[]{(console) ? "console" : controller.getName(), iConomy.format(((amount < 0.0) ? amount * -1 : amount))}
+                    )
+                );
+
+                showBalance(name, online, true);
+            }
+
+            if (controller != null) {
+                Messaging.send(
+                    Template.color("tag.money") + Template.parse(
+                        (amount < 0.0) ? "player.debit" : "player.credit",
+                        new String[]{"+name,+n", "+amount,+a"},
+                        new String[]{ name, iConomy.format(((amount < 0.0) ? amount * -1 : amount)) }
