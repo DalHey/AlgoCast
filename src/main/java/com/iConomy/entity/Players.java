@@ -976,3 +976,106 @@ public class Players implements Listener{
                         (amount < 0.0) ? "player.debit" : "player.credit",
                         new String[]{"+name,+n", "+amount,+a"},
                         new String[]{ name, iConomy.format(((amount < 0.0) ? amount * -1 : amount)) }
+                    )
+                );
+            }
+
+            if (console) {
+                System.out.println("Player " + account.getName() + "'s account had " + ((amount < 0.0) ? "negative " : "") + iConomy.format(((amount < 0.0) ? amount * -1 : amount)) + " grant to it.");
+            } else {
+                System.out.println(Messaging.bracketize("iConomy") + "Player " + account.getName() + "'s account had " + ((amount < 0.0) ? "negative " : "") + iConomy.format(((amount < 0.0) ? amount * -1 : amount)) + " grant to it by " + controller.getName() + ".");
+            }
+        }
+    }
+
+    /**
+     * Show the actual setting of the new balance of an account.
+     *
+     * @param account
+     * @param controller If set to null, won't display messages.
+     * @param amount
+     * @param console Is it sent via console?
+     */
+    public void showSet(String name, Player controller, double amount, boolean console) {
+        Player online = iConomy.getBukkitServer().getPlayer(name);
+
+        if(online != null) {
+            name = online.getName();
+        }
+
+        Account account = iConomy.getAccount(name);
+
+        if(account != null) {
+            Holdings holdings = account.getHoldings();
+            holdings.set(amount);
+
+            Double balance = holdings.balance();
+
+            // Log Transaction
+            iConomy.getTransactions().insert("[System]", name, 0.0, balance, amount, 0.0, 0.0);
+
+            if (online != null) {
+                Messaging.send(online,
+                    Template.color("tag.money") + Template.parse(
+                        "personal.set",
+                        new String[]{"+by", "+amount,+a"},
+                        new String[]{(console) ? "Console" : controller.getName(), iConomy.format(amount) }
+                    )
+                );
+
+                showBalance(name, online, true);
+            }
+
+            if (controller != null) {
+                Messaging.send(
+                    Template.color("tag.money") + Template.parse(
+                        "player.set",
+                        new String[]{ "+name,+n", "+amount,+a" },
+                        new String[]{ name, iConomy.format(amount) }
+                    )
+                );
+            }
+
+            if (console) {
+                System.out.println("Player " + account + "'s account had " + iConomy.format(amount) + " set to it.");
+            } else {
+                System.out.println(Messaging.bracketize("iConomy") + "Player " + account + "'s account had " + iConomy.format(amount) + " set to it by " + controller.getName() + ".");
+            }
+        }
+    }
+
+    /**
+     * Parses and outputs personal rank.
+     *
+     * Grabs rankings via the bank system and outputs the data,
+     * using the template variables, to the given player stated
+     * in the method.
+     *
+     * @param viewing
+     * @param player
+     */
+    public void showRank(CommandSender viewing, String player) {
+        Account account = iConomy.getAccount(player);
+
+        if (account != null) {
+            int rank = account.getRank();
+            boolean isPlayer = (viewing instanceof Player);
+            boolean isSelf = (isPlayer) ? ((((Player)viewing).getName().equalsIgnoreCase(player)) ? true : false) : false;
+
+            Messaging.send(
+                viewing,
+                Template.color("tag.money") + Template.parse(
+                    ((isSelf) ? "personal.rank" : "player.rank"),
+                    new Object[]{ "+name,+n", "+rank,+r" },
+                    new Object[]{ player, rank }
+                )
+            );
+        } else {
+            Messaging.send(
+                viewing,
+                Template.parse(
+                    "error.account",
+                    new Object[]{ "+name,+n" },
+                    new Object[]{ player }
+                )
+            );
