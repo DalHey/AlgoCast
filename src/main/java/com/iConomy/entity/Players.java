@@ -1191,3 +1191,91 @@ public class Players implements Listener{
                                     Messaging.send(Template.color("error.bank.account.none"));
                                 }
                             }
+                        } else {
+                            Messaging.send("`RCannot show main bank without organism.");
+                        }
+
+                        return;
+                    }
+
+                    if (Misc.is(split[1], new String[]{ 
+                        "help", "?", "create", "-c", "remove", "-r", "set", "-s",
+                        "send", "->", "deposit", "-d", "join", "-j", "leave", "-l"
+                    })) {
+                        getBankHelp(player); return;
+                    } else {
+                        if (!iConomy.hasPermissions(sender, "iConomy.bank.access")) {
+                            return;
+                        }
+
+                        Player online = iConomy.getBukkitServer().getPlayer(split[1]);
+
+                        if(online != null) {
+                            split[1] = online.getName();
+                        }
+
+                        showBankAccounts(sender, split[1]);
+                    }
+
+                    return;
+
+                case 3:
+
+                    if (Misc.is(split[1], new String[]{ "list", "-l" }) && Constants.BankingMultiple) {
+                        if (!iConomy.hasPermissions(sender, "iConomy.bank.list")) {
+                            return;
+                        }
+
+                        int page = 0;
+
+                        try { page = Integer.parseInt(split[2]); } catch(NumberFormatException e) { }
+
+                        showBankList(sender, page); return;
+                    }
+
+                    if (Misc.is(split[1], new String[]{ "main", "-m" }) && Constants.BankingMultiple) {
+                        if (!iConomy.hasPermissions(sender, "iConomy.bank.main.view")) {
+                            return;
+                        }
+
+                        Player check = Misc.playerMatch(split[2]);
+                        String name = "";
+
+                        if(check != null) {
+                            name = check.getName();
+                        } else {
+                            name = split[2];
+                        }
+
+                        if(name == null ? "" != null : !name.equals("")) {
+                            Account account = iConomy.getAccount(name);
+
+                            if(account != null) {
+                                Bank bank = account.getMainBank();
+
+                                if(bank != null)
+                                    showBankAccount(sender, bank.getName(), name);
+                                else {
+                                    Messaging.send(Template.color("error.bank.account.none"));
+                                }
+                            }
+                        } else {
+                            Messaging.send("`RPlayer name was empty or invalid.");
+                        }
+
+                        return;
+                    }
+
+                    if (Misc.is(split[1], new String[]{ "create", "-c" })) {
+                        if (!iConomy.hasPermissions(sender, "iConomy.admin.bank.create")) {
+                            return;
+                        }
+
+                        createBank(sender, split[2]); 
+                        return;
+                    }
+
+                    if (Misc.is(split[1], new String[]{ "join", "-j" })) {
+                        if (!iConomy.hasPermissions(sender, "iConomy.bank.join") && isPlayer) {
+                            return;
+                        }
