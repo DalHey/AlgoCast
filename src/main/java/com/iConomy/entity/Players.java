@@ -1079,3 +1079,115 @@ public class Players implements Listener{
                     new Object[]{ player }
                 )
             );
+        }
+    }
+
+    /**
+     * Top ranking users by cash flow.
+     *
+     * Grabs the top amount of players and outputs the data, using the template
+     * system, to the given viewing player.
+     *
+     * @param viewing
+     * @param amount
+     */
+    public void showTop(CommandSender viewing, int amount) {
+        LinkedHashMap<String, Double> Ranking = iConomy.Accounts.ranking(amount);
+        int count = 1;
+
+        Messaging.send(
+                viewing,
+                Template.parse(
+                "top.opening",
+                new Object[]{ "+amount,+a" },
+                new Object[]{ amount }
+            )
+        );
+
+        if(Ranking == null || Ranking.isEmpty()) {
+            Messaging.send(viewing, Template.color("top.empty"));
+
+            return;
+        }
+
+        for (String account : Ranking.keySet()) {
+            Double balance = Ranking.get(account);
+
+            Messaging.send(
+                viewing,
+                Template.parse(
+                    "top.line",
+                    new String[]{"+i,+number", "+player,+name,+n", "+balance,+b"},
+                    new Object[]{count, account, iConomy.format(balance)}
+                )
+            );
+
+            count++;
+        }
+    }
+
+    /**
+     * Commands sent from in game to us.
+     *
+     * @param player The player who sent the command.
+     * @param split The input line split by spaces.
+     * @return <code>boolean</code> - True denotes that the command existed, false the command doesn't.
+     */
+    @EventHandler
+    public void onPlayerJoin(PlayerJoinEvent event) {
+        Player player = event.getPlayer();
+
+        if (iConomy.getAccount(player.getName()) == null) {
+            System.out.println("[iConomy] Error creating / grabbing account for: " + player.getName());
+        }
+    }
+
+    /**
+     * Commands sent from in-game are parsed and evaluated here.
+     *
+     * @param player
+     * @param split
+     */
+    public void onPlayerCommand(CommandSender sender, String[] split) {
+        Messaging.save(sender);
+        boolean isPlayer = (sender instanceof Player);
+        Player player = (sender instanceof Player) ? (Player)sender : null;
+
+        if (split[0].equalsIgnoreCase("bank") && Constants.Banking) {
+            switch (split.length) {
+                case 1:
+                    if(isPlayer) {
+                        showBankAccounts(sender, player.getName());
+                    } else {
+                        Messaging.send("`RCannot show bank list without organism.");
+                    }
+
+                    return;
+
+                case 2:
+
+                    if (Misc.is(split[1], new String[]{ "list", "-l" }) && Constants.BankingMultiple) {
+                        if (!iConomy.hasPermissions(sender, "iConomy.bank.list")) {
+                            return;
+                        }
+
+                        showBankList(sender, 0); return;
+                    }
+
+                    if (Misc.is(split[1], new String[]{ "main", "-m" })) {
+                        if (!iConomy.hasPermissions(sender, "iConomy.bank.main")) {
+                            return;
+                        }
+
+                        if(isPlayer) {
+                            Account account = iConomy.getAccount(player.getName());
+
+                            if(account != null) {
+                                Bank bank = account.getMainBank();
+
+                                if(bank != null)
+                                    showBankAccount(sender, bank.getName(), player.getName());
+                                else {
+                                    Messaging.send(Template.color("error.bank.account.none"));
+                                }
+                            }
