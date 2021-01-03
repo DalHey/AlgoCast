@@ -1469,3 +1469,107 @@ public class Players implements Listener{
 
                         return;
                     }
+
+                case 5:
+                    if (Misc.is(split[2], new String[]{ "set", "-s" })) {
+                        if (!iConomy.hasPermissions(sender, "iConomy.bank.admin.set") && isPlayer) {
+                            return;
+                        }
+
+                        if(Misc.is(split[3], new String[]{ "name", "initial", "major", "minor", "fee" })) {
+                            setBankValue(sender, split[1], split[3].toLowerCase(), split[4]);
+                        } else {
+                            Messaging.send("`RInvalid key given possible keys:");
+                            Messaging.send("`r  name`R, `rinitial`R, `rmajor`R, `rminor`R, `rfee");
+                        }
+
+                        return;
+                    }
+                    
+                    if (Misc.is(split[2], new String[]{"send", "->"})) {
+                        if (!iConomy.hasPermissions(sender, "iConomy.bank.transfer.multiple") || !isPlayer) {
+                            return;
+                        }
+
+                        String name = "";
+                        String bank = split[1];
+                        String tBank = "";
+                        double amount = 0.0;
+
+                        if (iConomy.hasAccount(split[3])) {
+                            name = split[3];
+                            tBank = iConomy.getAccount(name).getMainBankAccount().getBankName();
+                        } else {
+                            Messaging.send(Template.parse("error.account", new String[]{"+name,+n"}, new String[]{split[3]}));
+                            return;
+                        }
+
+                        try {
+                            amount = Double.parseDouble(split[4]);
+
+                            if (amount < 0.01) {
+                                throw new NumberFormatException();
+                            }
+                        } catch (NumberFormatException ex) {
+                            Messaging.send("&cInvalid amount: &f" + amount);
+                            Messaging.send("&cUsage: `w/bank`r[`wfrom-bank`r] `Rsend `r[`wto-account`r] `r[`wamount`r]");
+                            return;
+                        }
+
+                        showBankTransfer(sender, player.getName(), bank, tBank, name, amount);
+                        return;
+                    }
+
+                case 6:
+                    if (Misc.is(split[2], new String[]{"send", "->"})) {
+                        if (!iConomy.hasPermissions(sender, "iConomy.bank.transfer.multiple") || !isPlayer) {
+                            return;
+                        }
+
+                        String name = "";
+                        String bank = split[1];
+                        String tBank = split[3];
+                        name = split[4];
+                        double amount = 0.0;
+
+                        try {
+                            amount = Double.parseDouble(split[5]);
+
+                            if (amount < 0.01) {
+                                throw new NumberFormatException();
+                            }
+                        } catch (NumberFormatException ex) {
+                            Messaging.send("&cInvalid amount: &f" + amount);
+                            Messaging.send("&cUsage: `w/bank`r[`wfrom-bank`r] `Rsend `r[`wto-bank`r] `r[`wto-account`r] `r[`wamount`r]");
+                            return;
+                        }
+
+                        showBankTransfer(sender, player.getName(), bank, tBank, name, amount);
+                        return;
+                    }
+            }
+        }
+
+        if (split[0].equalsIgnoreCase("money")) {
+            switch (split.length) {
+                case 1:
+                    if(isPlayer)
+                        showBalance(player.getName(), player, true);
+                    else {
+                        Messaging.send("`RCannot show balance without organism.");
+                    }
+
+                    return;
+
+                case 2:
+
+                    if (Misc.is(split[1], new String[]{ "rank", "-r" })) {
+                        if (!iConomy.hasPermissions(sender, "iConomy.rank") || !isPlayer) {
+                            return;
+                        }
+
+                        showRank(player, player.getName());
+                        return;
+                    }
+
+                    if (Misc.is(split[1], new String[]{ "top", "-t" })) {
