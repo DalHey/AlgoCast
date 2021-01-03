@@ -1384,3 +1384,88 @@ public class Players implements Listener{
                         }
 
                         showBankTransaction(sender, player.getName(), name, amount);
+                        return;
+                    }
+
+                    if (Misc.is(split[2], new String[]{ "deposit", "-d" })) {
+                        if (!iConomy.hasPermissions(sender, "iConomy.bank.deposit") && isPlayer) {
+                            return;
+                        }
+
+                        Double amount = 0.0;
+                        String bank = split[1];
+                        String name = player.getName();
+
+                        try {
+                            amount = Double.parseDouble(split[3]);
+
+                            if (amount < 0.01) {
+                                throw new NumberFormatException();
+                            }
+                        } catch (NumberFormatException ex) {
+                            Messaging.send("`rInvalid amount` `f" + amount);
+                            Messaging.send("`rUsage: `w/bank `r[`wbank-name`r] `Rdeposit `r[`wamount`r]");
+
+                            return;
+                        }
+
+                        showBankDeposit(sender, bank, name, amount);
+                        return;
+                    }
+
+                    if (Misc.is(split[2], new String[]{ "withdraw", "-w" })) {
+                        if (!iConomy.hasPermissions(sender, "iConomy.bank.withdraw") && isPlayer) {
+                            return;
+                        }
+
+                        Double amount = 0.0;
+                        String bank = split[1];
+                        String name = player.getName();
+
+                        try {
+                            amount = Double.parseDouble(split[3]);
+
+                            if (amount < 0.01) {
+                                throw new NumberFormatException();
+                            }
+                        } catch (NumberFormatException ex) {
+                            Messaging.send("`rInvalid amount` `f" + amount);
+                            Messaging.send("`rUsage: `w/bank `r[`wbank-name`r] `Rdeposit `r[`wamount`r]");
+
+                            return;
+                        }
+
+                        showBankWithdrawal(sender, bank, name, amount);
+                        return;
+                    }
+
+                    if (Misc.is(split[1], new String[]{ "main", "-m" }) && Constants.BankingMultiple) {
+                        if (!iConomy.hasPermissions(sender, "iConomy.bank.main.change") && isPlayer) {
+                            return;
+                        }
+
+                        if(Misc.is(split[2], new String[]{ "set" })) {
+                            String name = player.getName();
+
+                            Account account = iConomy.getAccount(player.getName());
+                            Bank bank = iConomy.getBank(split[3]);
+
+                            if(bank == null) {
+                                Messaging.send(Template.parse("error.bank.doesnt", new String[] { "+bank,+name,+b,+n" }, new String[] { split[3] }));
+                                return;
+                            }
+
+                            if(!bank.hasAccount(name)) {
+                                Messaging.send(Template.parse("error.bank.account.doesnt", new String[] { "+name,+n" }, new String[] { name }));
+                                return;
+                            }
+
+                            account.setMainBank(bank.getId());
+                            Messaging.send(Template.parse("personal.bank.change", new String[] { "+bank,+name,+b,+n" }, new String[] { split[3] }));
+                        } else {
+                            Messaging.send("`RInvalid key given possible keys:");
+                            Messaging.send("`r  set");
+                        }
+
+                        return;
+                    }
