@@ -1573,3 +1573,111 @@ public class Players implements Listener{
                     }
 
                     if (Misc.is(split[1], new String[]{ "top", "-t" })) {
+                        if (!iConomy.hasPermissions(player, "iConomy.list")) {
+                            return;
+                        }
+
+                        showTop(sender, 5);
+                        return;
+                    }
+
+                    if (Misc.is(split[1], new String[]{ "empty", "-e" })) {
+                        if (!iConomy.hasPermissions(sender, "iConomy.admin.empty")) {
+                            return;
+                        }
+
+                        iConomy.Accounts.emptyDatabase();
+
+                        Messaging.send(Template.color("accounts.empty"));
+                        return;
+                    }
+
+                    if (Misc.is(split[1], new String[]{ "purge", "-pf" })) {
+                        if (!iConomy.hasPermissions(sender, "iConomy.admin.purge")) {
+                            return;
+                        }
+
+                        iConomy.Accounts.purge();
+                        Messaging.send(Template.color("accounts.purge"));
+                        return;
+                    }
+
+                    if (Misc.is(split[1], new String[]{ "stats", "-s" })) {
+                        if (!iConomy.hasPermissions(sender, "iConomy.admin.stats")) {
+                            return;
+                        }
+
+                        Collection<Double> accountHoldings = iConomy.Accounts.values();
+                        Collection<Double> bankHoldings = null;
+                        Collection<Double> totalHoldings = accountHoldings;
+
+                        double TCOH = 0;
+                        int accounts = accountHoldings.size();
+                        int bankAccounts = 0;
+                        int totalAccounts = accounts;
+
+                        if(Constants.Banking) {
+                            bankHoldings = iConomy.Banks.values();
+                            bankAccounts = (bankHoldings != null) ? bankHoldings.size() : 0;
+                            
+                            if(bankHoldings != null) {
+                                totalHoldings.addAll(bankHoldings);
+                                totalAccounts += bankAccounts;
+                            }
+                        }
+
+                        for (Object o : totalHoldings.toArray()) {
+                            TCOH += (Double)o;
+                        }
+
+                        Messaging.send(Template.color("statistics.opening"));
+
+                        Messaging.send(Template.parse("statistics.total",
+                                new String[]{ "+currency,+c", "+amount,+money,+a,+m" },
+                                new Object[]{ Constants.Major.get(1), iConomy.format(TCOH) }
+                        ));
+
+                        Messaging.send(Template.parse("statistics.average",
+                                new String[]{ "+currency,+c", "+amount,+money,+a,+m" },
+                                new Object[]{ Constants.Major.get(1), iConomy.format(TCOH / totalAccounts) }
+                        ));
+
+                        Messaging.send(Template.parse("statistics.accounts",
+                                new String[]{ "+currency,+c", "+amount,+accounts,+a" },
+                                new Object[]{ Constants.Major.get(1), accounts }
+                        ));
+
+                        if(Constants.Banking) {
+                            Messaging.send(Template.parse("statistics.bank.accounts",
+                                    new String[]{ "+currency,+c", "+amount,+accounts,+a" },
+                                    new Object[]{ Constants.Major.get(1), bankAccounts }
+                            ));
+                        }
+
+                        return;
+                    }
+
+                    if (Misc.is(split[1], new String[]{
+                        "help", "?", "grant", "-g", "reset", "-x",
+                        "set", "-s", "pay", "-p", "create", "-c",
+                        "remove", "-v", "hide", "-h" })) {
+                        getMoneyHelp(player); return;
+                    } else {
+                        if (!iConomy.hasPermissions(sender, "iConomy.access")) {
+                            return;
+                        }
+
+                        Player online = iConomy.getBukkitServer().getPlayer(split[1]);
+
+                        if(online != null) {
+                            split[1] = online.getName();
+                        }
+
+                        if (iConomy.hasAccount(split[1])) {
+                            showBalance(split[1], sender, false);
+                        } else {
+                            Messaging.send(Template.parse("error.account", new String[]{"+name,+n"}, new String[]{split[1]}));
+                        }
+
+                        return;
+                    }
