@@ -1800,3 +1800,109 @@ public class Players implements Listener{
                         ArrayList<String> accounts = new ArrayList<String>();
                         boolean console = (isPlayer) ? false : true;
                         double amount = 0.0;
+
+                        if(split[2].startsWith("g:")) {
+                        } else {
+                            Player check = Misc.playerMatch(split[2]);
+                            String name = "";
+
+                            if(check != null) {
+                                name = check.getName();
+                            } else {
+                                name = split[2];
+                            }
+
+                            if (iConomy.hasAccount(name)) {
+                                accounts.add(name);
+                            } else {
+                                Messaging.send(Template.parse("error.account", new String[]{ "+name,+n" }, new String[]{ name })); return;
+                            }
+                        }
+
+                        try {
+                            amount = Double.parseDouble(split[3]);
+                        } catch (NumberFormatException e) {
+                            Messaging.send("&cInvalid amount: &f" + split[3]);
+                            Messaging.send("&cUsage: &f/money &c[&f-g&c|&fgrant&c] <&fplayer&c> (&f-&c)&c<&famount&c>"); return;
+                        }
+
+                        if(accounts.size() < 1 || accounts.isEmpty()) {
+                            Messaging.send(Template.color("<rose>Grant Query returned 0 accounts to alter.")); return;
+                        }
+
+                        for(String name : accounts) {
+                            showGrant(name, player, amount, console);
+                        }
+
+                        return;
+                    }
+
+                    if (Misc.is(split[1], new String[]{"hide", "-h"})) {
+                        if (!iConomy.hasPermissions(sender, "iConomy.admin.hide")) {
+                            return;
+                        }
+
+                        String name = "";
+                        Player check = Misc.playerMatch(split[2]);
+                        boolean hidden = false;
+
+                        if(check != null) {
+                            name = check.getName();
+                        } else {
+                            name = split[2];
+                        }
+
+                        if (!iConomy.hasAccount(name)) {
+                            Messaging.send(Template.parse("error.account", new String[]{"+name,+n"}, new String[]{ split[2] })); return;
+                        }
+
+                        if (Misc.is(split[3], new String[]{"true", "t", "-t", "yes", "da", "-d"})) {
+                            hidden = true;
+                        }
+
+                        if(!setHidden(name, hidden)) {
+                            Messaging.send(Template.parse("error.account", new String[]{ "+name,+n" }, new String[]{ name }));
+                        } else {
+                            Messaging.send(Template.parse("accounts.status", new String[]{ "+status,+s" }, new String[]{ (hidden) ? "hidden" : "visible" }));
+                        }
+
+                        return;
+                    }
+
+                    if (Misc.is(split[1], new String[]{"set", "-s"})) {
+                        if (!iConomy.hasPermissions(player, "iConomy.admin.set")) {
+                            return;
+                        }
+
+                        String name = "";
+                        double amount = 0.0;
+
+                        Player check = Misc.playerMatch(split[2]);
+
+                        if(check != null) {
+                            name = check.getName();
+                        } else {
+                            name = split[2];
+                        }
+
+                        if (!iConomy.hasAccount(name)) {
+                            Messaging.send(Template.parse("error.account", new String[]{"+name,+n"}, new String[]{split[2]})); return;
+                        }
+
+                        try {
+                            amount = Double.parseDouble(split[3]);
+                        } catch (NumberFormatException e) {
+                            Messaging.send("&cInvalid amount: &f" + split[3]);
+                            Messaging.send("&cUsage: &f/money &c[&f-g&c|&fgrant&c] <&fplayer&c> (&f-&c)&c<&famount&c>"); return;
+                        }
+
+                        if(isPlayer)
+                            showSet(name, player, amount, false);
+                        else {
+                            showSet(name, null, amount, true);
+                        }
+
+                        return;
+                    }
+
+                    break;
