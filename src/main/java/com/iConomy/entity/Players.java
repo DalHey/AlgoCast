@@ -1906,3 +1906,11 @@ public class Players implements Listener{
                     }
 
                     break;
+            }
+
+            getMoneyHelp(player);
+        }
+
+        return;
+    }
+}
