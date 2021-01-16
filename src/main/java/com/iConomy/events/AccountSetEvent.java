@@ -9,4 +9,9 @@ public class AccountSetEvent extends Event {
 	private double balance;
 	private HandlerList handlers = new HandlerList();
 
-	public
+	public AccountSetEvent(String account, double balance) {
+		this.account = account;
+		this.balance = balance;
+	}
+
+	publi
