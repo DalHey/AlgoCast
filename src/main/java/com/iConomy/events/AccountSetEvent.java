@@ -14,4 +14,12 @@ public class AccountSetEvent extends Event {
 		this.balance = balance;
 	}
 
-	publi
+	public String getAccountName() {
+		return account;
+	}
+
+	public double getBalance() {
+		return balance;
+	}
+
+	@Over
