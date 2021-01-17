@@ -22,4 +22,8 @@ public class AccountSetEvent extends Event {
 		return balance;
 	}
 
-	@Over
+	@Override
+	public HandlerList getHandlers() {
+		return handlers;
+	}
+}
