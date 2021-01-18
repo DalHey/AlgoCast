@@ -8,4 +8,6 @@ public class AccountUpdateEvent extends Event {
 	private final String account;
 	private double balance;
 	private double previous;
-	privat
+	private double amount;
+	private boolean cancelled = false;
+	private HandlerList handlers = new HandlerList()
