@@ -24,4 +24,9 @@ public class AccountUpdateEvent extends Event {
 	}
 
 	public double getAmount() {
-		return amount
+		return amount;
+	}
+
+	public void setAmount(double amount) {
+		this.amount = amount;
+		this.balance = previous + amount;
