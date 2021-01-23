@@ -12,4 +12,8 @@ public class AccountUpdateEvent extends Event {
 	private boolean cancelled = false;
 	private HandlerList handlers = new HandlerList();
 
-	public AccountUpdateEvent(String account, double previous, double balance, double am
+	public AccountUpdateEvent(String account, double previous, double balance, double amount) {
+		this.account = account;
+		this.previous = previous;
+		this.balance = balance;
+		this.amount = 
