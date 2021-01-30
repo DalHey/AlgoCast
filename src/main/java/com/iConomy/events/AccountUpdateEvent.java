@@ -30,3 +30,11 @@ public class AccountUpdateEvent extends Event {
 	public void setAmount(double amount) {
 		this.amount = amount;
 		this.balance = previous + amount;
+	}
+
+	public double getPrevious() {
+		return previous;
+	}
+
+	public double getBalance() {
+		
