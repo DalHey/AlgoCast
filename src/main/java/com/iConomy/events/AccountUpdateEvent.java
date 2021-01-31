@@ -37,4 +37,11 @@ public class AccountUpdateEvent extends Event {
 	}
 
 	public double getBalance() {
-		
+		return balance;
+	}
+
+	public boolean isCancelled() {
+		return cancelled;
+	}
+
+	public void setCanc
