@@ -44,4 +44,9 @@ public class AccountUpdateEvent extends Event {
 		return cancelled;
 	}
 
-	public void setCanc
+	public void setCancelled(boolean cancelled) {
+		this.cancelled = cancelled;
+	}
+
+	@Override
+	public HandlerLi
