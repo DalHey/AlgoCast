@@ -49,4 +49,7 @@ public class AccountUpdateEvent extends Event {
 	}
 
 	@Override
-	public HandlerLi
+	public HandlerList getHandlers() {
+		return handlers;
+	}
+}
