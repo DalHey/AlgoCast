@@ -54,3 +54,102 @@ import org.bukkit.event.server.PluginEnableEvent;
  * the Free Software Foundation, either version 2 of the License, or
  * (at your option) any later version.
  *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+public class iConomy extends JavaPlugin {
+    public static Banks Banks = null;
+    public static Accounts Accounts = null;
+
+    private static Server Server = null;
+    private static Database Database = null;
+    private static Transactions Transactions = null;
+    private static Players playerListener = null;
+    private static Timer Interest_Timer = null;
+
+    @Override
+    public void onEnable() {
+        Locale.setDefault(Locale.US);
+
+        // Get the server
+        Server = getServer();
+
+        // Lib Directory
+        (new File("lib" + File.separator)).mkdir();
+        (new File("lib" + File.separator)).setWritable(true);
+        (new File("lib" + File.separator)).setExecutable(true);
+
+        // Plugin Directory
+        getDataFolder().mkdir();
+        getDataFolder().setWritable(true);
+        getDataFolder().setExecutable(true);
+
+        // Setup the path.
+        Constants.Plugin_Directory = getDataFolder().getPath();
+
+        // Grab plugin details
+        PluginDescriptionFile pdfFile = this.getDescription();
+
+        // Versioning File
+        FileManager file = new FileManager(getDataFolder().getPath(), "VERSION", false);
+
+        // Default Files
+        extract("Config.yml");
+        extract("Template.yml");
+
+        try {
+            Constants.load(YamlConfiguration.loadConfiguration(new File(getDataFolder(), "Config.yml")));
+        } catch (Exception e) {
+            Server.getPluginManager().disablePlugin(this);
+            System.out.println("[iConomy] Failed to retrieve configuration from directory.");
+            System.out.println("[iConomy] Please back up your current settings and let iConomy recreate it.");
+            return;
+        }
+
+        if(Misc.is(Constants.DatabaseType, new String[] { "sqlite", "h2", "h2sql", "h2db" })) {
+        } else {
+            if(!(new File("lib" + File.separator, "mysql-connector-java-bin.jar").exists())) {
+                Downloader.install(Constants.MySQL_Jar_Location, "mysql-connector-java-bin.jar");
+            }
+        }
+
+        try {
+            Database = new Database();
+            Database.setupAccountTable();
+
+            if(Constants.Banking) {
+                Database.setupBankTable();
+                Database.setupBankRelationTable();
+            }
+        } catch (Exception e) {
+            System.out.println("[iConomy] Database initialization failed: " + e);
+            Server.getPluginManager().disablePlugin(this);
+            return;
+
+        }
+
+        try {
+            Transactions = new Transactions();
+            Database.setupTransactionTable();
+        } catch (Exception e) {
+            System.out.println("[iConomy] Could not load transaction logger: " + e);
+        }
+
+        // Check version details before the system loads
+        update(file, Double.valueOf(pdfFile.getVersion()));
+
+        // Initialize default systems
+        Accounts = new Accounts();
+        
+        // Initialize the banks
+        if(Constants.Banking)
+            Banks = new Banks();
+
+        try {
+            if (Constants.Interest) {
+                long time = Constants.InterestSeconds * 1000L;
