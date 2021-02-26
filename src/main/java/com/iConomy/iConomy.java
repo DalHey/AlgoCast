@@ -153,3 +153,75 @@ public class iConomy extends JavaPlugin {
         try {
             if (Constants.Interest) {
                 long time = Constants.InterestSeconds * 1000L;
+
+                Interest_Timer = new Timer();
+                Interest_Timer.scheduleAtFixedRate(new Interest(getDataFolder().getPath()), time, time);
+            }
+        } catch (Exception e) {
+            System.out.println("[iConomy] Failed to start interest system: " + e);
+            Server.getPluginManager().disablePlugin(this);
+            return;
+        }
+
+        // Initializing Listeners
+        playerListener = new Players(getDataFolder().getPath(),this);
+        
+        // Console Detail
+        System.out.println("[iConomy] v" + pdfFile.getVersion() + " (" + Constants.Codename + ") loaded.");
+        System.out.println("[iConomy] Developed by: " + pdfFile.getAuthors());
+    }
+
+    @Override
+    public void onDisable() {
+        try {
+            if(Misc.is(Constants.DatabaseType, new String[] { "sqlite", "h2", "h2sql", "h2db" })) {
+                Database.connectionPool().dispose();
+            }
+            
+            System.out.println("[iConomy] Plugin disabled.");
+        } catch (Exception e) {
+            System.out.println("[iConomy] Plugin disabled.");
+        } finally {
+            if (Interest_Timer != null) {
+                Interest_Timer.cancel();
+            }
+
+            Server = null;
+            Banks = null;
+            Accounts = null;
+            Database = null;
+            Transactions = null;
+            playerListener = null;
+            Interest_Timer = null;
+        }
+    }
+
+    @Override
+    public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
+        String[] split = new String[args.length + 1];
+        split[0] = cmd.getName().toLowerCase();
+        System.arraycopy(args, 0, split, 1, args.length);
+
+        playerListener.onPlayerCommand(sender, split);
+        return false;
+    }
+
+    private void update(FileManager file, double version) {
+        if (file.exists()) {
+            file.read();
+
+            try {
+                double current = Double.parseDouble(file.getSource());
+                LinkedList<String> MySQL = new LinkedList<String>();
+                LinkedList<String> GENERIC = new LinkedList<String>();
+                LinkedList<String> SQL = new LinkedList<String>();
+
+                if(current != version) {
+                    if(current < 4.64) {
+                        MySQL.add("ALTER TABLE " + Constants.SQLTable + " ADD hidden boolean DEFAULT '0';");
+                        GENERIC.add("ALTER TABLE " + Constants.SQLTable + " ADD HIDDEN BOOLEAN DEFAULT '0';");
+                    }
+
+                    if(current < 4.62) {
+                        MySQL.add("ALTER IGNORE TABLE " + Constants.SQLTable + " ADD UNIQUE INDEX(username(32));");
+                        GENERIC.add("ALTER TABLE " + Constants.SQLTable + " ADD UNIQUE(username);");
