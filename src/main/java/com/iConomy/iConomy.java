@@ -225,3 +225,97 @@ public class iConomy extends JavaPlugin {
                     if(current < 4.62) {
                         MySQL.add("ALTER IGNORE TABLE " + Constants.SQLTable + " ADD UNIQUE INDEX(username(32));");
                         GENERIC.add("ALTER TABLE " + Constants.SQLTable + " ADD UNIQUE(username);");
+                    }
+
+                    if(!MySQL.isEmpty() && !GENERIC.isEmpty()) {
+                        Connection conn = null;
+                        ResultSet rs = null;
+                        Statement stmt = null;
+
+                        try {
+                            conn = iConomy.getiCoDatabase().getConnection();
+                            stmt = null;
+
+                            System.out.println(" - Updating " + Constants.DatabaseType + " Database for latest iConomy");
+
+                            int i = 1;
+                            SQL = (Constants.DatabaseType.equalsIgnoreCase("mysql")) ? MySQL : GENERIC;
+
+                            for (String Query : SQL) {
+                                stmt = conn.createStatement();
+                                stmt.execute(Query);
+
+                                System.out.println("   Executing SQL Query #" + i + " of " + (SQL.size()));
+                                ++i;
+                            }
+
+                            file.write(version);
+
+                            System.out.println(" + Database Update Complete.");
+                        } catch (SQLException e) {
+                            System.out.println("[iConomy] Error updating database: " + e);
+                        } finally {
+                            if(stmt != null)
+                                try { stmt.close(); } catch (SQLException ex) { }
+
+                            if(rs != null)
+                                try { rs.close(); } catch (SQLException ex) { }
+
+                            iConomy.getiCoDatabase().close(conn);
+                        }
+                    }
+                } else {
+                    file.write(version);
+                }
+            } catch (Exception e) {
+                System.out.println("[iConomy] Error on version check: ");
+                e.printStackTrace();
+                file.delete();
+            }
+        } else {
+            if (!Constants.DatabaseType.equalsIgnoreCase("flatfile")) {
+                String[] SQL = {};
+
+                String[] MySQL = {
+                    "DROP TABLE " + Constants.SQLTable + ";",
+                    "RENAME TABLE ibalances TO " + Constants.SQLTable + ";",
+                    "ALTER TABLE " + Constants.SQLTable + " CHANGE  player  username TEXT NOT NULL, CHANGE balance balance DECIMAL(64, 2) NOT NULL;"
+                };
+
+                String[] SQLite = {
+                    "DROP TABLE " + Constants.SQLTable + ";",
+                    "CREATE TABLE '" + Constants.SQLTable + "' ('id' INT ( 10 ) PRIMARY KEY , 'username' TEXT , 'balance' DECIMAL ( 64 , 2 ));",
+                    "INSERT INTO " + Constants.SQLTable + "(id, username, balance) SELECT id, player, balance FROM ibalances;",
+                    "DROP TABLE ibalances;"
+                };
+
+                Connection conn = null;
+                ResultSet rs = null;
+                PreparedStatement ps = null;
+
+                try {
+                    conn = iConomy.getiCoDatabase().getConnection();
+                    DatabaseMetaData dbm = conn.getMetaData();
+                    rs = dbm.getTables(null, null, "ibalances", null);
+                    ps = null;
+
+                    if (rs.next()) {
+                        System.out.println(" - Updating " + Constants.DatabaseType + " Database for latest iConomy");
+
+                        int i = 1;
+                        SQL = (Constants.DatabaseType.equalsIgnoreCase("mysql")) ? MySQL : SQLite;
+
+                        for (String Query : SQL) {
+                            ps = conn.prepareStatement(Query);
+                            ps.executeQuery(Query);
+
+                            System.out.println("   Executing SQL Query #" + i + " of " + (SQL.length));
+                            ++i;
+                        }
+
+                        System.out.println(" + Database Update Complete.");
+                    }
+
+                    file.write(version);
+                } catch (SQLException e) {
+                    System.out.println("[iConomy] Error updating database: " + e);
