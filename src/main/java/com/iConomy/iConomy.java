@@ -405,3 +405,85 @@ public class iConomy extends JavaPlugin {
      */
     public static String format(double amount) {
         DecimalFormat formatter = new DecimalFormat("#,##0.00");
+        String formatted = formatter.format(amount);
+
+        if (formatted.endsWith(".")) {
+            formatted = formatted.substring(0, formatted.length() - 1);
+        }
+
+        return Misc.formatted(formatted, Constants.Major, Constants.Minor);
+    }
+
+    /**
+     * Grab an account, if it doesn't exist, create it.
+     *
+     * @param name
+     * @return Account or null
+     */
+    public static Account getAccount(String name) {
+        return Accounts.get(name);
+    }
+
+    public static boolean hasAccount(String name) {
+        return Accounts.exists(name);
+    }
+
+    /**
+     * Grab the bank to modify and access bank accounts.
+     *
+     * @return Bank
+     */
+    public static Bank getBank(String name) {
+        return Banks.get(name);
+    }
+    
+    /**
+     * Grab the bank to modify and access bank accounts.
+     *
+     * @return Bank
+     */
+    public static Bank getBank(int id) {
+        return Banks.get(id);
+    }
+
+    /**
+     * Grabs Database controller.
+     * @return iDatabase
+     */
+    public static Database getiCoDatabase() {
+        return Database;
+    }
+
+    /**
+     * Grabs Transaction Log Controller.
+     *
+     * Used to log transactions between a player and anything. Such as the
+     * system or another player or just enviroment.
+     *
+     * @return T
+     */
+    public static Transactions getTransactions() {
+        return Transactions;
+    }
+    /**
+     * Check and see if the sender has the permission as designated by node.
+     *
+     * @param sender
+     * @param node
+     * @return boolean
+     */
+    public static boolean hasPermissions(CommandSender sender, String node) {
+      if(!(sender.hasPermission(node)))   {
+				sender.sendMessage(ChatColor.RED+"[iConomy] You do not have a required permission: "+node+"!");
+			}
+			return sender.hasPermission(node);
+    }
+
+    /**
+     * Grab the server so we can do various activities if needed.
+     * @return Server
+     */
+    public static Server getBukkitServer() {
+        return Server;
+    }
+}
