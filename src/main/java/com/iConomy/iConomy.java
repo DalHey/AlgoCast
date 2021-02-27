@@ -319,3 +319,89 @@ public class iConomy extends JavaPlugin {
                     file.write(version);
                 } catch (SQLException e) {
                     System.out.println("[iConomy] Error updating database: " + e);
+                } finally {
+                    if(ps != null)
+                        try { ps.close(); } catch (SQLException ex) { }
+
+                    if(rs != null)
+                        try { rs.close(); } catch (SQLException ex) { }
+
+                    if(conn != null)
+                        iConomy.getiCoDatabase().close(conn);
+                }
+            }
+
+            file.create();
+            file.write(version);
+        }
+    }
+
+    private void extract(String name) {
+        File actual = new File(getDataFolder(), name);
+        if (!actual.exists()) {
+            InputStream input = this.getClass().getResourceAsStream("/default/" + name);
+            if (input != null) {
+                FileOutputStream output = null;
+
+                try {
+                    output = new FileOutputStream(actual);
+                    byte[] buf = new byte[8192];
+                    int length = 0;
+
+                    while ((length = input.read(buf)) > 0) {
+                        output.write(buf, 0, length);
+                    }
+
+                    System.out.println("[iConomy] Default setup file written: " + name);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    try {
+                        if (input != null) {
+                            input.close();
+                        }
+                    } catch (Exception e) { }
+                    try {
+                        if (output != null) {
+                            output.close();
+                        }
+                    } catch (Exception e) { }
+                }
+            }
+        }
+    }
+
+    /**
+     * Formats the holding balance in a human readable form with the currency attached:<br /><br />
+     * 20000.53 = 20,000.53 Coin<br />
+     * 20000.00 = 20,000 Coin
+     *
+     * @param account The name of the account you wish to be formatted
+     * @return String
+     */
+    public static String format(String account) {
+        return getAccount(account).getHoldings().toString();
+    }
+
+    /**
+     * Formats the balance in a human readable form with the currency attached:<br /><br />
+     * 20000.53 = 20,000.53 Coin<br />
+     * 20000.00 = 20,000 Coin
+     *
+     * @param account The name of the account you wish to be formatted
+     * @return String
+     */
+    public static String format(String bank, String account) {
+        return (new Bank(bank)).getAccount(account).getHoldings().toString();
+    }
+
+    /**
+     * Formats the money in a human readable form with the currency attached:<br /><br />
+     * 20000.53 = 20,000.53 Coin<br />
+     * 20000.00 = 20,000 Coin
+     *
+     * @param amount double
+     * @return String
+     */
+    public static String format(double amount) {
+        DecimalFormat formatter = new DecimalFormat("#,##0.00");
