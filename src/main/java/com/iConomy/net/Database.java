@@ -11,4 +11,8 @@ import java.sql.DatabaseMetaData;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-import org.h2.jdbcx.JdbcConne
+import org.h2.jdbcx.JdbcConnectionPool;
+
+public class Database {
+    private JdbcConnectionPool h2pool;
+    private Strin
