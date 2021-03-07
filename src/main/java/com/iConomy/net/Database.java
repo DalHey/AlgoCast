@@ -21,4 +21,6 @@ public class Database {
     private String password;
 
     public Database() {
-        if(Misc.is(Constants.DatabaseType, new String[] { "sqlite", "h2"
+        if(Misc.is(Constants.DatabaseType, new String[] { "sqlite", "h2", "h2sql", "h2db" })) {
+            driver = "org.h2.Driver";
+            dsn = "jdbc:h2:"
