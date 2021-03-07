@@ -20,4 +20,5 @@ public class Database {
     private String username;
     private String password;
 
-    pub
+    public Database() {
+        if(Misc.is(Constants.DatabaseType, new String[] { "sqlite", "h2"
