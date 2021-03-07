@@ -15,4 +15,9 @@ import org.h2.jdbcx.JdbcConnectionPool;
 
 public class Database {
     private JdbcConnectionPool h2pool;
-    private Strin
+    private String driver;
+    private String dsn;
+    private String username;
+    private String password;
+
+    pub
