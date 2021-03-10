@@ -23,4 +23,4 @@ public class Database {
     public Database() {
         if(Misc.is(Constants.DatabaseType, new String[] { "sqlite", "h2", "h2sql", "h2db" })) {
             driver = "org.h2.Driver";
-            dsn = "jdbc:h2:"
+            dsn = "jdbc:h2:" + Constants.Plugin_Directory + File.separator + Constants.SQLDatabase + ";AUTO_RECONNECT=TRUE
