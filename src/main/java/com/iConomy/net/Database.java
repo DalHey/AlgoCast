@@ -26,4 +26,6 @@ public class Database {
             dsn = "jdbc:h2:" + Constants.Plugin_Directory + File.separator + Constants.SQLDatabase + ";AUTO_RECONNECT=TRUE";
             username = "sa";
             password = "sa";
-        } else if (Constants.DatabaseType.equalsIgnoreCa
+        } else if (Constants.DatabaseType.equalsIgnoreCase("mysql")) {
+            driver = "com.mysql.jdbc.Driver";
+            dsn = "jdbc:mysql:/
