@@ -28,4 +28,5 @@ public class Database {
             password = "sa";
         } else if (Constants.DatabaseType.equalsIgnoreCase("mysql")) {
             driver = "com.mysql.jdbc.Driver";
-            dsn = "jdbc:mysql:/
+            dsn = "jdbc:mysql://" + Constants.SQLHostname + ":" + Constants.SQLPort + "/" + Constants.SQLDatabase;
+            use
