@@ -35,4 +35,6 @@ public class Database {
 
         try {
             Class.forName(driver).newInstance();
-        } catch (Exception e) { System.out.println("[iConomy]
+        } catch (Exception e) { System.out.println("[iConomy] Driver error: " + e); }
+
+        if(Misc.is(Constants.DatabaseType, new String[] { "sqlite", "h2", "h
