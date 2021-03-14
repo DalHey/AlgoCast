@@ -29,4 +29,9 @@ public class Database {
         } else if (Constants.DatabaseType.equalsIgnoreCase("mysql")) {
             driver = "com.mysql.jdbc.Driver";
             dsn = "jdbc:mysql://" + Constants.SQLHostname + ":" + Constants.SQLPort + "/" + Constants.SQLDatabase;
-            use
+            username = Constants.SQLUsername;
+            password = Constants.SQLPassword;
+        }
+
+        try {
+   
