@@ -34,4 +34,5 @@ public class Database {
         }
 
         try {
-   
+            Class.forName(driver).newInstance();
+        } catch (Exception e) { System.out.println("[iConomy]
