@@ -44,4 +44,6 @@ public class Database {
         }
     }
 
-    public Connection get
+    public Connection getConnection() {
+        try {
+            if(username.equalsIgnoreCase("") && password.equalsIgnore
