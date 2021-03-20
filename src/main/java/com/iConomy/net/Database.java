@@ -39,4 +39,9 @@ public class Database {
 
         if(Misc.is(Constants.DatabaseType, new String[] { "sqlite", "h2", "h2sql", "h2db" })) {
             if(h2pool == null) {
-                h2pool = JdbcConnect
+                h2pool = JdbcConnectionPool.create(dsn, username, password);
+            }
+        }
+    }
+
+    public Connection get
