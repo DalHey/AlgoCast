@@ -37,4 +37,6 @@ public class Database {
             Class.forName(driver).newInstance();
         } catch (Exception e) { System.out.println("[iConomy] Driver error: " + e); }
 
-        if(Misc.is(Constants.DatabaseType, new String[] { "sqlite", "h2", "h
+        if(Misc.is(Constants.DatabaseType, new String[] { "sqlite", "h2", "h2sql", "h2db" })) {
+            if(h2pool == null) {
+                h2pool = JdbcConnect
