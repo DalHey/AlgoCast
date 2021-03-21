@@ -46,4 +46,7 @@ public class Database {
 
     public Connection getConnection() {
         try {
-            if(username.equalsIgnoreCase("") && password.equalsIgnore
+            if(username.equalsIgnoreCase("") && password.equalsIgnoreCase(""))
+                return (DriverManager.getConnection(dsn));
+            else {
+         
