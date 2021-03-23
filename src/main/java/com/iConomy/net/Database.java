@@ -49,4 +49,5 @@ public class Database {
             if(username.equalsIgnoreCase("") && password.equalsIgnoreCase(""))
                 return (DriverManager.getConnection(dsn));
             else {
-         
+                if(Misc.is(Constants.DatabaseType, new String[] { "sqlite", "h2", "h2sql", "h2db" })) {
+                  
