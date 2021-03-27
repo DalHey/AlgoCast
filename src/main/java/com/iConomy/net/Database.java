@@ -55,4 +55,6 @@ public class Database {
                     return (DriverManager.getConnection(dsn, username, password));
                 }
             }
-        } catch (SQLExcept
+        } catch (SQLException e) {
+            System.out.println("[iConomy] Could not create connection: " + e);
+   
