@@ -52,4 +52,7 @@ public class Database {
                 if(Misc.is(Constants.DatabaseType, new String[] { "sqlite", "h2", "h2sql", "h2db" })) {
                     return h2pool.getConnection();
                 } else {
-                    return (DriverManager.getConn
+                    return (DriverManager.getConnection(dsn, username, password));
+                }
+            }
+        } catch (SQLExcept
