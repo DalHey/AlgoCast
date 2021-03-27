@@ -50,4 +50,6 @@ public class Database {
                 return (DriverManager.getConnection(dsn));
             else {
                 if(Misc.is(Constants.DatabaseType, new String[] { "sqlite", "h2", "h2sql", "h2db" })) {
-                  
+                    return h2pool.getConnection();
+                } else {
+                    return (DriverManager.getConn
