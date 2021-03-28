@@ -57,4 +57,9 @@ public class Database {
             }
         } catch (SQLException e) {
             System.out.println("[iConomy] Could not create connection: " + e);
-   
+            return (null);
+        }
+    }
+
+    public void close(Connection connection) {
+      
