@@ -62,4 +62,7 @@ public class Database {
     }
 
     public void close(Connection connection) {
-      
+        if(connection != null) {
+            try {
+                connection.close();
+            } 
