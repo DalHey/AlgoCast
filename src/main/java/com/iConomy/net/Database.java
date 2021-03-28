@@ -65,4 +65,9 @@ public class Database {
         if(connection != null) {
             try {
                 connection.close();
-            } 
+            } catch (SQLException ex) { }
+        }
+    }
+
+    /**
+     * Create the bank table if it doesn't exist already
