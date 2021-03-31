@@ -70,4 +70,7 @@ public class Database {
     }
 
     /**
-     * Create the bank table if it doesn't exist already
+     * Create the bank table if it doesn't exist already.
+     * @throws Exception
+     */
+    public void setupBankTable() throws Exception {
