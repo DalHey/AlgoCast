@@ -74,3 +74,6 @@ public class Database {
      * @throws Exception
      */
     public void setupBankTable() throws Exception {
+        Connection conn = getConnection();
+        PreparedStatement ps = null;
+        ResultSet rs
