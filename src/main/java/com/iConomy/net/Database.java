@@ -83,4 +83,6 @@ public class Database {
                 ps = conn.prepareStatement(
                     "CREATE TABLE " + Constants.SQLTable + "_Banks(" +
                         "id INT auto_increment PRIMARY KEY," +
-       
+                        "name VARCHAR(32)," +
+                        "major VARCHAR(255)," +
+ 
