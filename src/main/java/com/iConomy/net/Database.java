@@ -86,4 +86,9 @@ public class Database {
                         "name VARCHAR(32)," +
                         "major VARCHAR(255)," +
                         "minor VARCHAR(255)," +
-                        "initial DECIMAL(64,2)
+                        "initial DECIMAL(64,2)," +
+                        "fee DECIMAL(64,2)"+
+                    ");"
+                );
+
+              
