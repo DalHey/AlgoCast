@@ -94,4 +94,7 @@ public class Database {
                 ps.executeUpdate();
             } catch(SQLException E) { }
         } else {
-            DatabaseMetaData
+            DatabaseMetaData dbm = conn.getMetaData();
+            rs = dbm.getTables(null, null, Constants.SQLTable + "_Banks", null);
+
+     
