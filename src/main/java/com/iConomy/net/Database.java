@@ -91,4 +91,7 @@ public class Database {
                     ");"
                 );
 
-              
+                ps.executeUpdate();
+            } catch(SQLException E) { }
+        } else {
+            DatabaseMetaData
