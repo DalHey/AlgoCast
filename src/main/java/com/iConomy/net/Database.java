@@ -98,4 +98,7 @@ public class Database {
             rs = dbm.getTables(null, null, Constants.SQLTable + "_Banks", null);
 
             if (!rs.next()) {
-                System.out.println("[iConomy] Creating table: " + Cons
+                System.out.println("[iConomy] Creating table: " + Constants.SQLTable + "_Banks");
+
+                ps = conn.prepareStatement(
+                    "CREATE TABLE "
