@@ -106,4 +106,6 @@ public class Database {
                         "`name` VARCHAR(32) NOT NULL," +
                         "`major` VARCHAR(255)," +
                         "`minor` VARCHAR(255)," +
-                        "`initial` DECIMAL(64,
+                        "`initial` DECIMAL(64,2)," +
+                        "`fee` DECIMAL(64,2),"+
+                        "PRIMARY KEY (`id`)
