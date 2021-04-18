@@ -105,4 +105,5 @@ public class Database {
                         "`id` INT(10) NOT NULL AUTO_INCREMENT," +
                         "`name` VARCHAR(32) NOT NULL," +
                         "`major` VARCHAR(255)," +
-          
+                        "`minor` VARCHAR(255)," +
+                        "`initial` DECIMAL(64,
