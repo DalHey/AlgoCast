@@ -122,4 +122,7 @@ public class Database {
             try { ps.close(); } catch (SQLException ex) { }
 
         if(rs != null)
-            try { 
+            try { rs.close(); } catch (SQLException ex) { }
+
+        if(conn != null)
+            try { conn.cl
