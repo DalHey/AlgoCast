@@ -114,4 +114,9 @@ public class Database {
 
                 ps.executeUpdate();
 
-              
+                System.out.println("[iConomy] Table Created.");
+            }
+        }
+
+        if(ps != null)
+ 
