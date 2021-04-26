@@ -125,4 +125,8 @@ public class Database {
             try { rs.close(); } catch (SQLException ex) { }
 
         if(conn != null)
-            try { conn.cl
+            try { conn.close(); } catch (SQLException ex) { }
+    }
+
+    /**
+     * Create the bank table if 
