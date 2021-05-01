@@ -132,4 +132,6 @@ public class Database {
      * Create the bank table if it doesn't exist already.
      * @throws Exception
      */
-    public void setupBankRe
+    public void setupBankRelationTable() throws Exception {
+        Connection conn = getConnection();
+        PreparedStatemen
