@@ -134,4 +134,7 @@ public class Database {
      */
     public void setupBankRelationTable() throws Exception {
         Connection conn = getConnection();
-        PreparedStatemen
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        if (Misc.is(Constants.DatabaseType, new String
