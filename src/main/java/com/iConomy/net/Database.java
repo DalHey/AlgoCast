@@ -140,4 +140,5 @@ public class Database {
         if (Misc.is(Constants.DatabaseType, new String[] { "sqlite", "h2", "h2sql" })) {
             try {
                 ps = conn.prepareStatement(
-               
+                    "CREATE TABLE " + Constants.SQLTable + "_BankRelations(" +
+                        "id INT a
