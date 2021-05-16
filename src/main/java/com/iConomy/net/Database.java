@@ -147,4 +147,8 @@ public class Database {
                         "holdings DECIMAL(64,2),"+
                         "main BOOLEAN DEFAULT '0',"+
                         "hidden BOOLEAN DEFAULT '0'"+
-     
+                    ");"
+                );
+
+                ps.executeUpdate();
+            } catch(S
