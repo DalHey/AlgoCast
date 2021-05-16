@@ -145,4 +145,6 @@ public class Database {
                         "account_name VARCHAR(32)," +
                         "bank_id INT(10)," +
                         "holdings DECIMAL(64,2),"+
-       
+                        "main BOOLEAN DEFAULT '0',"+
+                        "hidden BOOLEAN DEFAULT '0'"+
+     
