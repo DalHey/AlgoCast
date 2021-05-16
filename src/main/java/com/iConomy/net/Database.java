@@ -151,4 +151,7 @@ public class Database {
                 );
 
                 ps.executeUpdate();
-            } catch(S
+            } catch(SQLException E) { }
+        } else {
+            DatabaseMetaData dbm = conn.getMetaData();
+           
