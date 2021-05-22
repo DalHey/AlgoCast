@@ -156,4 +156,5 @@ public class Database {
             DatabaseMetaData dbm = conn.getMetaData();
             rs = dbm.getTables(null, null, Constants.SQLTable + "_BankRelations", null);
 
-            if (!rs.ne
+            if (!rs.next()) {
+                System.out.println("[iConomy] Creating table: " + Constants.SQLTable + "_BankRelat
