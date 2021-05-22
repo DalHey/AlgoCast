@@ -154,4 +154,6 @@ public class Database {
             } catch(SQLException E) { }
         } else {
             DatabaseMetaData dbm = conn.getMetaData();
-           
+            rs = dbm.getTables(null, null, Constants.SQLTable + "_BankRelations", null);
+
+            if (!rs.ne
