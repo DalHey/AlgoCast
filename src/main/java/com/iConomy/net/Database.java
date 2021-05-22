@@ -161,4 +161,6 @@ public class Database {
 
                 ps = conn.prepareStatement(
                     "CREATE TABLE " + Constants.SQLTable + "_BankRelations(" +
-                        "`id` INT(10) NOT NULL AUTO_INCREMENT," 
+                        "`id` INT(10) NOT NULL AUTO_INCREMENT," +
+                        "`account_name` VARCHAR(32)," +
+                        "`bank_
