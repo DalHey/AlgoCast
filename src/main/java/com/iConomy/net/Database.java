@@ -163,4 +163,6 @@ public class Database {
                     "CREATE TABLE " + Constants.SQLTable + "_BankRelations(" +
                         "`id` INT(10) NOT NULL AUTO_INCREMENT," +
                         "`account_name` VARCHAR(32)," +
-                        "`bank_
+                        "`bank_id` INT(10)," +
+                        "`holdings` DECIMAL(64,2),"+
+                 
