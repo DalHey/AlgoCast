@@ -188,4 +188,7 @@ public class Database {
     }
 
     /**
-     * Create the accounts table if it doe
+     * Create the accounts table if it doesn't exist already.
+     * @throws Exception
+     */
+    public void setupAccountTable() throws Excep
