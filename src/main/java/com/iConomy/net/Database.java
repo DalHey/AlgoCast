@@ -184,4 +184,8 @@ public class Database {
             try { rs.close(); } catch (SQLException ex) { }
 
         if(conn != null)
-            t
+            try { conn.close(); } catch (SQLException ex) { }
+    }
+
+    /**
+     * Create the accounts table if it doe
