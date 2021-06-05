@@ -194,4 +194,6 @@ public class Database {
     public void setupAccountTable() throws Exception {
         Connection conn = getConnection();
         PreparedStatement ps = null;
-        
+        ResultSet rs = null;
+
+        if (Misc.is(Constants.DatabaseType, new String[] { "sqlite", "h2", "h2sql"
