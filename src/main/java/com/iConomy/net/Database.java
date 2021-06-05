@@ -196,4 +196,7 @@ public class Database {
         PreparedStatement ps = null;
         ResultSet rs = null;
 
-        if (Misc.is(Constants.DatabaseType, new String[] { "sqlite", "h2", "h2sql"
+        if (Misc.is(Constants.DatabaseType, new String[] { "sqlite", "h2", "h2sql" })) {
+            try {
+                ps = conn.prepareStatement(
+                    "CREATE TABLE
