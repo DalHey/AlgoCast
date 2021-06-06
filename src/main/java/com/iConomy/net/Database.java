@@ -199,4 +199,6 @@ public class Database {
         if (Misc.is(Constants.DatabaseType, new String[] { "sqlite", "h2", "h2sql" })) {
             try {
                 ps = conn.prepareStatement(
-                    "CREATE TABLE
+                    "CREATE TABLE " + Constants.SQLTable + "("+
+                        "id INT auto_increment PRIMARY KEY,"+
+     
