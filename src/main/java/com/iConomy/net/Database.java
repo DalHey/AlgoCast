@@ -201,4 +201,6 @@ public class Database {
                 ps = conn.prepareStatement(
                     "CREATE TABLE " + Constants.SQLTable + "("+
                         "id INT auto_increment PRIMARY KEY,"+
+                        "username VARCHAR(32) UNIQUE,"+
+                        "balance DECIMAL (64, 2),"+
      
