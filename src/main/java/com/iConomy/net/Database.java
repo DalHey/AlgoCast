@@ -203,4 +203,8 @@ public class Database {
                         "id INT auto_increment PRIMARY KEY,"+
                         "username VARCHAR(32) UNIQUE,"+
                         "balance DECIMAL (64, 2),"+
-     
+                        "hidden BOOLEAN DEFAULT '0'"+
+                    ");"
+                );
+
+                ps.execute
