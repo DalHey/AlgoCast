@@ -207,4 +207,7 @@ public class Database {
                     ");"
                 );
 
-                ps.execute
+                ps.executeUpdate();
+            } catch(SQLException E) { }
+        } else {
+            DatabaseMetaData dbm = co
