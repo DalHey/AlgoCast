@@ -213,4 +213,5 @@ public class Database {
             DatabaseMetaData dbm = conn.getMetaData();
             rs = dbm.getTables(null, null, Constants.SQLTable, null);
 
-           
+            if (!rs.next()) {
+                System.out.println("[iConomy] Creating table: " + Con
