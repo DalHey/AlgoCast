@@ -210,4 +210,7 @@ public class Database {
                 ps.executeUpdate();
             } catch(SQLException E) { }
         } else {
-            DatabaseMetaData dbm = co
+            DatabaseMetaData dbm = conn.getMetaData();
+            rs = dbm.getTables(null, null, Constants.SQLTable, null);
+
+           
