@@ -214,4 +214,7 @@ public class Database {
             rs = dbm.getTables(null, null, Constants.SQLTable, null);
 
             if (!rs.next()) {
-                System.out.println("[iConomy] Creating table: " + Con
+                System.out.println("[iConomy] Creating table: " + Constants.SQLTable);
+
+                ps = conn.prepareStatement(
+                    "CREATE 
