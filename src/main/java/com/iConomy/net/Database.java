@@ -219,4 +219,5 @@ public class Database {
                 ps = conn.prepareStatement(
                     "CREATE TABLE " + Constants.SQLTable + " (" +
                         "`id` INT(10) NOT NULL AUTO_INCREMENT," +
-        
+                        "`username` VARCHAR(32) NOT NULL," +
+                        "`balance` DECIMAL(64, 2) 
