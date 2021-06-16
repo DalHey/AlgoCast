@@ -217,4 +217,6 @@ public class Database {
                 System.out.println("[iConomy] Creating table: " + Constants.SQLTable);
 
                 ps = conn.prepareStatement(
-                    "CREATE 
+                    "CREATE TABLE " + Constants.SQLTable + " (" +
+                        "`id` INT(10) NOT NULL AUTO_INCREMENT," +
+        
