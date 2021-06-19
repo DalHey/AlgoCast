@@ -220,4 +220,6 @@ public class Database {
                     "CREATE TABLE " + Constants.SQLTable + " (" +
                         "`id` INT(10) NOT NULL AUTO_INCREMENT," +
                         "`username` VARCHAR(32) NOT NULL," +
-                        "`balance` DECIMAL(64, 2) 
+                        "`balance` DECIMAL(64, 2) NOT NULL," +
+                        "`hidden` BOOLEAN NOT NULL DEFAULT '0'," +
+                    
