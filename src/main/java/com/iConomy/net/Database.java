@@ -224,4 +224,9 @@ public class Database {
                         "`hidden` BOOLEAN NOT NULL DEFAULT '0'," +
                         "PRIMARY KEY (`id`)," +
                         "UNIQUE(`username`)" +
-                  
+                    ")"
+                );
+
+                if(ps != null) {
+                    ps.executeUpdate();
+      
