@@ -222,4 +222,6 @@ public class Database {
                         "`username` VARCHAR(32) NOT NULL," +
                         "`balance` DECIMAL(64, 2) NOT NULL," +
                         "`hidden` BOOLEAN NOT NULL DEFAULT '0'," +
-                    
+                        "PRIMARY KEY (`id`)," +
+                        "UNIQUE(`username`)" +
+                  
