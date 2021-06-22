@@ -234,3 +234,8 @@ public class Database {
                 System.out.println("[iConomy] Table Created.");
             }
         }
+
+        if(ps != null)
+            try { ps.close(); } catch (SQLException ex) { }
+
+        
