@@ -245,4 +245,6 @@ public class Database {
             try { conn.close(); } catch (SQLException ex) { }
     }
 
-    public void setup
+    public void setupTransactionTable() throws Exception {
+        Connection conn = getConnection();
+        Prepare
