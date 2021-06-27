@@ -251,4 +251,6 @@ public class Database {
         ResultSet rs = null;
 
         if (Constants.Logging) {
-          
+            if (Misc.is(Constants.DatabaseType, new String[] { "sqlite", "h2", "h2sql", "h2db" })) {
+                try {
+ 
