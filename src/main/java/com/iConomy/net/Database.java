@@ -247,4 +247,8 @@ public class Database {
 
     public void setupTransactionTable() throws Exception {
         Connection conn = getConnection();
-        Prepare
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        if (Constants.Logging) {
+          
