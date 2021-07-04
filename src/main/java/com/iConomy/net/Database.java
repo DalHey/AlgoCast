@@ -256,4 +256,6 @@ public class Database {
                     ps = conn.prepareStatement(
                         "CREATE TABLE " + Constants.SQLTable + "_Transactions("
                         + "id INT AUTO_INCREMENT PRIMARY KEY, "
-                
+                        + "account_from TEXT, "
+                        + "account_to TEXT, "
+                    
