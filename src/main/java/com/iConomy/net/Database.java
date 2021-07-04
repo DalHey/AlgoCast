@@ -258,4 +258,5 @@ public class Database {
                         + "id INT AUTO_INCREMENT PRIMARY KEY, "
                         + "account_from TEXT, "
                         + "account_to TEXT, "
-                    
+                        + "account_from_balance DECIMAL(64, 2), "
+                        + "account_to_balance D
