@@ -261,4 +261,6 @@ public class Database {
                         + "account_from_balance DECIMAL(64, 2), "
                         + "account_to_balance DECIMAL(64, 2), "
                         + "timestamp TEXT, "
-                        + "set DECIMAL
+                        + "set DECIMAL(64, 2), "
+                        + "gain DECIMAL(64, 2), "
+                        + "loss DECIMAL(64
