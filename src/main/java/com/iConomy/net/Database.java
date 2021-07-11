@@ -266,4 +266,6 @@ public class Database {
                         + "loss DECIMAL(64, 2)" +
                         ");");
                     ps.executeUpdate();
-       
+                } catch(SQLException E) { }
+            } else {
+                DatabaseMetaData dbm = conn.getMetaDa
