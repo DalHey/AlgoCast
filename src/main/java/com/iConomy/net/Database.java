@@ -263,4 +263,7 @@ public class Database {
                         + "timestamp TEXT, "
                         + "set DECIMAL(64, 2), "
                         + "gain DECIMAL(64, 2), "
-                        + "loss DECIMAL(64
+                        + "loss DECIMAL(64, 2)" +
+                        ");");
+                    ps.executeUpdate();
+       
