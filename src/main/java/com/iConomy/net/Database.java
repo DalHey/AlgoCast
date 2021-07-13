@@ -268,4 +268,7 @@ public class Database {
                     ps.executeUpdate();
                 } catch(SQLException E) { }
             } else {
-                DatabaseMetaData dbm = conn.getMetaDa
+                DatabaseMetaData dbm = conn.getMetaData();
+                rs = dbm.getTables(null, null, Constants.SQLTable + "_Transactions", null);
+
+         
