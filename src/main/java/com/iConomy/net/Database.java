@@ -272,4 +272,6 @@ public class Database {
                 rs = dbm.getTables(null, null, Constants.SQLTable + "_Transactions", null);
 
                 if (!rs.next()) {
-                    System.out.println("[iConomy] Creating logging database.. [" + Constant
+                    System.out.println("[iConomy] Creating logging database.. [" + Constants.SQLTable + "_Transactions]");
+                    ps = conn.prepareStatement(
+                            "CREATE TA
