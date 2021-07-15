@@ -274,4 +274,5 @@ public class Database {
                 if (!rs.next()) {
                     System.out.println("[iConomy] Creating logging database.. [" + Constants.SQLTable + "_Transactions]");
                     ps = conn.prepareStatement(
-                            "CREATE TA
+                            "CREATE TABLE " + Constants.SQLTable + "_Transactions ("
+                            + "`id` INT(255) NOT NUL
