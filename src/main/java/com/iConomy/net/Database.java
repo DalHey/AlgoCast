@@ -277,4 +277,5 @@ public class Database {
                             "CREATE TABLE " + Constants.SQLTable + "_Transactions ("
                             + "`id` INT(255) NOT NULL AUTO_INCREMENT, "
                             + "`account_from` TEXT NOT NULL, "
-                  
+                            + "`account_to` TEXT NOT NULL, "
+                            + "`account_from_bala
