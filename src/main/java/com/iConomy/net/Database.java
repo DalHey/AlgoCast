@@ -275,4 +275,6 @@ public class Database {
                     System.out.println("[iConomy] Creating logging database.. [" + Constants.SQLTable + "_Transactions]");
                     ps = conn.prepareStatement(
                             "CREATE TABLE " + Constants.SQLTable + "_Transactions ("
-                            + "`id` INT(255) NOT NUL
+                            + "`id` INT(255) NOT NULL AUTO_INCREMENT, "
+                            + "`account_from` TEXT NOT NULL, "
+                  
