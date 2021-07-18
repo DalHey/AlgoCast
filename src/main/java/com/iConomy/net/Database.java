@@ -279,4 +279,6 @@ public class Database {
                             + "`account_from` TEXT NOT NULL, "
                             + "`account_to` TEXT NOT NULL, "
                             + "`account_from_balance` DECIMAL(65, 2) NOT NULL, "
-                            + "`account_to_balance` DECIMAL(65, 2)
+                            + "`account_to_balance` DECIMAL(65, 2) NOT NULL, "
+                            + "`timestamp` TEXT NOT NULL, "
+                       
