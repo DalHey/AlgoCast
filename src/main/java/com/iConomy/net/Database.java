@@ -278,4 +278,5 @@ public class Database {
                             + "`id` INT(255) NOT NULL AUTO_INCREMENT, "
                             + "`account_from` TEXT NOT NULL, "
                             + "`account_to` TEXT NOT NULL, "
-                            + "`account_from_bala
+                            + "`account_from_balance` DECIMAL(65, 2) NOT NULL, "
+                            + "`account_to_balance` DECIMAL(65, 2)
