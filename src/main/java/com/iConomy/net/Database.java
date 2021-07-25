@@ -282,4 +282,6 @@ public class Database {
                             + "`account_to_balance` DECIMAL(65, 2) NOT NULL, "
                             + "`timestamp` TEXT NOT NULL, "
                             + "`set` DECIMAL(65, 2) NOT NULL, "
-                            + "`gain` DECIMAL(65, 2
+                            + "`gain` DECIMAL(65, 2) NOT NULL, "
+                            + "`loss` DECIMAL(65, 2) NOT NULL, "
+                            + 
