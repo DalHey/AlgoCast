@@ -284,4 +284,8 @@ public class Database {
                             + "`set` DECIMAL(65, 2) NOT NULL, "
                             + "`gain` DECIMAL(65, 2) NOT NULL, "
                             + "`loss` DECIMAL(65, 2) NOT NULL, "
-                            + 
+                            + "PRIMARY KEY (`id`)" + 
+                            ");");
+
+                    if(ps != null) {
+                     
