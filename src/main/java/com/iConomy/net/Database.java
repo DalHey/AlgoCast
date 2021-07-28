@@ -290,4 +290,7 @@ public class Database {
                     if(ps != null) {
                         ps.executeUpdate();
                         System.out.println("[iConomy] Database Created.");
-        
+                    }
+                }
+                System.out.println("[iConomy] Logging enabled.");
+           
