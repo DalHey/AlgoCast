@@ -295,4 +295,8 @@ public class Database {
                 System.out.println("[iConomy] Logging enabled.");
             }
         } else {
-            System.out.println("[iConomy] Logging is currently 
+            System.out.println("[iConomy] Logging is currently disabled.");
+        }
+
+        if(ps != null)
+            try { ps.close(); } catch (SQLException ex) { 
