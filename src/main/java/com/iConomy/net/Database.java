@@ -304,4 +304,8 @@ public class Database {
         if(rs != null)
             try { rs.close(); } catch (SQLException ex) { }
 
-        if(conn !=
+        if(conn != null)
+            try { conn.close(); } catch (SQLException ex) { }
+    }
+
+    public JdbcConnectionPool
