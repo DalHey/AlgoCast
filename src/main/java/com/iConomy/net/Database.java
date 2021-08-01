@@ -308,4 +308,7 @@ public class Database {
             try { conn.close(); } catch (SQLException ex) { }
     }
 
-    public JdbcConnectionPool
+    public JdbcConnectionPool connectionPool() {
+        return h2pool;
+    }
+}
