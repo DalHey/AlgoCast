@@ -8,4 +8,9 @@ import com.iConomy.util.Constants;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import 
+import java.util.ArrayList;
+
+public class Account {
+    private String name;
+
+    public Account(Stri
