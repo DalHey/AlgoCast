@@ -13,4 +13,10 @@ import java.util.ArrayList;
 public class Account {
     private String name;
 
-    public Account(Stri
+    public Account(String name) {
+        this.name = name;
+    }
+
+    public int getId() {
+        Connection conn = null;
+    
