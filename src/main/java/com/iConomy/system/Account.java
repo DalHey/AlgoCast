@@ -19,4 +19,6 @@ public class Account {
 
     public int getId() {
         Connection conn = null;
-    
+        ResultSet rs = null;
+        PreparedStatement ps = null;
+        int id
