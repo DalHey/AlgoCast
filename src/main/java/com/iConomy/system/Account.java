@@ -25,4 +25,6 @@ public class Account {
 
         try {
             conn = iConomy.getiCoDatabase().getConnection();
-            ps = conn.prepar
+            ps = conn.prepareStatement("SELECT * FROM " + Constants.SQLTable + " WHERE username = ? LIMIT 1");
+            ps.setString(1, name);
+        
