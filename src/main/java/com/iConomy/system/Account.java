@@ -21,4 +21,8 @@ public class Account {
         Connection conn = null;
         ResultSet rs = null;
         PreparedStatement ps = null;
-        int id
+        int id = -1;
+
+        try {
+            conn = iConomy.getiCoDatabase().getConnection();
+            ps = conn.prepar
