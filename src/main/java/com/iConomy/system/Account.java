@@ -27,4 +27,8 @@ public class Account {
             conn = iConomy.getiCoDatabase().getConnection();
             ps = conn.prepareStatement("SELECT * FROM " + Constants.SQLTable + " WHERE username = ? LIMIT 1");
             ps.setString(1, name);
-        
+            rs = ps.executeQuery();
+
+            if(rs.next()) {
+                id = rs.getInt("id");
+           
