@@ -31,4 +31,9 @@ public class Account {
 
             if(rs.next()) {
                 id = rs.getInt("id");
-           
+            }
+        } catch (Exception e) {
+            id = -1;
+        } finally {
+            if(ps != null)
+       
