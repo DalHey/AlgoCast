@@ -48,4 +48,9 @@ public class Account {
         return id;
     }
 
-    public String getNam
+    public String getName() {
+        return name;
+    }
+
+    public Holdings getHoldings() {
+        return new Holdings(0, this
