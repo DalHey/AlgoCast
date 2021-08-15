@@ -42,4 +42,10 @@ public class Account {
                 try { rs.close(); } catch (SQLException ex) { }
 
             if(conn != null)
-                try { conn.close();
+                try { conn.close(); } catch (SQLException ex) { }
+        }
+
+        return id;
+    }
+
+    public String getNam
