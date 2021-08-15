@@ -36,4 +36,7 @@ public class Account {
             id = -1;
         } finally {
             if(ps != null)
-       
+                try { ps.close(); } catch (SQLException ex) { }
+
+            if(rs != null)
+                
