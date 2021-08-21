@@ -53,4 +53,8 @@ public class Account {
     }
 
     public Holdings getHoldings() {
-        return new Holdings(0, this
+        return new Holdings(0, this.name);
+    }
+
+    public boolean createBankAccount(int bankID) {
+        Conne
