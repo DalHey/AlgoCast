@@ -61,4 +61,6 @@ public class Account {
         ResultSet rs = null;
         PreparedStatement ps = null;
 
-       
+        try {
+            conn = iConomy.getiCoDatabase().getConnection();
+            ps = conn.prepareStatement("INSERT INTO
