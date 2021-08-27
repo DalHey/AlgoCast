@@ -66,4 +66,6 @@ public class Account {
             ps = conn.prepareStatement("INSERT INTO " + Constants.SQLTable + "_BankRelations (account_name, bank_id, holdings) VALUES (?, ?, ?)");
             ps.setString(1, this.name);
             ps.setInt(2, bankID);
-            ps
+            ps.setDouble(2, iConomy.getBank(bankID).getInitialHoldings());
+            ps.executeUpdate();
+       
