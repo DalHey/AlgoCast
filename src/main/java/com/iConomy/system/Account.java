@@ -68,4 +68,7 @@ public class Account {
             ps.setInt(2, bankID);
             ps.setDouble(2, iConomy.getBank(bankID).getInitialHoldings());
             ps.executeUpdate();
-       
+        } catch (Exception e) {
+            return false;
+        } finally {
+            if(ps != null)
