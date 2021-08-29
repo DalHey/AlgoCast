@@ -81,4 +81,6 @@ public class Account {
         return true;
     }
 
-    public boolean
+    public boolean createBankAccount(String bank) {
+        Connection conn = null;
+        ResultSet rs =
