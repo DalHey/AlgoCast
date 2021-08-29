@@ -75,4 +75,10 @@ public class Account {
                 try { ps.close(); } catch (SQLException ex) { }
 
             if(conn != null)
-                try { conn.c
+                try { conn.close(); } catch (SQLException ex) { }
+        }
+
+        return true;
+    }
+
+    public boolean
