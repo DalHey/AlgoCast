@@ -83,4 +83,9 @@ public class Account {
 
     public boolean createBankAccount(String bank) {
         Connection conn = null;
-        ResultSet rs =
+        ResultSet rs = null;
+        PreparedStatement ps = null;
+
+        int bankID = iConomy.getBank(bank).getId();
+
+     
