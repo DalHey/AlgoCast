@@ -98,4 +98,7 @@ public class Account {
         } catch (Exception e) {
             return false;
         } finally {
-           
+            if(ps != null)
+                try { ps.close(); } catch (SQLException ex) { }
+
+            if(co
