@@ -101,4 +101,8 @@ public class Account {
             if(ps != null)
                 try { ps.close(); } catch (SQLException ex) { }
 
-            if(co
+            if(conn != null)
+                try { conn.close(); } catch (SQLException ex) { }
+        }
+
+        return tru
