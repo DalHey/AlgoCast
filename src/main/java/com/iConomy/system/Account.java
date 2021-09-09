@@ -105,4 +105,9 @@ public class Account {
                 try { conn.close(); } catch (SQLException ex) { }
         }
 
-        return tru
+        return true;
+    }
+
+    public ArrayList<Bank> withBanks() {
+        if(!Constants.Banking)
+ 
