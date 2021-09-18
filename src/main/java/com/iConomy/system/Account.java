@@ -114,4 +114,8 @@ public class Account {
 
         Connection conn = null;
         ResultSet rs = null;
-        PreparedStatem
+        PreparedStatement ps = null;
+        ArrayList<Bank> banks = new ArrayList<Bank>();
+
+        try {
+        
