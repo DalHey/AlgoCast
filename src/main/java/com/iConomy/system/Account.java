@@ -118,4 +118,6 @@ public class Account {
         ArrayList<Bank> banks = new ArrayList<Bank>();
 
         try {
-        
+            conn = iConomy.getiCoDatabase().getConnection();
+
+            ps = conn.prepareStateme
