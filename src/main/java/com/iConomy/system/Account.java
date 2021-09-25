@@ -121,4 +121,8 @@ public class Account {
             conn = iConomy.getiCoDatabase().getConnection();
 
             ps = conn.prepareStatement("SELECT * FROM " + Constants.SQLTable + "_BankRelations WHERE account_name = ?");
-            ps.setS
+            ps.setString(1, this.name);
+            rs = ps.executeQuery();
+
+            while(rs.next()) {
+              
