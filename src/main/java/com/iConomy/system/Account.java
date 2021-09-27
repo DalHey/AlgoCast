@@ -125,4 +125,7 @@ public class Account {
             rs = ps.executeQuery();
 
             while(rs.next()) {
-              
+                Bank bank = new Bank(rs.getInt("bank_id"));
+                banks.add(bank);
+            }
+       
