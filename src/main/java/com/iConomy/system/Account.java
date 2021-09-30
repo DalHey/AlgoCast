@@ -128,4 +128,8 @@ public class Account {
                 Bank bank = new Bank(rs.getInt("bank_id"));
                 banks.add(bank);
             }
-       
+        } catch (Exception e) {
+            return null;
+        } finally {
+            if(ps != null)
+   
