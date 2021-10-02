@@ -141,4 +141,6 @@ public class Account {
         return banks;
     }
 
-    public voi
+    public void setMainBank(String name) {
+        Bank bank = iConomy.Banks.get(name);
+        int id = iConomy.Banks.ge
