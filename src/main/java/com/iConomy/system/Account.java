@@ -143,4 +143,11 @@ public class Account {
 
     public void setMainBank(String name) {
         Bank bank = iConomy.Banks.get(name);
-        int id = iConomy.Banks.ge
+        int id = iConomy.Banks.get(name).getId();
+
+        if(bank.hasAccount(this.name)) {
+            setMainBank(id);
+        }
+    }
+    
+    pu
