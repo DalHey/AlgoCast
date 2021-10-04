@@ -150,4 +150,7 @@ public class Account {
         }
     }
     
-    pu
+    public void setMainBank(int id) {
+        if(!Constants.Banking)
+            return;
+    
