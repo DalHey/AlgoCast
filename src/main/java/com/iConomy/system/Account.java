@@ -157,4 +157,7 @@ public class Account {
         if(!iConomy.Banks.get(id).hasAccount(this.name))
             return;
         
-        Connection 
+        Connection conn = null;
+        ResultSet rs = null;
+        PreparedStatement ps = null;
+        Bank bank = nu
