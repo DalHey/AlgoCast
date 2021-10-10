@@ -153,4 +153,8 @@ public class Account {
     public void setMainBank(int id) {
         if(!Constants.Banking)
             return;
-    
+        
+        if(!iConomy.Banks.get(id).hasAccount(this.name))
+            return;
+        
+        Connection 
