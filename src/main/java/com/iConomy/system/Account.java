@@ -160,4 +160,9 @@ public class Account {
         Connection conn = null;
         ResultSet rs = null;
         PreparedStatement ps = null;
-        Bank bank = nu
+        Bank bank = null;
+
+        try {
+            conn = iConomy.getiCoDatabase().getConnection();
+
+            ps = con
