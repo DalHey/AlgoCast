@@ -165,4 +165,4 @@ public class Account {
         try {
             conn = iConomy.getiCoDatabase().getConnection();
 
-            ps = con
+            ps = conn.prepareStatement("UPDATE " + Constants.SQLTable + "_BankRelations SET main = 0 WHERE acc
