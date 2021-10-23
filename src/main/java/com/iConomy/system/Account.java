@@ -170,4 +170,5 @@ public class Account {
             ps.executeUpdate();
             ps.clearParameters();
             
-            ps = conn.prepareStatement("UP
+            ps = conn.prepareStatement("UPDATE " + Constants.SQLTable + "_BankRelations SET main = 1 WHERE account_name = ? AND bank_id = ?");
+        
