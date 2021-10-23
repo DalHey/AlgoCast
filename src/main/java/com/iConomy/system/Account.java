@@ -177,4 +177,8 @@ public class Account {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         } finally {
-            if(ps != nul
+            if(ps != null)
+                try { ps.close(); } catch (SQLException ex) { }
+
+            if(conn != null)
+     
