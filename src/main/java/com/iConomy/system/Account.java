@@ -171,4 +171,7 @@ public class Account {
             ps.clearParameters();
             
             ps = conn.prepareStatement("UPDATE " + Constants.SQLTable + "_BankRelations SET main = 1 WHERE account_name = ? AND bank_id = ?");
-        
+            ps.setString(1, this.name);
+            ps.setInt(2, id);
+            ps.executeUpdate();
+        } catch (
