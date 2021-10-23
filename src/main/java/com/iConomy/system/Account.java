@@ -174,4 +174,7 @@ public class Account {
             ps.setString(1, this.name);
             ps.setInt(2, id);
             ps.executeUpdate();
-        } catch (
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        } finally {
+            if(ps != nul
