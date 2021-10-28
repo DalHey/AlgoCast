@@ -194,4 +194,7 @@ public class Account {
         PreparedStatement ps = null;
         Bank bank = null;
 
-    
+        try {
+            conn = iConomy.getiCoDatabase().getConnection();
+
+            ps = con
