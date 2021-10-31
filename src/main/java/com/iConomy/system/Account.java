@@ -200,3 +200,7 @@ public class Account {
             ps = conn.prepareStatement("SELECT * FROM " + Constants.SQLTable + "_BankRelations WHERE account_name = ? AND main = 1 LIMIT 1");
             ps.setString(1, this.name);
             rs = ps.executeQuery();
+
+            if(rs.next()) {
+                bank = new Bank(rs.getInt("bank_id"));
+      
