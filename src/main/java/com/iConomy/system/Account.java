@@ -203,4 +203,8 @@ public class Account {
 
             if(rs.next()) {
                 bank = new Bank(rs.getInt("bank_id"));
-      
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return null;
+   
