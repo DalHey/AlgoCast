@@ -207,4 +207,6 @@ public class Account {
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return null;
-   
+        } finally {
+            if(ps != null)
+                try { ps.close(); } catch (SQLException
