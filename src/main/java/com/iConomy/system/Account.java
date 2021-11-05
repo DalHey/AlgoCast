@@ -212,4 +212,10 @@ public class Account {
                 try { ps.close(); } catch (SQLException ex) { }
 
             if(conn != null)
-                try { conn.close(); } ca
+                try { conn.close(); } catch (SQLException ex) { }
+        }
+
+        return bank;
+    }
+
+    public BankAccount getMainBankAcc
