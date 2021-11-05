@@ -209,4 +209,7 @@ public class Account {
             return null;
         } finally {
             if(ps != null)
-                try { ps.close(); } catch (SQLException
+                try { ps.close(); } catch (SQLException ex) { }
+
+            if(conn != null)
+                try { conn.close(); } ca
