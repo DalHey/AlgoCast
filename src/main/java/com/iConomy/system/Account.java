@@ -223,4 +223,7 @@ public class Account {
             return null;
 
         Connection conn = null;
-   
+        ResultSet rs = null;
+        PreparedStatement ps = null;
+        BankAccount account = null;
+
