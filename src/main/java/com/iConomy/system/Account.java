@@ -218,4 +218,9 @@ public class Account {
         return bank;
     }
 
-    public BankAccount getMainBankAcc
+    public BankAccount getMainBankAccount() {
+        if(!Constants.Banking)
+            return null;
+
+        Connection conn = null;
+   
