@@ -230,4 +230,4 @@ public class Account {
         try {
             conn = iConomy.getiCoDatabase().getConnection();
 
-            ps = conn.pre
+            ps = conn.prepareStatement("SELECT * FROM " + Constants.SQLTable + "_BankRelations WHERE account_name = ? AND main = 1 
