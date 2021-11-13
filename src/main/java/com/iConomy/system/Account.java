@@ -234,4 +234,6 @@ public class Account {
             ps.setString(1, this.name);
             rs = ps.executeQuery();
 
-        
+            if(rs.next()) {
+                Bank bank = new Bank(rs.getInt("bank_id"));
+                accou
