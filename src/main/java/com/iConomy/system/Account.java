@@ -236,4 +236,6 @@ public class Account {
 
             if(rs.next()) {
                 Bank bank = new Bank(rs.getInt("bank_id"));
-                accou
+                account = new BankAccount(bank.getName(), rs.getInt("bank_id"), this.name);
+            }
+        } catch (Excepti
