@@ -238,4 +238,8 @@ public class Account {
                 Bank bank = new Bank(rs.getInt("bank_id"));
                 account = new BankAccount(bank.getName(), rs.getInt("bank_id"), this.name);
             }
-        } catch (Excepti
+        } catch (Exception e) {
+            return null;
+        } finally {
+            if(ps != null)
+                try 
