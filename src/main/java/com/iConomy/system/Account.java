@@ -258,4 +258,7 @@ public class Account {
         Connection conn = null;
         ResultSet rs = null;
         PreparedStatement ps = null;
-        ArrayList<BankAcco
+        ArrayList<BankAccount> banks = new ArrayList<BankAccount>();
+
+        try {
+            conn = iConomy.getiCoDatabase().getConnecti
