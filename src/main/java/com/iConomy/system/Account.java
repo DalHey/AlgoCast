@@ -255,4 +255,7 @@ public class Account {
         if(!Constants.Banking)
             return null;
 
-        Connection conn = nul
+        Connection conn = null;
+        ResultSet rs = null;
+        PreparedStatement ps = null;
+        ArrayList<BankAcco
