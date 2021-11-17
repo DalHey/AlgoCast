@@ -251,4 +251,8 @@ public class Account {
         return account;
     }
 
-    public ArrayList<BankAccount> getBankAccou
+    public ArrayList<BankAccount> getBankAccounts() {
+        if(!Constants.Banking)
+            return null;
+
+        Connection conn = nul
