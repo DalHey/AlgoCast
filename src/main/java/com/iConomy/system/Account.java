@@ -261,4 +261,6 @@ public class Account {
         ArrayList<BankAccount> banks = new ArrayList<BankAccount>();
 
         try {
-            conn = iConomy.getiCoDatabase().getConnecti
+            conn = iConomy.getiCoDatabase().getConnection();
+
+            ps = conn.prepareStatement("SELECT * FROM " + Constants.SQLTable + "_BankRelations WHER
