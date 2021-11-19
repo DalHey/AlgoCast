@@ -265,4 +265,8 @@ public class Account {
 
             ps = conn.prepareStatement("SELECT * FROM " + Constants.SQLTable + "_BankRelations WHERE account_name = ?");
             ps.setString(1, this.name);
-            rs = ps.executeQuery
+            rs = ps.executeQuery();
+
+            while(rs.next()) {
+                Bank bank = new Bank(rs.getInt("bank_id"));
+      
