@@ -263,4 +263,6 @@ public class Account {
         try {
             conn = iConomy.getiCoDatabase().getConnection();
 
-            ps = conn.prepareStatement("SELECT * FROM " + Constants.SQLTable + "_BankRelations WHER
+            ps = conn.prepareStatement("SELECT * FROM " + Constants.SQLTable + "_BankRelations WHERE account_name = ?");
+            ps.setString(1, this.name);
+            rs = ps.executeQuery
