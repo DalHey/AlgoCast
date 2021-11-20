@@ -269,4 +269,5 @@ public class Account {
 
             while(rs.next()) {
                 Bank bank = new Bank(rs.getInt("bank_id"));
-      
+                banks.add(new BankAccount(bank.getName(), rs.getInt("bank_id"), this.name));
+            }
