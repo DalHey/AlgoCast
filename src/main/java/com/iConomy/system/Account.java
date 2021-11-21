@@ -282,3 +282,8 @@ public class Account {
         }
 
         return banks;
+    }
+
+    public Holdings getBankHoldings(int id) {
+        if(!Constants.Banking)
+            return n
