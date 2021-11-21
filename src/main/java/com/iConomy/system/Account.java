@@ -274,4 +274,7 @@ public class Account {
         } catch (Exception e) {
             return null;
         } finally {
-            if
+            if(ps != null)
+                try { ps.close(); } catch (SQLException ex) { }
+
+            if(conn != null)
