@@ -286,4 +286,9 @@ public class Account {
 
     public Holdings getBankHoldings(int id) {
         if(!Constants.Banking)
-            return n
+            return null;
+
+        if(id == 0)
+            return new Holdings(id, this.name);
+        else {
+            return new 
