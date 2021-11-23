@@ -297,3 +297,8 @@ public class Account {
 
     public boolean isHidden() {
         Connection conn = null;
+        ResultSet rs = null;
+        PreparedStatement ps = null;
+
+        try {
+            conn 
