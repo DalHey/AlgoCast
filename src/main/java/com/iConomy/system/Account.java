@@ -291,4 +291,9 @@ public class Account {
         if(id == 0)
             return new Holdings(id, this.name);
         else {
-            return new 
+            return new Holdings(id, this.name, true);
+        }
+    }
+
+    public boolean isHidden() {
+        Connection conn = null;
