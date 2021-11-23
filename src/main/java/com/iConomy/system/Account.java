@@ -301,4 +301,5 @@ public class Account {
         PreparedStatement ps = null;
 
         try {
-            conn 
+            conn = iConomy.getiCoDatabase().getConnection();
+            ps = conn.prepareStatement("SELECT hidden FROM
