@@ -302,4 +302,5 @@ public class Account {
 
         try {
             conn = iConomy.getiCoDatabase().getConnection();
-            ps = conn.prepareStatement("SELECT hidden FROM
+            ps = conn.prepareStatement("SELECT hidden FROM " + Constants.SQLTable + " WHERE username = ? LIMIT 1");
+            ps.setString(1, this.na
