@@ -311,3 +311,5 @@ public class Account {
                     return rs.getBoolean("hidden");
                 }
             }
+        } catch (Exception e) {
+            System.out.println("[iConomy] Failed to check status:
