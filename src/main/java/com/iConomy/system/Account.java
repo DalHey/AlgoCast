@@ -307,4 +307,7 @@ public class Account {
             rs = ps.executeQuery();
 
             if (rs != null) {
-                if (rs.next()
+                if (rs.next()) {
+                    return rs.getBoolean("hidden");
+                }
+            }
