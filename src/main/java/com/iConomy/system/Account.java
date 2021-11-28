@@ -312,4 +312,7 @@ public class Account {
                 }
             }
         } catch (Exception e) {
-            System.out.println("[iConomy] Failed to check status:
+            System.out.println("[iConomy] Failed to check status: " + e);
+        } finally {
+            if(ps != null)
+                try { ps.close
