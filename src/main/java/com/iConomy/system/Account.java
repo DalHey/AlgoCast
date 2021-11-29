@@ -315,4 +315,7 @@ public class Account {
             System.out.println("[iConomy] Failed to check status: " + e);
         } finally {
             if(ps != null)
-                try { ps.close
+                try { ps.close(); } catch (SQLException ex) { }
+
+            if(rs != null)
+                try { rs.cl
