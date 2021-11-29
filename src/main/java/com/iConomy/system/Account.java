@@ -321,4 +321,10 @@ public class Account {
                 try { rs.close(); } catch (SQLException ex) { }
 
             if(conn != null)
-              
+                iConomy.getiCoDatabase().close(conn);
+        }
+
+        return false;
+    }
+
+    public boolean setHid
