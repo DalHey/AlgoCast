@@ -335,4 +335,4 @@ public class Account {
         try {
             conn = iConomy.getiCoDatabase().getConnection();
 
-      
+            ps = conn.prepareStatement("UPDATE " + Constants.SQLTable + " SET hidden = ? WHERE usernam
