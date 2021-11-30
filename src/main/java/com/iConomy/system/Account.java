@@ -327,4 +327,7 @@ public class Account {
         return false;
     }
 
-    public boolean setHid
+    public boolean setHidden(boolean hidden) {
+        Connection conn = null;
+        ResultSet rs = null;
+        PreparedStatemen
