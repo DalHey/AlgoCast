@@ -330,4 +330,9 @@ public class Account {
     public boolean setHidden(boolean hidden) {
         Connection conn = null;
         ResultSet rs = null;
-        PreparedStatemen
+        PreparedStatement ps = null;
+
+        try {
+            conn = iConomy.getiCoDatabase().getConnection();
+
+      
