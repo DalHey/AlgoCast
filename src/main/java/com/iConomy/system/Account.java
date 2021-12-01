@@ -339,4 +339,6 @@ public class Account {
             ps.setBoolean(1, hidden);
             ps.setString(2, this.name);
 
-            ps.execute
+            ps.executeUpdate();
+        } catch (Exception e) {
+            System.out.println("[iConomy] Failed to 
