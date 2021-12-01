@@ -341,4 +341,7 @@ public class Account {
 
             ps.executeUpdate();
         } catch (Exception e) {
-            System.out.println("[iConomy] Failed to 
+            System.out.println("[iConomy] Failed to update status: " + e);
+        } finally {
+            if(ps != null)
+                try { ps.
