@@ -344,4 +344,7 @@ public class Account {
             System.out.println("[iConomy] Failed to update status: " + e);
         } finally {
             if(ps != null)
-                try { ps.
+                try { ps.close(); } catch (SQLException ex) { }
+
+            if(conn != null)
+                iConomy.getiCoDat
