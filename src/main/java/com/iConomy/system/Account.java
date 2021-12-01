@@ -347,4 +347,11 @@ public class Account {
                 try { ps.close(); } catch (SQLException ex) { }
 
             if(conn != null)
-                iConomy.getiCoDat
+                iConomy.getiCoDatabase().close(conn);
+        }
+
+        return true;
+    }
+
+    /**
+     * Returns the ranking number of a
