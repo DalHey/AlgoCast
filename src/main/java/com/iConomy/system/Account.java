@@ -354,4 +354,10 @@ public class Account {
     }
 
     /**
-     * Returns the ranking number of a
+     * Returns the ranking number of an account
+     *
+     * @param name
+     * @return Integer
+     */
+    public int getRank() {
+        i
