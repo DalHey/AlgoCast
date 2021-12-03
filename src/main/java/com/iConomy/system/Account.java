@@ -364,4 +364,8 @@ public class Account {
 
         Connection conn = null;
         ResultSet rs = null;
-        Prep
+        PreparedStatement ps = null;
+
+        try {
+            conn = iConomy.getiCoDatabase().getConnection();
+            ps = c
