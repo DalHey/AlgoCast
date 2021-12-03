@@ -360,4 +360,8 @@ public class Account {
      * @return Integer
      */
     public int getRank() {
-        i
+        int i = 1;
+
+        Connection conn = null;
+        ResultSet rs = null;
+        Prep
