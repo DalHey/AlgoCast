@@ -368,4 +368,8 @@ public class Account {
 
         try {
             conn = iConomy.getiCoDatabase().getConnection();
-            ps = conn.prepareStatement("SELECT * FROM " + Constants.SQLTable + " WHERE hidden = 0 ORDER BY balance D
+            ps = conn.prepareStatement("SELECT * FROM " + Constants.SQLTable + " WHERE hidden = 0 ORDER BY balance DESC");
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                if
