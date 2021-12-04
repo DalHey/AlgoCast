@@ -372,4 +372,6 @@ public class Account {
             rs = ps.executeQuery();
 
             while (rs.next()) {
-                if
+                if (rs.getString("username").equalsIgnoreCase(this.name)) {
+                    return i;
+          
