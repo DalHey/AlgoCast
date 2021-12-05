@@ -378,4 +378,7 @@ public class Account {
                     i++;
                 }
             }
-        } catch (Exception e) 
+        } catch (Exception e) {
+        } finally {
+            if(ps != null)
+                try { ps.close(); } c
