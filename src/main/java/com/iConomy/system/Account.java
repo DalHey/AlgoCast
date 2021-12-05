@@ -374,4 +374,8 @@ public class Account {
             while (rs.next()) {
                 if (rs.getString("username").equalsIgnoreCase(this.name)) {
                     return i;
-          
+                } else {
+                    i++;
+                }
+            }
+        } catch (Exception e) 
