@@ -381,4 +381,7 @@ public class Account {
         } catch (Exception e) {
         } finally {
             if(ps != null)
-                try { ps.close(); } c
+                try { ps.close(); } catch (SQLException ex) { }
+
+            if(rs != null)
+                try { rs.close(); } c
