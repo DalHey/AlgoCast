@@ -396,4 +396,9 @@ public class Account {
         AccountRemoveEvent Event = new AccountRemoveEvent(name);
         iConomy.getBukkitServer().getPluginManager().callEvent(Event);
         
-        if(!Event.isCancelled()
+        if(!Event.isCancelled()) {
+            Connection conn = null;
+            PreparedStatement ps = null;
+
+            try {
+ 
