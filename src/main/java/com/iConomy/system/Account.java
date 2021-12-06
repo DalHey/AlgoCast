@@ -393,4 +393,7 @@ public class Account {
     }
 
     public void remove() {
-        AccountRemoveEvent Event = new AccountRemove
+        AccountRemoveEvent Event = new AccountRemoveEvent(name);
+        iConomy.getBukkitServer().getPluginManager().callEvent(Event);
+        
+        if(!Event.isCancelled()
