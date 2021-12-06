@@ -401,4 +401,5 @@ public class Account {
             PreparedStatement ps = null;
 
             try {
- 
+                conn = iConomy.getiCoDatabase().getConnection();
+                ps = conn.prepareStatement("DELETE FROM
