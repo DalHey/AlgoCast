@@ -389,4 +389,8 @@ public class Account {
             iConomy.getiCoDatabase().close(conn);
         }
 
-        r
+        return -1;
+    }
+
+    public void remove() {
+        AccountRemoveEvent Event = new AccountRemove
