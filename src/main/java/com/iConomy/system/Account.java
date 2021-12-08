@@ -404,4 +404,6 @@ public class Account {
                 conn = iConomy.getiCoDatabase().getConnection();
                 ps = conn.prepareStatement("DELETE FROM " + Constants.SQLTable + " WHERE username = ?");
                 ps.setString(1, this.name);
-    
+                ps.executeUpdate();
+            } catch(Exception e) {
+                System.out.prin
