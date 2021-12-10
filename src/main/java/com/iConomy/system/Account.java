@@ -409,4 +409,7 @@ public class Account {
                 System.out.println("[iConomy] Failed to remove account: " + e);
             } finally {
                 if(ps != null)
-    
+                    try { ps.close(); } catch (SQLException ex) { }
+
+                if(conn != null)
+        
