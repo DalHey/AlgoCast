@@ -406,4 +406,7 @@ public class Account {
                 ps.setString(1, this.name);
                 ps.executeUpdate();
             } catch(Exception e) {
-                System.out.prin
+                System.out.println("[iConomy] Failed to remove account: " + e);
+            } finally {
+                if(ps != null)
+    
