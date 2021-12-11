@@ -412,4 +412,8 @@ public class Account {
                     try { ps.close(); } catch (SQLException ex) { }
 
                 if(conn != null)
-        
+                    iConomy.getiCoDatabase().close(conn);
+            }
+        }
+    }
+}
