@@ -216,3 +216,31 @@ public class Accounts {
             rs = ps.executeQuery();
 
             while(rs.next()) {
+                Ranking.put(rs.getString("username"), rs.getDouble("balance"));
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return null;
+        } finally {
+            if(ps != null)
+                try { ps.close(); } catch (SQLException ex) { }
+
+            if(conn != null)
+                try { conn.close(); } catch (SQLException ex) { }
+        }
+
+        return Ranking;
+    }
+
+    public Account get(String name) {
+        if(exists(name)) {
+            return new Account(name);
+        } else {
+            if(!create(name)) {
+                return null;
+            }
+        }
+
+        return new Account(name);
+    }
+}
