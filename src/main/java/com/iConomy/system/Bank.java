@@ -11,4 +11,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.util.List;
 
-public
+public class Bank {
+    private int id = 0;
+    private String name = "";
+
+    public Bank(String name) {
+        Co
