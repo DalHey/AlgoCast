@@ -19,4 +19,7 @@ public class Bank {
         Connection conn = null;
         ResultSet rs = null;
         PreparedStatement ps = null;
-        in
+        int id = 0;
+
+        try {
+            conn = iConomy.getiCoDatabase().getCo
