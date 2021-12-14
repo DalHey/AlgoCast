@@ -22,4 +22,5 @@ public class Bank {
         int id = 0;
 
         try {
-            conn = iConomy.getiCoDatabase().getCo
+            conn = iConomy.getiCoDatabase().getConnection();
+            ps = conn.prepareStatement("SELECT id FROM " + Constants.SQLT
