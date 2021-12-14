@@ -23,4 +23,6 @@ public class Bank {
 
         try {
             conn = iConomy.getiCoDatabase().getConnection();
-            ps = conn.prepareStatement("SELECT id FROM " + Constants.SQLT
+            ps = conn.prepareStatement("SELECT id FROM " + Constants.SQLTable + "_Banks WHERE name = ? LIMIT 1");
+            ps.setString(1, name);
+            rs = ps.executeQue
