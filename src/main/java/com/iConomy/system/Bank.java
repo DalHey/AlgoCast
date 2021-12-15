@@ -30,4 +30,7 @@ public class Bank {
             if(rs.next()) {
                 id = rs.getInt("id");
             }
-        } cat
+        } catch (Exception e) {
+        } finally {
+            if(ps != null)
+                try { ps.close(); } ca
