@@ -36,4 +36,8 @@ public class Bank {
                 try { ps.close(); } catch (SQLException ex) { }
 
             if(rs != null)
-                try { rs.close(); } catch
+                try { rs.close(); } catch (SQLException ex) { }
+
+            if(conn != null)
+                try { conn.close(); } catch (SQLException ex) { }
+      
