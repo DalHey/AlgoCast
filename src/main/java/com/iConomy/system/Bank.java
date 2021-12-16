@@ -49,4 +49,8 @@ public class Bank {
     public Bank(int id) {
         this.id = id;
 
-     
+        Connection conn = null;
+        ResultSet rs = null;
+        PreparedStatement ps = null;
+
+    
