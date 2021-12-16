@@ -40,4 +40,13 @@ public class Bank {
 
             if(conn != null)
                 try { conn.close(); } catch (SQLException ex) { }
-      
+        }
+
+        this.id = id;
+        this.name = name;
+    }
+
+    public Bank(int id) {
+        this.id = id;
+
+     
