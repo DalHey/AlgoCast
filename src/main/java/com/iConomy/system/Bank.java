@@ -60,4 +60,9 @@ public class Bank {
             rs = ps.executeQuery();
 
             if(rs.next()) {
-                this.name = rs.getS
+                this.name = rs.getString("name");
+            }
+        } catch (Exception e) {
+        } finally {
+            if(ps != null)
+  
