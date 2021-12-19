@@ -83,4 +83,7 @@ public class Bank {
         return this.name;
     }
 
-    pu
+    public List<String> getMinor() {
+        Connection conn = null;
+        ResultSet rs = null;
+        PreparedStatem
