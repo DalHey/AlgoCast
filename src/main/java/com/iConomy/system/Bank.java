@@ -86,4 +86,6 @@ public class Bank {
     public List<String> getMinor() {
         Connection conn = null;
         ResultSet rs = null;
-        PreparedStatem
+        PreparedStatement ps = null;
+        List<String> minor = Constants.Minor;
+        String asString = Constants.Minor.get(0) + "," + 
