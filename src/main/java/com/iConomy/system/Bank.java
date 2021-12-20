@@ -88,4 +88,8 @@ public class Bank {
         ResultSet rs = null;
         PreparedStatement ps = null;
         List<String> minor = Constants.Minor;
-        String asString = Constants.Minor.get(0) + "," + 
+        String asString = Constants.Minor.get(0) + "," + Constants.Minor.get(1);
+
+        try {
+            conn = iConomy.getiCoDatabase().getConnection();
+   
