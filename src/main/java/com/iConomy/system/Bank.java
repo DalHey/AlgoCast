@@ -99,4 +99,6 @@ public class Bank {
             if(rs.next()) {
                 asString = rs.getString("minor");
 
-                String[] denoms = as
+                String[] denoms = asString.split(",");
+                minor.set(0, denoms[0]);
+                minor.set(1, den
