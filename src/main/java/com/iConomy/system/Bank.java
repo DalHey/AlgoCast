@@ -96,4 +96,7 @@ public class Bank {
             ps.setInt(1, this.id);
             rs = ps.executeQuery();
 
-            if(rs.nex
+            if(rs.next()) {
+                asString = rs.getString("minor");
+
+                String[] denoms = as
