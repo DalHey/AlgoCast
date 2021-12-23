@@ -101,4 +101,8 @@ public class Bank {
 
                 String[] denoms = asString.split(",");
                 minor.set(0, denoms[0]);
-                minor.set(1, den
+                minor.set(1, denoms[1]);
+            }
+        } catch (Exception e) {
+        } finally {
+            if(ps !
