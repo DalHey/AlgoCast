@@ -115,4 +115,9 @@ public class Bank {
                 try { conn.close(); } catch (SQLException ex) { }
         }
 
-        return min
+        return minor;
+    }
+
+    public List<String> getMajor() {
+        Connection conn = null;
+        Resul
