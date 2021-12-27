@@ -122,4 +122,5 @@ public class Bank {
         Connection conn = null;
         ResultSet rs = null;
         PreparedStatement ps = null;
-        List<String> major = Constants.M
+        List<String> major = Constants.Major;
+        String asString = Constants.Major.get(0) + "," + Constants.Major.g
