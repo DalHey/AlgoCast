@@ -127,4 +127,5 @@ public class Bank {
 
         try {
             conn = iConomy.getiCoDatabase().getConnection();
-            ps = conn.prepareStatement("S
+            ps = conn.prepareStatement("SELECT major FROM " + Constants.SQLTable + "_Banks WHERE id = ? LIMIT 1");
+            ps.setInt(1,
