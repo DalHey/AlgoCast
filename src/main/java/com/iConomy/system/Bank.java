@@ -123,4 +123,8 @@ public class Bank {
         ResultSet rs = null;
         PreparedStatement ps = null;
         List<String> major = Constants.Major;
-        String asString = Constants.Major.get(0) + "," + Constants.Major.g
+        String asString = Constants.Major.get(0) + "," + Constants.Major.get(1);
+
+        try {
+            conn = iConomy.getiCoDatabase().getConnection();
+            ps = conn.prepareStatement("S
