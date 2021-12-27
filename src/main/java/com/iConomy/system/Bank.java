@@ -120,4 +120,6 @@ public class Bank {
 
     public List<String> getMajor() {
         Connection conn = null;
-        Resul
+        ResultSet rs = null;
+        PreparedStatement ps = null;
+        List<String> major = Constants.M
