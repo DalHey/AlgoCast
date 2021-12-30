@@ -139,4 +139,8 @@ public class Bank {
                 major.set(1, denoms[1]);
             }
         } catch (Exception e) {
-   
+        } finally {
+            if(ps != null)
+                try { ps.close(); } catch (SQLException ex) { }
+
+          
