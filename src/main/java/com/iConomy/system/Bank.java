@@ -132,4 +132,7 @@ public class Bank {
             rs = ps.executeQuery();
 
             if(rs.next()) {
-                asString = rs.ge
+                asString = rs.getString("major");
+
+                String[] denoms = asString.split(",");
+                major.set(0,
