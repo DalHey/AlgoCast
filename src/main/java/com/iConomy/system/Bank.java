@@ -135,4 +135,8 @@ public class Bank {
                 asString = rs.getString("major");
 
                 String[] denoms = asString.split(",");
-                major.set(0,
+                major.set(0, denoms[0]);
+                major.set(1, denoms[1]);
+            }
+        } catch (Exception e) {
+   
