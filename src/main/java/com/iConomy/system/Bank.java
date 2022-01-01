@@ -146,4 +146,8 @@ public class Bank {
             if(rs != null)
                 try { rs.close(); } catch (SQLException ex) { }
 
-            i
+            if(conn != null)
+                try { conn.close(); } catch (SQLException ex) { }
+        }
+
+        r
