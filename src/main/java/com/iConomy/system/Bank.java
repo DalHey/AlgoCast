@@ -150,4 +150,9 @@ public class Bank {
                 try { conn.close(); } catch (SQLException ex) { }
         }
 
-        r
+        return major;
+    }
+
+    public double getInitialHoldings() {
+        Connection conn = null;
+        ResultSet rs = null;
