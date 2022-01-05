@@ -160,4 +160,5 @@ public class Bank {
         double initial = Constants.BankHoldings;
 
         try {
-            conn =
+            conn = iConomy.getiCoDatabase().getConnection();
+            ps = conn.prepareStatement("SELECT initial FR
