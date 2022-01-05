@@ -156,3 +156,8 @@ public class Bank {
     public double getInitialHoldings() {
         Connection conn = null;
         ResultSet rs = null;
+        PreparedStatement ps = null;
+        double initial = Constants.BankHoldings;
+
+        try {
+            conn =
