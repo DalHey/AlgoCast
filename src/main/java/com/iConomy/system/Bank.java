@@ -167,3 +167,8 @@ public class Bank {
 
             if(rs.next()) {
                 initial = rs.getDouble("initial");
+            }
+        } catch (Exception e) {
+        } finally {
+            if(ps != null)
+ 
