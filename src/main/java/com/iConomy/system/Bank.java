@@ -163,4 +163,7 @@ public class Bank {
             conn = iConomy.getiCoDatabase().getConnection();
             ps = conn.prepareStatement("SELECT initial FROM " + Constants.SQLTable + "_Banks WHERE id = ? LIMIT 1");
             ps.setInt(1, this.id);
-            rs = ps.
+            rs = ps.executeQuery();
+
+            if(rs.next()) {
+                initial = rs.getDouble("initial");
