@@ -171,4 +171,7 @@ public class Bank {
         } catch (Exception e) {
         } finally {
             if(ps != null)
+                try { ps.close(); } catch (SQLException ex) { }
+
+            if(rs != null)
  
