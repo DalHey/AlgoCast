@@ -177,4 +177,10 @@ public class Bank {
                 try { rs.close(); } catch (SQLException ex) { }
 
             if(conn != null)
-               
+                try { conn.close(); } catch (SQLException ex) { }
+        }
+
+        return initial;
+    }
+
+    public d
