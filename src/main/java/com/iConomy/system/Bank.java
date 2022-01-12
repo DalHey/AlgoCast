@@ -183,4 +183,7 @@ public class Bank {
         return initial;
     }
 
-    public d
+    public double getFee() {
+        Connection conn = null;
+        ResultSet rs = null;
+        Pre
