@@ -186,4 +186,8 @@ public class Bank {
     public double getFee() {
         Connection conn = null;
         ResultSet rs = null;
-        Pre
+        PreparedStatement ps = null;
+        double fee = Constants.BankFee;
+
+        try {
+            conn =
