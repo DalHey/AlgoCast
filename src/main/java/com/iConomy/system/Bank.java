@@ -190,4 +190,5 @@ public class Bank {
         double fee = Constants.BankFee;
 
         try {
-            conn =
+            conn = iConomy.getiCoDatabase().getConnection();
+            ps = conn.prepareStatement("SELECT fee FROM " + Const
