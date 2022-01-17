@@ -191,4 +191,6 @@ public class Bank {
 
         try {
             conn = iConomy.getiCoDatabase().getConnection();
-            ps = conn.prepareStatement("SELECT fee FROM " + Const
+            ps = conn.prepareStatement("SELECT fee FROM " + Constants.SQLTable + "_Banks WHERE id = ? LIMIT 1");
+            ps.setInt(1, this.id);
+            rs 
