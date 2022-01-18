@@ -197,4 +197,8 @@ public class Bank {
 
             if(rs.next()) {
                 fee = rs.getDouble("fee");
-      
+            }
+        } catch (Exception e) {
+        } finally {
+            if(ps != null)
+                t
