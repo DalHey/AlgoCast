@@ -217,3 +217,8 @@ public class Bank {
         Connection conn = null;
         ResultSet rs = null;
         PreparedStatement ps = null;
+
+        try {
+            conn = iConomy.getiCoDatabase().getConnection();
+
+            ps = conn.prepareState
