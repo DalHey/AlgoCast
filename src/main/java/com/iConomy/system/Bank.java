@@ -214,4 +214,6 @@ public class Bank {
     }
 
     public void setName(String name) {
- 
+        Connection conn = null;
+        ResultSet rs = null;
+        PreparedStatement ps = null;
