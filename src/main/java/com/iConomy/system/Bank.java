@@ -223,4 +223,8 @@ public class Bank {
 
             ps = conn.prepareStatement("UPDATE " + Constants.SQLTable + "_Banks SET name = ? WHERE id = ?");
             ps.setString(1, name);
-     
+            ps.setInt(2, this.id);
+            ps.executeUpdate();
+
+            this.name = name;
+        } catch (E
