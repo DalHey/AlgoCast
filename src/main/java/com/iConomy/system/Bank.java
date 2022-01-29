@@ -221,4 +221,6 @@ public class Bank {
         try {
             conn = iConomy.getiCoDatabase().getConnection();
 
-            ps = conn.prepareState
+            ps = conn.prepareStatement("UPDATE " + Constants.SQLTable + "_Banks SET name = ? WHERE id = ?");
+            ps.setString(1, name);
+     
