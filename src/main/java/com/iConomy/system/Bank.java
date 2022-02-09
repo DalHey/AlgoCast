@@ -227,4 +227,6 @@ public class Bank {
             ps.executeUpdate();
 
             this.name = name;
-        } catch (E
+        } catch (Exception e) {
+            System.out.println("[iConomy] Failed to update bank name: ");
+            e.prin
