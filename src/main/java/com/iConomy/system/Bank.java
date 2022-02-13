@@ -229,4 +229,7 @@ public class Bank {
             this.name = name;
         } catch (Exception e) {
             System.out.println("[iConomy] Failed to update bank name: ");
-            e.prin
+            e.printStackTrace();
+        } finally {
+            if(ps != null)
+                try { ps.close(); } c
