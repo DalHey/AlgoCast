@@ -232,4 +232,7 @@ public class Bank {
             e.printStackTrace();
         } finally {
             if(ps != null)
-                try { ps.close(); } c
+                try { ps.close(); } catch (SQLException ex) { }
+
+            if(conn != null)
+                try { conn.close(); } catch (SQ
