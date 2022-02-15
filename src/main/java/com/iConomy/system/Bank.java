@@ -235,4 +235,9 @@ public class Bank {
                 try { ps.close(); } catch (SQLException ex) { }
 
             if(conn != null)
-                try { conn.close(); } catch (SQ
+                try { conn.close(); } catch (SQLException ex) { }
+        }
+    }
+
+    public void setMajor(String singular, String plural) {
+   
