@@ -264,4 +264,7 @@ public class Bank {
         }
     }
 
-    public void setMinor(String sin
+    public void setMinor(String singular, String plural) {
+        Connection conn = null;
+        ResultSet rs = null;
+        PreparedSt
