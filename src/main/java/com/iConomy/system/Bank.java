@@ -240,4 +240,8 @@ public class Bank {
     }
 
     public void setMajor(String singular, String plural) {
-   
+        Connection conn = null;
+        ResultSet rs = null;
+        PreparedStatement ps = null;
+
+  
