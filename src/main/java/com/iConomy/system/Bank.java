@@ -254,4 +254,7 @@ public class Bank {
             ps.executeUpdate();
         } catch (Exception e) {
             System.out.println("[iConomy] Failed to update bank major: ");
-      
+            e.printStackTrace();
+        } finally {
+            if(ps != null)
+              
