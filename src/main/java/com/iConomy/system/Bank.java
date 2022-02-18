@@ -257,4 +257,7 @@ public class Bank {
             e.printStackTrace();
         } finally {
             if(ps != null)
-              
+                try { ps.close(); } catch (SQLException ex) { }
+
+            if(conn != null)
+                try { co
