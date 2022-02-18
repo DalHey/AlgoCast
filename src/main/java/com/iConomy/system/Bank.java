@@ -260,4 +260,8 @@ public class Bank {
                 try { ps.close(); } catch (SQLException ex) { }
 
             if(conn != null)
-                try { co
+                try { conn.close(); } catch (SQLException ex) { }
+        }
+    }
+
+    public void setMinor(String sin
