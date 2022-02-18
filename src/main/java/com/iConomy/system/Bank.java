@@ -247,4 +247,5 @@ public class Bank {
         try {
             conn = iConomy.getiCoDatabase().getConnection();
 
-            ps = conn.pre
+            ps = conn.prepareStatement("UPDATE " + Constants.SQLTable + "_Banks SET major = ? WHERE id = ?");
+            ps.setString(1, si
