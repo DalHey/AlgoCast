@@ -267,4 +267,9 @@ public class Bank {
     public void setMinor(String singular, String plural) {
         Connection conn = null;
         ResultSet rs = null;
-        PreparedSt
+        PreparedStatement ps = null;
+
+        try {
+            conn = iConomy.getiCoDatabase().getConnection();
+
+      
