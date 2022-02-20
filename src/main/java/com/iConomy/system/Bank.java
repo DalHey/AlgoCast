@@ -272,4 +272,5 @@ public class Bank {
         try {
             conn = iConomy.getiCoDatabase().getConnection();
 
-      
+            ps = conn.prepareStatement("UPDATE " + Constants.SQLTable + "_Banks SET minor = ? WHERE id = ?");
+       
