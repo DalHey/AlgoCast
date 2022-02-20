@@ -276,4 +276,6 @@ public class Bank {
             ps.setString(1, singular + "," + plural);
             ps.setInt(2, this.id);
 
-            ps.executeU
+            ps.executeUpdate();
+        } catch (Exception e) {
+            System.out.println("[iConomy] Failed to update bank mi
