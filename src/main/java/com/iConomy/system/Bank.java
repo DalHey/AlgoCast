@@ -278,4 +278,8 @@ public class Bank {
 
             ps.executeUpdate();
         } catch (Exception e) {
-            System.out.println("[iConomy] Failed to update bank mi
+            System.out.println("[iConomy] Failed to update bank minor: ");
+            e.printStackTrace();
+        } finally {
+            if(ps != null)
+                try { ps.c
