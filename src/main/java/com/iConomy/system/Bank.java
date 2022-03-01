@@ -290,4 +290,9 @@ public class Bank {
     }
 
     public void setInitialHoldings(double amount) {
-     
+        Connection conn = null;
+        ResultSet rs = null;
+        PreparedStatement ps = null;
+
+        try {
+   
