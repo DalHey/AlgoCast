@@ -295,4 +295,6 @@ public class Bank {
         PreparedStatement ps = null;
 
         try {
-   
+            conn = iConomy.getiCoDatabase().getConnection();
+
+            ps = conn.prepareStatement("UPDATE "
