@@ -302,4 +302,5 @@ public class Bank {
             ps.setInt(2, this.id);
 
             ps.executeUpdate();
-      
+        } catch (Exception e) {
+            System.out.println("[iConomy] Failed to update bank initial amount
