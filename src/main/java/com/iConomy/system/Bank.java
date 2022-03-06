@@ -303,4 +303,8 @@ public class Bank {
 
             ps.executeUpdate();
         } catch (Exception e) {
-            System.out.println("[iConomy] Failed to update bank initial amount
+            System.out.println("[iConomy] Failed to update bank initial amount: ");
+            e.printStackTrace();
+        } finally {
+            if(ps != null)
+                t
