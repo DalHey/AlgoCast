@@ -319,4 +319,7 @@ public class Bank {
         ResultSet rs = null;
         PreparedStatement ps = null;
 
-    
+        try {
+            conn = iConomy.getiCoDatabase().getConnection();
+
+            ps = conn.pre
