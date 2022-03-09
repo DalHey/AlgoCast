@@ -315,4 +315,8 @@ public class Bank {
     }
 
     public void setFee(double amount) {
-   
+        Connection conn = null;
+        ResultSet rs = null;
+        PreparedStatement ps = null;
+
+    
