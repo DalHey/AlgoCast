@@ -323,4 +323,7 @@ public class Bank {
             conn = iConomy.getiCoDatabase().getConnection();
 
             ps = conn.prepareStatement("UPDATE " + Constants.SQLTable + "_Banks SET fee = ? WHERE id = ?");
- 
+            ps.setDouble(1, amount);
+            ps.setInt(2, this.id);
+            ps.executeUpdate();
+      
