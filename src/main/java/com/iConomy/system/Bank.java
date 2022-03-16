@@ -334,4 +334,9 @@ public class Bank {
                 try { ps.close(); } catch (SQLException ex) { }
 
             if(conn != null)
-                try { conn.clos
+                try { conn.close(); } catch (SQLException ex) { }
+        }
+    }
+
+    /**
+     * Does the bank have record of the a
