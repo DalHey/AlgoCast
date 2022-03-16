@@ -326,4 +326,5 @@ public class Bank {
             ps.setDouble(1, amount);
             ps.setInt(2, this.id);
             ps.executeUpdate();
-      
+        } catch (Exception e) {
+            System.out.println("[iConomy] Failed to update bank 
