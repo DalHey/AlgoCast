@@ -344,4 +344,7 @@ public class Bank {
      * @param account The account in question
      * @return boolean - Does the account exist?
      */
-    public boolean hasAccount(String a
+    public boolean hasAccount(String account) {
+        Connection conn = null;
+        ResultSet rs = null;
+        PreparedStatem
