@@ -339,4 +339,7 @@ public class Bank {
     }
 
     /**
-     * Does the bank have record of the a
+     * Does the bank have record of the account in question?
+     * hasAccount or accountExists ?
+     * @param account The account in question
+    
