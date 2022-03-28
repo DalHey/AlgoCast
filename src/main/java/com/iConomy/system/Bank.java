@@ -347,4 +347,8 @@ public class Bank {
     public boolean hasAccount(String account) {
         Connection conn = null;
         ResultSet rs = null;
-        PreparedStatem
+        PreparedStatement ps = null;
+        boolean exists = false;
+
+        try {
+            conn = iConomy.getiCoDatabase().
