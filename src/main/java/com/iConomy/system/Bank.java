@@ -351,4 +351,5 @@ public class Bank {
         boolean exists = false;
 
         try {
-            conn = iConomy.getiCoDatabase().
+            conn = iConomy.getiCoDatabase().getConnection();
+            ps = conn.prepareStatement("SELECT * FROM " + Constants.SQLTable + "_BankRelatio
