@@ -352,4 +352,6 @@ public class Bank {
 
         try {
             conn = iConomy.getiCoDatabase().getConnection();
-            ps = conn.prepareStatement("SELECT * FROM " + Constants.SQLTable + "_BankRelatio
+            ps = conn.prepareStatement("SELECT * FROM " + Constants.SQLTable + "_BankRelations WHERE account_name = ? AND bank_id = ? LIMIT 1");
+            ps.setString(1, account);
+     
