@@ -358,4 +358,8 @@ public class Bank {
             rs = ps.executeQuery();
 
             exists = rs.next();
-        } catch (
+        } catch (Exception e) {
+            exists = false;
+        } finally {
+            if(ps != null)
+  
