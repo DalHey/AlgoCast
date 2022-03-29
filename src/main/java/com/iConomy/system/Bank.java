@@ -362,4 +362,7 @@ public class Bank {
             exists = false;
         } finally {
             if(ps != null)
-  
+                try { ps.close(); } catch (SQLException ex) { }
+
+            if(rs != null)
+         
