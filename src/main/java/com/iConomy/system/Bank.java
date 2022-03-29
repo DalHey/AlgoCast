@@ -354,4 +354,8 @@ public class Bank {
             conn = iConomy.getiCoDatabase().getConnection();
             ps = conn.prepareStatement("SELECT * FROM " + Constants.SQLTable + "_BankRelations WHERE account_name = ? AND bank_id = ? LIMIT 1");
             ps.setString(1, account);
-     
+            ps.setInt(2, id);
+            rs = ps.executeQuery();
+
+            exists = rs.next();
+        } catch (
