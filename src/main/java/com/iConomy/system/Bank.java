@@ -374,3 +374,5 @@ public class Bank {
         return exists;
     }
 
+    public HashMap<String, Double> getAccounts() {
+        HashMap<String, Double> accounts = new HashMa
