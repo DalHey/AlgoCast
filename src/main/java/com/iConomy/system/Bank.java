@@ -368,4 +368,9 @@ public class Bank {
                 try { rs.close(); } catch (SQLException ex) { }
 
             if(conn != null)
-                try
+                try { conn.close(); } catch (SQLException ex) { }
+        }
+
+        return exists;
+    }
+
