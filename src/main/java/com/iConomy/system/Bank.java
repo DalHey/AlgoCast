@@ -375,4 +375,7 @@ public class Bank {
     }
 
     public HashMap<String, Double> getAccounts() {
-        HashMap<String, Double> accounts = new HashMa
+        HashMap<String, Double> accounts = new HashMap<String, Double>();
+        Connection conn = null;
+        ResultSet rs = null;
+    
