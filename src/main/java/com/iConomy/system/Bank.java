@@ -382,4 +382,6 @@ public class Bank {
 
         try {
             conn = iConomy.getiCoDatabase().getConnection();
-            ps = conn.prepareStatement("SELECT * FROM " + Constants.SQLTable + "_
+            ps = conn.prepareStatement("SELECT * FROM " + Constants.SQLTable + "_BankRelations WHERE id = ? ORDER BY balance DESC");
+            ps.setInt(1, this.id);
+            rs = ps.executeQuer
