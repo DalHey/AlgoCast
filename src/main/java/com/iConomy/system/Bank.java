@@ -378,4 +378,7 @@ public class Bank {
         HashMap<String, Double> accounts = new HashMap<String, Double>();
         Connection conn = null;
         ResultSet rs = null;
-    
+        PreparedStatement ps = null;
+
+        try {
+            conn = iConomy.getiCoDataba
