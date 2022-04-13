@@ -381,4 +381,5 @@ public class Bank {
         PreparedStatement ps = null;
 
         try {
-            conn = iConomy.getiCoDataba
+            conn = iConomy.getiCoDatabase().getConnection();
+            ps = conn.prepareStatement("SELECT * FROM " + Constants.SQLTable + "_
