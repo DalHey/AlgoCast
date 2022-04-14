@@ -387,4 +387,7 @@ public class Bank {
             rs = ps.executeQuery();
 
             while (rs.next()) {
-                accounts.put(rs.getString("username
+                accounts.put(rs.getString("username"), rs.getDouble("balance"));
+            }
+        } catch (Exception e) {
+            re
