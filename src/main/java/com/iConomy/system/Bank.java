@@ -390,4 +390,7 @@ public class Bank {
                 accounts.put(rs.getString("username"), rs.getDouble("balance"));
             }
         } catch (Exception e) {
-            re
+            return accounts;
+        } finally {
+            if(ps != null)
+                try { ps.close(); } cat
