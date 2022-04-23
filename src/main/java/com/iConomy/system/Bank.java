@@ -393,4 +393,7 @@ public class Bank {
             return accounts;
         } finally {
             if(ps != null)
-                try { ps.close(); } cat
+                try { ps.close(); } catch (SQLException ex) { }
+
+            if(rs != null)
+                try { rs.close(); } catc
