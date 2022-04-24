@@ -396,4 +396,9 @@ public class Bank {
                 try { ps.close(); } catch (SQLException ex) { }
 
             if(rs != null)
-                try { rs.close(); } catc
+                try { rs.close(); } catch (SQLException ex) { }
+
+            iConomy.getiCoDatabase().close(conn);
+        }
+
+        return 
