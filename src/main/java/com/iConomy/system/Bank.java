@@ -401,4 +401,9 @@ public class Bank {
             iConomy.getiCoDatabase().close(conn);
         }
 
-        return 
+        return accounts;
+    }
+
+    /**
+     * Fetch the account, Does not check for existance.
+     * Do that pr
