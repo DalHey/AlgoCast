@@ -408,4 +408,7 @@ public class Bank {
      * Fetch the account, Does not check for existance.
      * Do that prior to using this to prevent null errors or any other issues.
      *
-     * @param account
+     * @param account The account to grab
+     * @return Account (If it exists, null if not)
+     */
+    public BankAccount get
