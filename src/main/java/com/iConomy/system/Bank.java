@@ -406,4 +406,6 @@ public class Bank {
 
     /**
      * Fetch the account, Does not check for existance.
-     * Do that pr
+     * Do that prior to using this to prevent null errors or any other issues.
+     *
+     * @param account
