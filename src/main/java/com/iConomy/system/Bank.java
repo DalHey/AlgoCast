@@ -411,4 +411,6 @@ public class Bank {
      * @param account The account to grab
      * @return Account (If it exists, null if not)
      */
-    public BankAccount get
+    public BankAccount getAccount(String account) {
+        if(hasAccount(account)) {
+            return new BankAccoun
