@@ -413,4 +413,10 @@ public class Bank {
      */
     public BankAccount getAccount(String account) {
         if(hasAccount(account)) {
-            return new BankAccoun
+            return new BankAccount(this.name, this.id, account);
+        } else {
+            return null;
+        }
+    }
+
+    
