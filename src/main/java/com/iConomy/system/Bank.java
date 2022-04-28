@@ -419,4 +419,7 @@ public class Bank {
         }
     }
 
-    
+    /**
+     * Add an account to the bank, if it already exists return false.
+     *
+     * @param account Na
