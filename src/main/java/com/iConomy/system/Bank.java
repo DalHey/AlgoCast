@@ -424,4 +424,7 @@ public class Bank {
      *
      * @param account Name of the account being created
      */
-    public boolean createAccount(String accou
+    public boolean createAccount(String account) {
+        if (!this.hasAccount(account)) {
+            Connection conn = null;
+            ResultSet rs = n
