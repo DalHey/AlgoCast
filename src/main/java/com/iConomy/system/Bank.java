@@ -427,4 +427,8 @@ public class Bank {
     public boolean createAccount(String account) {
         if (!this.hasAccount(account)) {
             Connection conn = null;
-            ResultSet rs = n
+            ResultSet rs = null;
+            PreparedStatement ps = null;
+
+            try {
+                conn = iConomy.getiCoDatabase().getCon
