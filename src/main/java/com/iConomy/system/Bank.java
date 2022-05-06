@@ -432,4 +432,5 @@ public class Bank {
 
             try {
                 conn = iConomy.getiCoDatabase().getConnection();
-                ps = conn.prepareStatement("INSERT INTO " + Constants.SQLTable + 
+                ps = conn.prepareStatement("INSERT INTO " + Constants.SQLTable + "_BankRelations(account_name, bank_id, holdings) VALUES (?, ?, ?)");
+                ps.set
