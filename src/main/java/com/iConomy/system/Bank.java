@@ -431,4 +431,5 @@ public class Bank {
             PreparedStatement ps = null;
 
             try {
-                conn = iConomy.getiCoDatabase().getCon
+                conn = iConomy.getiCoDatabase().getConnection();
+                ps = conn.prepareStatement("INSERT INTO " + Constants.SQLTable + 
