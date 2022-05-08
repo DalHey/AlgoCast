@@ -439,4 +439,7 @@ public class Bank {
                 ps.executeUpdate();
             } catch (Exception e) {
                 System.out.println("[iConomy] Error inserting bank account: " + e);
-                retur
+                return false;
+            } finally {
+                if(ps != null)
+                    try { ps
