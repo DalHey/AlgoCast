@@ -454,3 +454,7 @@ public class Bank {
         return false;
     }
 
+    /**
+     * Add an account to the bank, if it already exists return false.
+     *
+     * @param a
