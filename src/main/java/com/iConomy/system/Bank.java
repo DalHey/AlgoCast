@@ -461,4 +461,7 @@ public class Bank {
      * @param holdings Initial holdings of the account
      */
     public boolean createAccount(String account, double holdings) {
-        if (!this.
+        if (!this.hasAccount(account)) {
+            Connection conn = null;
+            ResultSet rs = null;
+           
