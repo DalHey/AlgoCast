@@ -457,4 +457,7 @@ public class Bank {
     /**
      * Add an account to the bank, if it already exists return false.
      *
-     * @param a
+     * @param account Name of the account being created
+     * @param holdings Initial holdings of the account
+     */
+    pu
