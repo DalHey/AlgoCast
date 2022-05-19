@@ -464,4 +464,7 @@ public class Bank {
         if (!this.hasAccount(account)) {
             Connection conn = null;
             ResultSet rs = null;
-           
+            PreparedStatement ps = null;
+
+            try {
+                conn = iConomy.getiCoDatabase().getCon
