@@ -472,4 +472,6 @@ public class Bank {
                 ps.setString(1, account);
                 ps.setInt(2, this.id);
                 ps.setDouble(3, holdings);
-                ps.exe
+                ps.executeUpdate();
+            } catch (Exception e) {
+                System.out.println("[iConomy] Err
