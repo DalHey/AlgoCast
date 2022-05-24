@@ -474,4 +474,7 @@ public class Bank {
                 ps.setDouble(3, holdings);
                 ps.executeUpdate();
             } catch (Exception e) {
-                System.out.println("[iConomy] Err
+                System.out.println("[iConomy] Error inserting bank account: " + e);
+                return false;
+            } finally {
+                if(ps != null)
