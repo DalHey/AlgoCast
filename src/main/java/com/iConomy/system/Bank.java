@@ -478,3 +478,6 @@ public class Bank {
                 return false;
             } finally {
                 if(ps != null)
+                    try { ps.close(); } catch (SQLException ex) { }
+
+          
