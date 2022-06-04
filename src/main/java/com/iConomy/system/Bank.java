@@ -480,4 +480,6 @@ public class Bank {
                 if(ps != null)
                     try { ps.close(); } catch (SQLException ex) { }
 
-          
+                if(conn != null)
+                    try { conn.close(); } catch (SQLException ex) { }
+        
