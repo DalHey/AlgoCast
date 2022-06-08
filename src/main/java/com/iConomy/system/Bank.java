@@ -482,4 +482,13 @@ public class Bank {
 
                 if(conn != null)
                     try { conn.close(); } catch (SQLException ex) { }
-        
+            }
+
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * Completely remove an
