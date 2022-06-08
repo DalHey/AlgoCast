@@ -495,4 +495,6 @@ public class Bank {
      *
      * @param account
      */
-    public void remove
+    public void removeAccount(String account) {
+        if(hasAccount(account)) {
+            (new BankAccount(this.nam
