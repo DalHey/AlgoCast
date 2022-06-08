@@ -491,4 +491,8 @@ public class Bank {
     }
 
     /**
-     * Completely remove an
+     * Completely remove an account from the bank and the database.
+     *
+     * @param account
+     */
+    public void remove
