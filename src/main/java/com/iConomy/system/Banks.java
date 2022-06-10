@@ -98,3 +98,97 @@ public class Banks {
      * @param name
      * @return Integer
      */
+    private int getId(String name) {
+        if(!Constants.Banking)
+            return -1;
+
+        Connection conn = null;
+        ResultSet rs = null;
+        PreparedStatement ps = null;
+        int id = 0;
+
+        try {
+            conn = iConomy.getiCoDatabase().getConnection();
+            ps = conn.prepareStatement("SELECT id FROM " + Constants.SQLTable + "_Banks WHERE name = ? LIMIT 1");
+            ps.setString(1, name);
+            rs = ps.executeQuery();
+
+            if(rs.next()) {
+                id = rs.getInt("id");
+            }
+        } catch (Exception e) {
+            id = 0;
+        } finally {
+            if(ps != null)
+                try { ps.close(); } catch (SQLException ex) { }
+
+            if(rs != null)
+                try { rs.close(); } catch (SQLException ex) { }
+
+            if(conn != null)
+                try { conn.close(); } catch (SQLException ex) { }
+        }
+
+        return id;
+    }
+
+    /**
+     * Create a totally customized bank.
+     *
+     * @param name
+     * @param currency
+     * @param currency_plural
+     * @param initial
+     * @return Bank
+     */
+    public Bank create(String name, String major, String minor, double initial, double fee) {
+        if(!Constants.Banking)
+            return null;
+
+        if(!exists(name)) {
+            Connection conn = null;
+            ResultSet rs = null;
+            PreparedStatement ps = null;
+
+            try {
+                conn = iConomy.getiCoDatabase().getConnection();
+                ps = conn.prepareStatement("INSERT INTO " + Constants.SQLTable + "_Banks(name, major, minor, initial, fee) VALUES (?, ?, ?, ?, ?)");
+
+                ps.setString(1, name);
+                ps.setString(2, Constants.Major.get(0) + "," + Constants.Major.get(1));
+                ps.setString(3, Constants.Minor.get(0) + "," + Constants.Minor.get(1));
+                ps.setDouble(4, initial);
+                ps.setDouble(5, fee);
+
+                ps.executeUpdate();
+            } catch (Exception e) {
+                System.out.println("[iConomy] Failed to set holdings balance: " + e);
+            } finally {
+                if(ps != null)
+                    try { ps.close(); } catch (SQLException ex) { }
+
+                if(conn != null)
+                    try { conn.close(); } catch (SQLException ex) { }
+            }
+        }
+
+        return new Bank(name);
+    }
+
+    /**
+     * Uses the default settings for a bank upon creation with a different name.
+     * @param name
+     * @return Bank
+     */
+    public Bank create(String name) {
+        if(!Constants.Banking)
+            return null;
+
+        if(!exists(name)) {
+            Connection conn = null;
+            ResultSet rs = null;
+            PreparedStatement ps = null;
+
+            try {
+                conn = iConomy.getiCoDatabase().getConnection();
+                ps = conn.prepareStatement("INSERT INTO " + Constants.SQLTable + "_Banks(name, major, minor, initial, fee) VALUES (?, ?, ?, ?, ?)");
