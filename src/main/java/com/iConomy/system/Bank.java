@@ -497,4 +497,7 @@ public class Bank {
      */
     public void removeAccount(String account) {
         if(hasAccount(account)) {
-            (new BankAccount(this.nam
+            (new BankAccount(this.name, this.id, account)).remove();
+        }
+    }
+}
