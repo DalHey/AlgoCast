@@ -50,3 +50,21 @@ public class BankAccount {
         PreparedStatement ps = null;
 
         try {
+            conn = iConomy.getiCoDatabase().getConnection();
+            ps = conn.prepareStatement("DELETE FROM " + Constants.SQLTable + "_BankRelations WHERE bank_id = ? AND account_name = ?");
+            ps.setInt(1, BankId);
+            ps.setString(2, AccountName);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            return;
+        } finally {
+            if(ps != null)
+                try { ps.close(); } catch (SQLException ex) { }
+
+            if(conn != null)
+                try { conn.close(); } catch (SQLException ex) { }
+        }
+
+        return;
+    }
+}
