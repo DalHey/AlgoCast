@@ -192,3 +192,110 @@ public class Banks {
             try {
                 conn = iConomy.getiCoDatabase().getConnection();
                 ps = conn.prepareStatement("INSERT INTO " + Constants.SQLTable + "_Banks(name, major, minor, initial, fee) VALUES (?, ?, ?, ?, ?)");
+
+                ps.setString(1, name);
+                ps.setString(2, Constants.BankMajor.get(0) + "," + Constants.BankMajor.get(1));
+                ps.setString(3, Constants.BankMinor.get(0) + "," + Constants.BankMinor.get(1));
+                ps.setDouble(4, Constants.BankHoldings);
+                ps.setDouble(5, Constants.BankFee);
+
+                ps.executeUpdate();
+            } catch (Exception e) {
+                System.out.println("[iConomy] Failed to set holdings balance: " + e);
+            } finally {
+                if(ps != null)
+                    try { ps.close(); } catch (SQLException ex) { }
+
+                if(conn != null)
+                    try { conn.close(); } catch (SQLException ex) { }
+            }
+        }
+
+        return new Bank(name);
+    }
+
+    public int count() {
+        if(!Constants.Banking)
+            return -1;
+
+        Connection conn = null;
+        ResultSet rs = null;
+        PreparedStatement ps = null;
+        int count = -1;
+
+        try {
+            conn = iConomy.getiCoDatabase().getConnection();
+            ps = conn.prepareStatement("SELECT COUNT(id) AS count FROM " + Constants.SQLTable + "_Banks");
+            rs = ps.executeQuery();
+
+            if(rs.next()) {
+                count = rs.getInt("count");
+            }
+        } catch (Exception e) {
+            return count;
+        } finally {
+            if(ps != null)
+                try { ps.close(); } catch (SQLException ex) { }
+
+            if(conn != null)
+                try { conn.close(); } catch (SQLException ex) { }
+        }
+
+        return count;
+    }
+
+    /**
+     * Count the number of accounts a person has.
+     *
+     * @param name
+     * @return Integer - Account count.
+     */
+    public int count(String name) {
+        if(!Constants.Banking)
+            return -1;
+
+        Connection conn = null;
+        ResultSet rs = null;
+        PreparedStatement ps = null;
+        int count = -1;
+
+        try {
+            conn = iConomy.getiCoDatabase().getConnection();
+            ps = conn.prepareStatement("SELECT COUNT(id) AS count FROM " + Constants.SQLTable + "_BankRelations WHERE account_name = ?");
+            ps.setString(1, name);
+            rs = ps.executeQuery();
+
+            if(rs.next()) {
+                count = rs.getInt("count");
+            }
+        } catch (Exception e) {
+            return count;
+        } finally {
+            if(ps != null)
+                try { ps.close(); } catch (SQLException ex) { }
+
+            if(conn != null)
+                try { conn.close(); } catch (SQLException ex) { }
+        }
+
+        return count;
+    }
+
+    /**
+     * Purge all accounts in all banks with the default holding value.
+     *
+     * @return true or false based on the outcome of whether it was successful or not.
+     */
+    public boolean purge() {
+        if(!Constants.Banking)
+            return false;
+
+        Connection conn = null;
+        ResultSet rs = null;
+        Statement s = null;
+        PreparedStatement ps = null;
+
+        try {
+            conn = iConomy.getiCoDatabase().getConnection();
+            ps = conn.prepareStatement("SELECT * FROM " + Constants.SQLTable + "_Banks");
+            rs = ps.executeQuery();
