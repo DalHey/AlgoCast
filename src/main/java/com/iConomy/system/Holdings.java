@@ -37,3 +37,112 @@ public class Holdings {
         this.bankId = id;
         this.name = name;
     }
+
+    public boolean isBank() {
+        return bank;
+    }
+
+    public double balance() {
+        return get();
+    }
+
+    private double get() {
+        Connection conn = null;
+        ResultSet rs = null;
+        PreparedStatement ps = null;
+        Double balance = Constants.Holdings;
+
+        try {
+            conn = iConomy.getiCoDatabase().getConnection();
+
+            if(this.bankId == 0) {
+                ps = conn.prepareStatement("SELECT * FROM " + Constants.SQLTable + " WHERE username = ? LIMIT 1");
+                ps.setString(1, this.name);
+            } else {
+                ps = conn.prepareStatement("SELECT * FROM " + Constants.SQLTable + "_BankRelations WHERE account_name = ? AND bank_id = ? LIMIT 1");
+                ps.setString(1, this.name);
+                ps.setInt(2, this.bankId);
+            }
+
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                balance = (this.bankId == 0) ? rs.getDouble("balance") : rs.getDouble("holdings");
+            }
+        } catch (Exception e) {
+            System.out.println("[iConomy] Failed to grab holdings: " + e);
+        } finally {
+            if(ps != null)
+                try { ps.close(); } catch (SQLException ex) { }
+
+            if(rs != null)
+                try { rs.close(); } catch (SQLException ex) { }
+
+            if(conn != null)
+                try { conn.close(); } catch (SQLException ex) { }
+        }
+
+        return balance;
+    }
+
+    public void set(double balance) {
+        AccountSetEvent Event = new AccountSetEvent(this.name, balance);
+        iConomy.getBukkitServer().getPluginManager().callEvent(Event);
+
+        Connection conn = null;
+        ResultSet rs = null;
+        PreparedStatement ps = null;
+
+        try {
+            conn = iConomy.getiCoDatabase().getConnection();
+
+            if(bankId == 0) {
+                ps = conn.prepareStatement("UPDATE " + Constants.SQLTable + " SET balance = ? WHERE username = ?");
+                ps.setDouble(1, balance);
+                ps.setString(2, this.name);
+            } else {
+                ps = conn.prepareStatement("UPDATE " + Constants.SQLTable + "_BankRelations SET holdings = ? WHERE account_name = ? AND bank_id = ?");
+                ps.setDouble(1, balance);
+                ps.setString(2, this.name);
+                ps.setInt(3, this.bankId);
+            }
+
+            ps.executeUpdate();
+        } catch (Exception e) {
+            System.out.println("[iConomy] Failed to set holdings: " + e);
+        } finally {
+            if(ps != null)
+                try { ps.close(); } catch (SQLException ex) { }
+
+            if(conn != null)
+                try { conn.close(); } catch (SQLException ex) { }
+        }
+    }
+
+    public void add(double amount) {
+        double balance = this.get();
+        double ending = (balance + amount);
+
+        this.math(amount, balance, ending);
+    }
+
+    public void subtract(double amount) {
+        double balance = this.get();
+        double ending = (balance - amount);
+
+        this.math(amount, balance, ending);
+    }
+
+    public void divide(double amount) {
+        double balance = this.get();
+        double ending = (balance / amount);
+
+        this.math(amount, balance, ending);
+    }
+
+    public void multiply(double amount) {
+        double balance = this.get();
+        double ending = (balance * amount);
+
+        this.math(amount, balance, ending);
+    }
