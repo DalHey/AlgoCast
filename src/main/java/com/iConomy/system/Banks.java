@@ -403,3 +403,54 @@ public class Banks {
     /**
      * Grab the bank, if it doesn't exist, return null.
      *
+     * @param id Bank id
+     * @return Bank object
+     */
+    public Bank get(int id) {
+        if(!Constants.Banking)
+            return null;
+        
+        if(exists(id))
+            return new Bank(id);
+        else {
+            return null;
+        }
+    }
+
+    /**
+     * Grab a list of all the balances / holdings inside banks.
+     *
+     * Allows us to utilize the entire economic status of banks for statistics.
+     *
+     * @return List<Double>
+     */
+    public List<Double> values() {
+        if(!Constants.Banking)
+            return null;
+
+        Connection conn = null;
+        ResultSet rs = null;
+        PreparedStatement ps = null;
+        List<Double> Values = new ArrayList<Double>();
+
+        try {
+            conn = iConomy.getiCoDatabase().getConnection();
+            ps = conn.prepareStatement("SELECT holdings FROM " + Constants.SQLTable + "_BankRelations");
+            rs = ps.executeQuery();
+
+            while(rs.next()) {
+                Values.add(rs.getDouble("holdings"));
+            }
+        } catch (Exception e) {
+            return null;
+        } finally {
+            if(ps != null)
+                try { ps.close(); } catch (SQLException ex) { }
+
+            if(conn != null)
+                try { conn.close(); } catch (SQLException ex) { }
+        }
+
+        return Values;
+    }
+}
