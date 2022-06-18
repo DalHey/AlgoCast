@@ -146,3 +146,54 @@ public class Holdings {
 
         this.math(amount, balance, ending);
     }
+
+    public void reset() {
+        AccountResetEvent Event = new AccountResetEvent(this.name);
+        iConomy.getBukkitServer().getPluginManager().callEvent(Event);
+
+        if(!Event.isCancelled())
+            this.set(Constants.Holdings);
+    }
+
+    private void math(double amount, double balance, double ending) {
+        AccountUpdateEvent Event = new AccountUpdateEvent(this.name, balance, ending, amount);
+        iConomy.getBukkitServer().getPluginManager().callEvent(Event);
+
+        if(!Event.isCancelled())
+            this.set(ending);
+    }
+
+    public boolean isNegative() {
+        return this.get() < 0.0;
+    }
+
+    public boolean hasEnough(double amount) {
+        return amount <= this.get();
+    }
+
+    public boolean hasOver(double amount) {
+        return amount < this.get();
+    }
+
+    public boolean hasUnder(double amount) {
+        return amount > this.get();
+    }
+
+    @Override
+    public String toString() {
+        DecimalFormat formatter = new DecimalFormat("#,##0.00");
+        Double balance = this.get();
+        String formatted = formatter.format(balance);
+
+        if (formatted.endsWith(".")) {
+            formatted = formatted.substring(0, formatted.length() - 1);
+        }
+
+        if(bankId == 0) {
+            return Misc.formatted(formatted, Constants.Major, Constants.Minor);
+        }
+
+        Bank b = new Bank(this.bankId);
+        return Misc.formatted(formatted, b.getMajor(), b.getMinor());
+    }
+}
