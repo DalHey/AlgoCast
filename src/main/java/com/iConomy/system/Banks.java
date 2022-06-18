@@ -299,3 +299,107 @@ public class Banks {
             conn = iConomy.getiCoDatabase().getConnection();
             ps = conn.prepareStatement("SELECT * FROM " + Constants.SQLTable + "_Banks");
             rs = ps.executeQuery();
+
+            ps = conn.prepareStatement("DELETE FROM " + Constants.SQLTable + "_BankRelations WHERE bank_id = ? AND holdings = ?");
+            
+            while(rs.next()) {
+                ps.setInt(1, rs.getInt("id"));
+                ps.setDouble(2, rs.getDouble("initial"));
+                ps.addBatch();
+            }
+            
+            ps.executeBatch();
+            conn.commit();
+            ps.clearBatch();
+        } catch (Exception e) {
+            return false;
+        } finally {
+            if(ps != null)
+                try { ps.close(); } catch (SQLException ex) { }
+
+            if(conn != null)
+                try { conn.close(); } catch (SQLException ex) { }
+        }
+
+        return true;
+    }
+
+    /**
+     * Remove all accounts in a specific bank that have the default value.
+     *
+     * @param name Name of bank in question.
+     * @return True if successful, false if error.
+     * @see #purge(int)
+     */
+    public boolean purge(String name) {
+        if(!Constants.Banking)
+            return false;
+
+        Bank bank = iConomy.getBank(name);
+
+        if(bank != null) {
+            return purge(bank.getId());
+        }
+
+        return false;
+    }
+
+    /**
+     * Remove all accounts in a specific bank that have the default value.
+     *
+     * @param id Bank id
+     * @return True if successful, false if error.
+     */
+    public boolean purge(int id) {
+        if(!Constants.Banking)
+            return false;
+
+        Bank bank = iConomy.getBank(id);
+
+        if(bank != null) {
+            Connection conn = null;
+            ResultSet rs = null;
+            PreparedStatement ps = null;
+
+            try {
+                conn = iConomy.getiCoDatabase().getConnection();
+                ps = conn.prepareStatement("DELETE FROM " + Constants.SQLTable + "_BankRelations WHERE bank_id = ? AND holdings = ?");
+                ps.setInt(1, id);
+                ps.setDouble(2, bank.getInitialHoldings());
+                ps.executeUpdate();
+            } catch (Exception e) {
+                return false;
+            } finally {
+                if(ps != null)
+                    try { ps.close(); } catch (SQLException ex) { }
+
+                if(conn != null)
+                    try { conn.close(); } catch (SQLException ex) { }
+            }
+
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * Grab the bank, if it doesn't exist, return null.
+     *
+     * @param name Name of bank to grab
+     * @return Bank object
+     */
+    public Bank get(String name) {
+        if(!Constants.Banking)
+            return null;
+
+        if(exists(name))
+            return new Bank(name);
+        else {
+            return null;
+        }
+    }
+
+    /**
+     * Grab the bank, if it doesn't exist, return null.
+     *
