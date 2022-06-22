@@ -154,3 +154,86 @@ public class Interest extends TimerTask {
                                     )
                                 );
                             }
+
+                            if(amount < 0.0)
+                                iConomy.getTransactions().insert("[System Interest]", name, 0.0, original, 0.0, 0.0, amount);
+                            else {
+                                iConomy.getTransactions().insert("[System Interest]", name, 0.0, original, 0.0, amount, 0.0);
+                            }
+                        }
+                    }
+                }
+            } else {
+                String updateSQL = "UPDATE " + Constants.SQLTable + "_BankRelations SET holdings = ? WHERE account_name = ? AND bank_id = ?";
+                ps = conn.prepareStatement(updateSQL);
+
+                for (String name : bankPlayers.keySet()) {
+                    Account account = iConomy.getAccount(name);
+
+                    if (account != null) {
+                        Holdings holdings = account.getBankHoldings(bankPlayers.get(name));
+
+                        if(holdings != null) {
+                            double balance = holdings.balance();
+                            double original = balance;
+
+                            if (cutoff > 0.0) {
+                                if (original >= cutoff) {
+                                    continue;
+                                }
+                            } else if(cutoff < 0.0) {
+                                if(original <= cutoff) {
+                                    continue;
+                                }
+                            }
+
+                            if(percentage) {
+                                amount = Math.round((Constants.InterestPercentage * balance)/100);
+                            }
+
+                            ps.setDouble(1, balance+amount);
+                            ps.setString(2, name);
+                            ps.setInt(3, bankPlayers.get(name));
+                            ps.addBatch();
+
+                            if(Constants.InterestAnn && Constants.InterestOnline) {
+                                Messaging.send(
+                                    iConomy.getBukkitServer().getPlayer(name),
+                                    Template.parse(
+                                        "interest.announcement",
+                                        new String[]{ "+amount,+money,+interest,+a,+m,+i" },
+                                        new Object[]{ iConomy.format(amount) }
+                                    )
+                                );
+                            }
+
+                            if(amount < 0.0)
+                                iConomy.getTransactions().insert("[System Interest]", name, 0.0, original, 0.0, 0.0, amount);
+                            else {
+                                iConomy.getTransactions().insert("[System Interest]", name, 0.0, original, 0.0, amount, 0.0);
+                            }
+                        }
+                    }
+                }
+            }
+            
+            //Execute the batch.
+            ps.executeBatch();
+
+            // Commit
+            conn.commit();
+            
+            ps.clearBatch();
+        } catch (BatchUpdateException e) {
+            System.out.println(e);
+        } catch (SQLException e) {
+            System.out.println(e);
+        } finally {
+            if(ps != null)
+                try { ps.close(); } catch (SQLException ex) { }
+
+            if(conn != null)
+                iConomy.getiCoDatabase().close(conn);
+        }
+    }
+}
