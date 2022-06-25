@@ -12,4 +12,7 @@ public class Constants {
     public static final String Codename = "Eruanna";
 
     // Nodes
-    private static String[] nodes = ne
+    private static String[] nodes = new String[] {
+        "System.Banking.Enabled:false",
+        "System.Logging.Enabled:false",
+ 
