@@ -9,3 +9,7 @@ import org.bukkit.configuration.file.YamlConfiguration;
 
 public class Constants {
     // Code name
+    public static final String Codename = "Eruanna";
+
+    // Nodes
+    private static String[] nodes = ne
