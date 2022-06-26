@@ -15,4 +15,7 @@ public class Constants {
     private static String[] nodes = new String[] {
         "System.Banking.Enabled:false",
         "System.Logging.Enabled:false",
- 
+        "System.Interest.Enabled:false",
+        "System.Interest.Announce.Enabled:false",
+
+        "Sys
