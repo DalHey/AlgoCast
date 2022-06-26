@@ -20,4 +20,7 @@ public class Constants {
 
         "System.Default.Account.Holdings:30.0",
         "System.Default.Currency.Major:[ 'Dollar', 'Dollars' ]",
-        "
+        "System.Default.Currency.Minor:[ 'Coin', 'Coins' ]",
+
+        "System.Default.Bank.Name:iConomy",
+        
