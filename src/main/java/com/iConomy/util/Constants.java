@@ -18,4 +18,6 @@ public class Constants {
         "System.Interest.Enabled:false",
         "System.Interest.Announce.Enabled:false",
 
-        "Sys
+        "System.Default.Account.Holdings:30.0",
+        "System.Default.Currency.Major:[ 'Dollar', 'Dollars' ]",
+        "
