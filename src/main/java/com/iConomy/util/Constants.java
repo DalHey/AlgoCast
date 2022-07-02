@@ -34,3 +34,6 @@ public class Constants {
         "System.Formatting.Seperate:false",
 
         "System.Interest.Online:true",
+        "System.Interest.Interval.Seconds:60",
+        "System.Interest.Amount.Cutoff:0.0",
+      
