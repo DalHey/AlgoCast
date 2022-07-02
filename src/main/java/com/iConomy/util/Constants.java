@@ -26,4 +26,8 @@ public class Constants {
         "System.Default.Bank.Account.Fee:30.0",
         "System.Default.Bank.Account.Holdings:30.0",
         "System.Default.Bank.Currency.Major:[ 'Dollar', 'Dollars' ]",
-        "System.Default.Bank.Currency.Mino
+        "System.Default.Bank.Currency.Minor:[ 'Coin', 'Coins' ]",
+
+        "System.Banking.Accounts.Multiple:true",
+
+        "System.Formatting.Minor:t
