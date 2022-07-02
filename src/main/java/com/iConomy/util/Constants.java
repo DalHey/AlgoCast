@@ -36,4 +36,6 @@ public class Constants {
         "System.Interest.Online:true",
         "System.Interest.Interval.Seconds:60",
         "System.Interest.Amount.Cutoff:0.0",
-      
+        "System.Interest.Amount.On:Players",
+        "System.Interest.Amount.Percent:0.0",
+        "Sy
