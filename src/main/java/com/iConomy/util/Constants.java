@@ -30,4 +30,7 @@ public class Constants {
 
         "System.Banking.Accounts.Multiple:true",
 
-        "System.Formatting.Minor:t
+        "System.Formatting.Minor:true",
+        "System.Formatting.Seperate:false",
+
+        "System.Interest.Online:true",
