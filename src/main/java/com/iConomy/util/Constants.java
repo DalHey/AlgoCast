@@ -45,4 +45,5 @@ public class Constants {
         "System.Database.Settings.Name:minecraft",
         "System.Database.Settings.Table:iConomy",
 
-    
+        "System.Database.Settings.MySQL.Hostname:localhost",
+        "System.Database.Settings.MySQ
