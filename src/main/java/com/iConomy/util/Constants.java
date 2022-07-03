@@ -42,4 +42,7 @@ public class Constants {
         "System.Interest.Amount.Maximum:2",
 
         "System.Database.Type:H2SQL",
-  
+        "System.Database.Settings.Name:minecraft",
+        "System.Database.Settings.Table:iConomy",
+
+    
