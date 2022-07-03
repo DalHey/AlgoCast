@@ -38,4 +38,8 @@ public class Constants {
         "System.Interest.Amount.Cutoff:0.0",
         "System.Interest.Amount.On:Players",
         "System.Interest.Amount.Percent:0.0",
-        "Sy
+        "System.Interest.Amount.Minimum:1",
+        "System.Interest.Amount.Maximum:2",
+
+        "System.Database.Type:H2SQL",
+  
