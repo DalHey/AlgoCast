@@ -46,4 +46,6 @@ public class Constants {
         "System.Database.Settings.Table:iConomy",
 
         "System.Database.Settings.MySQL.Hostname:localhost",
+        "System.Database.Settings.MySQL.Port:3306",
+        "System.Database.Settings.MySQL.Username:root",
         "System.Database.Settings.MySQ
