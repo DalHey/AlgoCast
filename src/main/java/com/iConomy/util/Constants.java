@@ -55,4 +55,7 @@ public class Constants {
     public static File Configuration;
     public static String Plugin_Directory;
     public static String H2_Jar_Location = "http://mirror.nexua.org/Dependencies/h2.jar";
-    public static String MySQL_Jar_Location = "http://mirror.anigaiku.com/Dependencies/mysql-con
+    public static String MySQL_Jar_Location = "http://mirror.anigaiku.com/Dependencies/mysql-connector-java-bin.jar";
+
+    // iConomy basics
+    public static List<String> Major = new LinkedList
