@@ -53,4 +53,5 @@ public class Constants {
 
     // Files and Directories
     public static File Configuration;
-   
+    public static String Plugin_Directory;
+    public static String H2_Jar_Location = "http://mirror.nexua.org/De
