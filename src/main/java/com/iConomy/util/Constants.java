@@ -58,4 +58,6 @@ public class Constants {
     public static String MySQL_Jar_Location = "http://mirror.anigaiku.com/Dependencies/mysql-connector-java-bin.jar";
 
     // iConomy basics
-    public static List<String> Major = new LinkedList
+    public static List<String> Major = new LinkedList<String>();
+    public static List<String> Minor = new LinkedList<String>();
+    public static double Holdings = 
