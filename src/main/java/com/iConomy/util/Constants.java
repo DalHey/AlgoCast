@@ -60,4 +60,8 @@ public class Constants {
     // iConomy basics
     public static List<String> Major = new LinkedList<String>();
     public static List<String> Minor = new LinkedList<String>();
-    public static double Holdings = 
+    public static double Holdings = 30.0;
+
+    // iConomy Bank
+    public static boolean Banking = false;
+    public static boolean B
