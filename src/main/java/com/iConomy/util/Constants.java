@@ -67,4 +67,8 @@ public class Constants {
     public static boolean BankingMultiple = true;
     public static String BankName = "iConomy";
     public static List<String> BankMajor = new LinkedList<String>();
-    public static List<String> BankMinor = new LinkedList<
+    public static List<String> BankMinor = new LinkedList<String>();
+    public static double BankHoldings = 30.0;
+    public static double BankFee = 20.0;
+
+    
