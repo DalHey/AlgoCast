@@ -64,4 +64,6 @@ public class Constants {
 
     // iConomy Bank
     public static boolean Banking = false;
-    public static boolean B
+    public static boolean BankingMultiple = true;
+    public static String BankName = "iConomy";
+    public static List<String>
