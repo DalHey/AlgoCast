@@ -71,4 +71,6 @@ public class Constants {
     public static double BankHoldings = 30.0;
     public static double BankFee = 20.0;
 
-    
+    // System formatting
+    public static boolean FormatMinor = false;
+    public static boolean FormatSeperated =
