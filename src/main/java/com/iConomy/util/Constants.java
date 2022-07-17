@@ -78,4 +78,7 @@ public class Constants {
     // System Logging
     public static boolean Logging = false;
 
-    // System 
+    // System Interest
+    public static int InterestSeconds = 60;
+    public static boolean Interest = false;
+    public static boolean In
