@@ -73,4 +73,9 @@ public class Constants {
 
     // System formatting
     public static boolean FormatMinor = false;
-    public static boolean FormatSeperated =
+    public static boolean FormatSeperated = false;
+
+    // System Logging
+    public static boolean Logging = false;
+
+    // System 
