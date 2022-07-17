@@ -81,4 +81,6 @@ public class Constants {
     // System Interest
     public static int InterestSeconds = 60;
     public static boolean Interest = false;
-    public static boolean In
+    public static boolean InterestAnn = false;
+    public static boolean InterestOnline = false;
+    public static Stri
