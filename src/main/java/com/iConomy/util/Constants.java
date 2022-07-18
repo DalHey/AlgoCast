@@ -83,4 +83,6 @@ public class Constants {
     public static boolean Interest = false;
     public static boolean InterestAnn = false;
     public static boolean InterestOnline = false;
-    public static Stri
+    public static String InterestType = "Players";
+    public static double InterestCutoff = 0.0;
+    public static double InterestPercentage
