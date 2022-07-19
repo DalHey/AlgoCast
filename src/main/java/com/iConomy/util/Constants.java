@@ -89,4 +89,8 @@ public class Constants {
     public static double InterestMin = 1;
     public static double InterestMax = 2;
 
-    // Da
+    // Database Type
+    public static String DatabaseType = "H2SQL";
+
+    // Relational SQL Generics
+    public static String SQLH
