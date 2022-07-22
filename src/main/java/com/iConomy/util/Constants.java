@@ -95,4 +95,8 @@ public class Constants {
     // Relational SQL Generics
     public static String SQLHostname = "localhost";
     public static String SQLPort = "3306";
-    public static String SQLU
+    public static String SQLUsername = "root";
+    public static String SQLPassword = "";
+
+    // SQL Generics
+    public static String SQLDatabase
