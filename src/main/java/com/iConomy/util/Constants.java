@@ -93,4 +93,6 @@ public class Constants {
     public static String DatabaseType = "H2SQL";
 
     // Relational SQL Generics
-    public static String SQLH
+    public static String SQLHostname = "localhost";
+    public static String SQLPort = "3306";
+    public static String SQLU
