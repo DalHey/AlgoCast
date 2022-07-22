@@ -99,4 +99,7 @@ public class Constants {
     public static String SQLPassword = "";
 
     // SQL Generics
-    public static String SQLDatabase
+    public static String SQLDatabase = "minecraft";
+    public static String SQLTable = "iConomy";
+
+    public static void load(Y
