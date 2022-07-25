@@ -105,4 +105,7 @@ public class Constants {
     public static void load(YamlConfiguration config) {
 
         Major.add("Dollar"); Major.add("Dollars"); BankMajor.add("Dollar"); BankMajor.add("Dollars");
-        Minor.add("Coin"); Minor.add("Coins"); Ba
+        Minor.add("Coin"); Minor.add("Coins"); BankMinor.add("Coin"); BankMinor.add("Coins");
+
+        // System Configuration
+    
