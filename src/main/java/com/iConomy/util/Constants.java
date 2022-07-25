@@ -108,4 +108,5 @@ public class Constants {
         Minor.add("Coin"); Minor.add("Coins"); BankMinor.add("Coin"); BankMinor.add("Coins");
 
         // System Configuration
-    
+        Major = convertTheList(config.getList("System.Default.Currency.Major", Major));
+        Minor = 
