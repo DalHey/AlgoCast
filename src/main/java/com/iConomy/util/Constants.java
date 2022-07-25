@@ -102,4 +102,6 @@ public class Constants {
     public static String SQLDatabase = "minecraft";
     public static String SQLTable = "iConomy";
 
-    public static void load(Y
+    public static void load(YamlConfiguration config) {
+
+        Major.add("Dollar"); Major.add("Dollars"); BankMajor.add("D
