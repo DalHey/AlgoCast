@@ -110,4 +110,7 @@ public class Constants {
         // System Configuration
         Major = convertTheList(config.getList("System.Default.Currency.Major", Major));
         Minor = convertTheList(config.getList("System.Default.Currency.Minor", Minor));
-        Holdings = config.getDouble("System.De
+        Holdings = config.getDouble("System.Default.Account.Holdings", Holdings);
+
+        // System Bank
+        Banking = config.getB
