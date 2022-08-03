@@ -114,4 +114,5 @@ public class Constants {
 
         // System Bank
         Banking = config.getBoolean("System.Banking.Enabled", Banking);
-        BankingMultiple = config.getBoolean("Sys
+        BankingMultiple = config.getBoolean("System.Banking.Accounts.Multiple", BankingMultiple);
+        BankName = config.getString("System.De
