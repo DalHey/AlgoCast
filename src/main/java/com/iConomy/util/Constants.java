@@ -113,4 +113,5 @@ public class Constants {
         Holdings = config.getDouble("System.Default.Account.Holdings", Holdings);
 
         // System Bank
-        Banking = config.getB
+        Banking = config.getBoolean("System.Banking.Enabled", Banking);
+        BankingMultiple = config.getBoolean("Sys
