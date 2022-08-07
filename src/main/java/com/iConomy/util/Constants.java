@@ -116,4 +116,5 @@ public class Constants {
         Banking = config.getBoolean("System.Banking.Enabled", Banking);
         BankingMultiple = config.getBoolean("System.Banking.Accounts.Multiple", BankingMultiple);
         BankName = config.getString("System.Default.Bank.Name", BankName);
-        BankMajor = convertTheList(config.getList("System.De
+        BankMajor = convertTheList(config.getList("System.Default.Bank.Currency.Major", BankMajor));
+        BankMinor = convertTheList(config.getList("System.Defaul
