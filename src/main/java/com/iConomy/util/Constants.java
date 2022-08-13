@@ -119,4 +119,7 @@ public class Constants {
         BankMajor = convertTheList(config.getList("System.Default.Bank.Currency.Major", BankMajor));
         BankMinor = convertTheList(config.getList("System.Default.Bank.Currency.Minor", BankMinor));
         BankHoldings = config.getDouble("System.Default.Bank.Account.Holdings", BankHoldings);
-        BankFee = config.getDouble("System.Default.Bank.Account.Fee",
+        BankFee = config.getDouble("System.Default.Bank.Account.Fee", BankFee);
+
+        // System Logging
+        Logging = config.getBoolean("System.Logging.Enabled", Loggi
