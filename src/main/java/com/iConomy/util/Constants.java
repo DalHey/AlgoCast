@@ -122,4 +122,8 @@ public class Constants {
         BankFee = config.getDouble("System.Default.Bank.Account.Fee", BankFee);
 
         // System Logging
-        Logging = config.getBoolean("System.Logging.Enabled", Loggi
+        Logging = config.getBoolean("System.Logging.Enabled", Logging);
+
+        // Formatting
+        FormatMinor = config.getBoolean("System.Formatting.Minor", FormatMinor);
+  
