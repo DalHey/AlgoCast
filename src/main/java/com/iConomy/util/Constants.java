@@ -128,4 +128,6 @@ public class Constants {
         FormatMinor = config.getBoolean("System.Formatting.Minor", FormatMinor);
         FormatSeperated = config.getBoolean("System.Formatting.Seperate", FormatSeperated);
 
-    
+        // System Interest
+        Interest = config.getBoolean("System.Interest.Enabled", Interest);
+       
