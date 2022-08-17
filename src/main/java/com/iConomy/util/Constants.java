@@ -132,4 +132,5 @@ public class Constants {
         Interest = config.getBoolean("System.Interest.Enabled", Interest);
         InterestOnline = config.getBoolean("System.Interest.Online", InterestOnline);
         InterestType = config.getString("System.Interest.Amount.On", InterestType);
-        InterestAnn = config.getBoolean("S
+        InterestAnn = config.getBoolean("System.Interest.Announce.Enabled", InterestAnn);
+        InterestSeconds = config.getInt("System.Intere
