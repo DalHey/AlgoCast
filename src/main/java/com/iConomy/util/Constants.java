@@ -135,4 +135,5 @@ public class Constants {
         InterestAnn = config.getBoolean("System.Interest.Announce.Enabled", InterestAnn);
         InterestSeconds = config.getInt("System.Interest.Interval.Seconds", InterestSeconds);
         InterestPercentage = config.getDouble("System.Interest.Amount.Percent", InterestPercentage);
-        InterestCutoff = config
+        InterestCutoff = config.getDouble("System.Interest.Amount.Cutoff", InterestCutoff);
+        InterestMin = config.g
