@@ -134,4 +134,5 @@ public class Constants {
         InterestType = config.getString("System.Interest.Amount.On", InterestType);
         InterestAnn = config.getBoolean("System.Interest.Announce.Enabled", InterestAnn);
         InterestSeconds = config.getInt("System.Interest.Interval.Seconds", InterestSeconds);
-        InterestPercentage = config.
+        InterestPercentage = config.getDouble("System.Interest.Amount.Percent", InterestPercentage);
+        InterestCutoff = config
