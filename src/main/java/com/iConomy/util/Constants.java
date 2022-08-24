@@ -137,4 +137,7 @@ public class Constants {
         InterestPercentage = config.getDouble("System.Interest.Amount.Percent", InterestPercentage);
         InterestCutoff = config.getDouble("System.Interest.Amount.Cutoff", InterestCutoff);
         InterestMin = config.getDouble("System.Interest.Amount.Minimum", InterestMin);
-        InterestMax = config.getDouble("System.I
+        InterestMax = config.getDouble("System.Interest.Amount.Maximum", InterestMax);
+
+        // Database Configuration
+        DatabaseType = config.getS
