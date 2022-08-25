@@ -143,4 +143,5 @@ public class Constants {
         DatabaseType = config.getString("System.Database.Type", DatabaseType);
 
         // Generic
-        SQLDatabase = config.get
+        SQLDatabase = config.getString("System.Database.Settings.Name", SQLDatabase);
+        SQLTable = config.getString("Sys
