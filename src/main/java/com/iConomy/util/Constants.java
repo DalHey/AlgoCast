@@ -140,4 +140,7 @@ public class Constants {
         InterestMax = config.getDouble("System.Interest.Amount.Maximum", InterestMax);
 
         // Database Configuration
-        DatabaseType = config.getS
+        DatabaseType = config.getString("System.Database.Type", DatabaseType);
+
+        // Generic
+        SQLDatabase = config.get
