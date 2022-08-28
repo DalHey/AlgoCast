@@ -144,4 +144,7 @@ public class Constants {
 
         // Generic
         SQLDatabase = config.getString("System.Database.Settings.Name", SQLDatabase);
-        SQLTable = config.getString("Sys
+        SQLTable = config.getString("System.Database.Settings.Table", SQLTable);
+
+        // MySQL
+        SQLHostname = config.getString("System.Database.Set
