@@ -150,4 +150,9 @@ public class Constants {
         SQLHostname = config.getString("System.Database.Settings.MySQL.Hostname", SQLHostname);
         SQLPort = config.getString("System.Database.Settings.MySQL.Port", SQLPort);
         SQLUsername = config.getString("System.Database.Settings.MySQL.Username", SQLUsername);
-        SQLPassword = config.getString("System.Database.Settings.MySQL.Passwo
+        SQLPassword = config.getString("System.Database.Settings.MySQL.Password", SQLPassword);
+
+        int i = 0;
+
+        for(String node : nodes) {
+            if(conf
