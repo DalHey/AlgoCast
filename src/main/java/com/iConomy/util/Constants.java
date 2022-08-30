@@ -148,4 +148,5 @@ public class Constants {
 
         // MySQL
         SQLHostname = config.getString("System.Database.Settings.MySQL.Hostname", SQLHostname);
-        SQLPort = config.getString("System.Database.Settings.MySQL.P
+        SQLPort = config.getString("System.Database.Settings.MySQL.Port", SQLPort);
+        SQLUsername = config.getString("System.Database.Settings.MySQL.Us
