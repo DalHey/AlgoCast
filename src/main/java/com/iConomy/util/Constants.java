@@ -155,4 +155,9 @@ public class Constants {
         int i = 0;
 
         for(String node : nodes) {
-            if(conf
+            if(config.get(node.split(":")[0]) == null) {
+                i++;
+            }
+        }
+
+        if(i !
