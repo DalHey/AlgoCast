@@ -163,4 +163,5 @@ public class Constants {
         if(i != 0) {
             System.out.println("[iConomy] Configuration Integrity Start:");
 
-    
+            for(String node : nodes) {
+                if(config.get(node.split(":")[0]) == null
