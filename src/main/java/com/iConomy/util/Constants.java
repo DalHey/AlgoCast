@@ -160,4 +160,7 @@ public class Constants {
             }
         }
 
-        if(i !
+        if(i != 0) {
+            System.out.println("[iConomy] Configuration Integrity Start:");
+
+    
