@@ -165,4 +165,8 @@ public class Constants {
 
             for(String node : nodes) {
                 if(config.get(node.split(":")[0]) == null) {
-                    System.out.println("    - "+ node.split(":")[0] +" is null or missing
+                    System.out.println("    - "+ node.split(":")[0] +" is null or missing, Defaulting to: " + node.split(":")[1]);
+                }
+            }
+
+            Syst
