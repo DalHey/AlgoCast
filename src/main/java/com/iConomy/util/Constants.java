@@ -169,4 +169,8 @@ public class Constants {
                 }
             }
 
-            Syst
+            System.out.println("[iConomy] Configuration Integrity End.");
+        }
+    }
+
+	private static List<Strin
