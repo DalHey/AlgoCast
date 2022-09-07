@@ -173,4 +173,6 @@ public class Constants {
         }
     }
 
-	private static List<Strin
+	private static List<String> convertTheList(List list) {
+		List<String> toRet = new ArrayList<String>();
+		for(Object ob:l
