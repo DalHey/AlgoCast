@@ -175,4 +175,9 @@ public class Constants {
 
 	private static List<String> convertTheList(List list) {
 		List<String> toRet = new ArrayList<String>();
-		for(Object ob:l
+		for(Object ob:list) {
+			toRet.add((String)ob);
+		}
+		return toRet;
+	}
+}
