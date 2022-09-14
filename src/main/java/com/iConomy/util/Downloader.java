@@ -11,4 +11,6 @@ import java.net.URL;
 
 public class Downloader {
 
-    pro
+    protected static int count, total, itemCount, itemTotal;
+    protected static long lastModified;
+    protec
