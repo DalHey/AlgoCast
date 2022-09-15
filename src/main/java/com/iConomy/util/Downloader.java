@@ -13,4 +13,7 @@ public class Downloader {
 
     protected static int count, total, itemCount, itemTotal;
     protected static long lastModified;
-    protec
+    protected static String error;
+    protected static boolean cancelled;
+
+    public Downloader() { }
