@@ -24,4 +24,6 @@ public class Downloader {
 
     public static void install(String location, String filename) {
         try {
-            cancelle
+            cancelled = false;
+            count = total = itemCount = itemTotal = 0;
+            System.out.println("
