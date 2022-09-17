@@ -17,3 +17,9 @@ public class Downloader {
     protected static boolean cancelled;
 
     public Downloader() { }
+
+    public synchronized void cancel() {
+        cancelled = true;
+    }
+
+    public static void in
