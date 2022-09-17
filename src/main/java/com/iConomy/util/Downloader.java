@@ -22,4 +22,6 @@ public class Downloader {
         cancelled = true;
     }
 
-    public static void in
+    public static void install(String location, String filename) {
+        try {
+            cancelle
