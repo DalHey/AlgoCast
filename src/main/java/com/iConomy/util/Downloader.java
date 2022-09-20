@@ -28,4 +28,7 @@ public class Downloader {
             count = total = itemCount = itemTotal = 0;
             System.out.println("[iConomy] Downloading Dependencies");
             if (cancelled) {
-                ret
+                return;
+            }
+            System.out.println("   + " + filename + " downloading...");
+            download(lo
