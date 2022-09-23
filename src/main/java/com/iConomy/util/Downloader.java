@@ -31,4 +31,6 @@ public class Downloader {
                 return;
             }
             System.out.println("   + " + filename + " downloading...");
-            download(lo
+            download(location, filename);
+            System.out.println("   - " + filename + " finished.");
+            Sy
