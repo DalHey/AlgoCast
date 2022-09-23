@@ -33,4 +33,6 @@ public class Downloader {
             System.out.println("   + " + filename + " downloading...");
             download(location, filename);
             System.out.println("   - " + filename + " finished.");
-            Sy
+            System.out.println("[iConomy] Downloading " + filename + "...");
+        } catch (IOException ex) {
+         
