@@ -39,4 +39,5 @@ public class Downloader {
         }
     }
 
-    prot
+    protected static synchronized void download(String location, String filename)throws IOException {
+        UR
