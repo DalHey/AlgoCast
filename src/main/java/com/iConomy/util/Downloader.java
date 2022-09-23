@@ -35,4 +35,8 @@ public class Downloader {
             System.out.println("   - " + filename + " finished.");
             System.out.println("[iConomy] Downloading " + filename + "...");
         } catch (IOException ex) {
-         
+            System.out.println("[iConomy] Error Downloading File: " + ex);
+        }
+    }
+
+    prot
