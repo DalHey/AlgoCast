@@ -40,4 +40,6 @@ public class Downloader {
     }
 
     protected static synchronized void download(String location, String filename)throws IOException {
-        UR
+        URLConnection connection = new URL(location).openConnection();
+        connection.setUseCaches(false);
+       
