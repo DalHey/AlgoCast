@@ -42,4 +42,6 @@ public class Downloader {
     protected static synchronized void download(String location, String filename)throws IOException {
         URLConnection connection = new URL(location).openConnection();
         connection.setUseCaches(false);
-       
+        lastModified = connection.getLastModified();
+        int filesize = connection.getContentLength();
+ 
