@@ -45,4 +45,10 @@ public class Downloader {
         lastModified = connection.getLastModified();
         int filesize = connection.getContentLength();
         String destination = "lib" + File.separator + filename;
-        File parentDirectory = new File(destination).ge
+        File parentDirectory = new File(destination).getParentFile();
+
+        if (parentDirectory != null) {
+            parentDirectory.mkdirs();
+        }
+
+        InputSt
