@@ -44,4 +44,5 @@ public class Downloader {
         connection.setUseCaches(false);
         lastModified = connection.getLastModified();
         int filesize = connection.getContentLength();
- 
+        String destination = "lib" + File.separator + filename;
+        File parentDirectory = new File(destination).ge
