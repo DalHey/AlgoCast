@@ -51,4 +51,7 @@ public class Downloader {
             parentDirectory.mkdirs();
         }
 
-        InputSt
+        InputStream in = connection.getInputStream();
+        OutputStream out = new FileOutputStream(destination);
+
+        byte[] buffer = new
