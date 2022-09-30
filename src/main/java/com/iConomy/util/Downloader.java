@@ -54,4 +54,9 @@ public class Downloader {
         InputStream in = connection.getInputStream();
         OutputStream out = new FileOutputStream(destination);
 
-        byte[] buffer = new
+        byte[] buffer = new byte[65536];
+        int currentCount = 0;
+        for (;;) {
+            if (cancelled) {
+                break;
+ 
