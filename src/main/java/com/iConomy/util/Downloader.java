@@ -59,4 +59,9 @@ public class Downloader {
         for (;;) {
             if (cancelled) {
                 break;
- 
+            }
+
+            int count = in.read(buffer);
+
+            if (count < 0) {
+                
