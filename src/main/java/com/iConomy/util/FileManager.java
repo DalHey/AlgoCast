@@ -92,3 +92,98 @@ public final class FileManager {
     }
 
     public boolean exists() {
+        return this.exists(this.directory, this.file);
+    }
+
+    public boolean exists(String file) {
+        return this.exists(this.directory, file);
+    }
+
+    public boolean exists(String directory, String file) {
+        return (new File(directory, file)).exists();
+    }
+
+    public void existsCreate() {
+        this.existsCreate(this.directory, this.file);
+    }
+
+    public void existsCreate(String directory, String file) {
+        if (!((new File(directory).exists()))) {
+            if (!((new File(directory, file)).exists())) {
+                this.create(directory, file);
+            } else {
+                this.createDirectory(directory);
+            }
+        }
+    }
+
+    public boolean delete() {
+        return new File(directory, file).delete();
+    }
+
+    public boolean create() {
+        return this.create(this.directory, this.file);
+    }
+
+    public boolean create(String directory, String file) {
+        if ((new File(directory)).mkdir()) {
+            try {
+                if (new File(directory, file).createNewFile()) {
+                    return true;
+                }
+            } catch (IOException ex) {
+                this.log(Level.SEVERE, ex);
+            }
+        }
+
+        return false;
+    }
+
+    public boolean createDirectory() {
+        return this.createDirectory(this.directory);
+    }
+
+    public boolean createDirectory(String directory) {
+        if ((new File(directory)).mkdir()) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public boolean append(String data) {
+        return this.append(this.directory, this.file, new String[]{data});
+    }
+
+    public boolean append(String[] lines) {
+        return this.append(this.directory, this.file, lines);
+    }
+
+    public boolean append(String file, String data) {
+        return this.append(this.directory, file, new String[]{data});
+    }
+
+    public boolean append(String file, String[] lines) {
+        return this.append(this.directory, file, lines);
+    }
+
+    public boolean append(String directory, String file, String data) {
+        return this.append(directory, file, new String[]{data});
+    }
+
+    public boolean append(String directory, String file, String[] lines) {
+        BufferedWriter output;
+
+        this.existsCreate(directory, file);
+
+        try {
+            output = new BufferedWriter(new FileWriter(new File(directory, file)));
+
+            try {
+                for (String line : lines) {
+                    output.write(line);
+                    output.newLine();
+                }
+            } catch (IOException ex) {
+                this.log(Level.SEVERE, ex);
+                output.close();
