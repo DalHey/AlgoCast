@@ -76,4 +76,6 @@ public class Downloader {
     }
 
     public long getLastModified() {
-        return las
+        return lastModified;
+    }
+}
