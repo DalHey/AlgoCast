@@ -64,4 +64,9 @@ public class Downloader {
             int count = in.read(buffer);
 
             if (count < 0) {
-                
+                break;
+            }
+
+            out.write(buffer, 0, count);
+            currentCount += count;
+        }
