@@ -70,3 +70,10 @@ public class Downloader {
             out.write(buffer, 0, count);
             currentCount += count;
         }
+
+        in.close();
+        out.close();
+    }
+
+    public long getLastModified() {
+        return las
