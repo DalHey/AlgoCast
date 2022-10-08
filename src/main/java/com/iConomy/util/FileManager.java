@@ -187,3 +187,101 @@ public final class FileManager {
             } catch (IOException ex) {
                 this.log(Level.SEVERE, ex);
                 output.close();
+                return false;
+            }
+
+            output.close();
+            return true;
+        } catch (FileNotFoundException ex) {
+            this.log(Level.SEVERE, ex);
+        } catch (IOException ex) {
+            this.log(Level.SEVERE, ex);
+        }
+
+        return false;
+    }
+
+    public boolean read() {
+        return this.read(this.directory, this.file);
+    }
+
+    public boolean read(String file) {
+        return this.read(this.directory, file);
+    }
+
+    public boolean read(String directory, String file) {
+        BufferedReader input;
+        String line;
+
+        try {
+            input = new BufferedReader(new FileReader(new File(directory, file)));
+
+            try {
+                this.source = input.readLine();
+
+                while ((line = input.readLine()) != null) {
+                    this.lines.add(line);
+                }
+            } catch (IOException ex) {
+                this.log(Level.SEVERE, ex);
+
+                return false;
+            }
+
+            return true;
+        } catch (FileNotFoundException ex) {
+            this.log(Level.SEVERE, ex);
+        }
+
+        return false;
+    }
+
+    public boolean write(Object data) {
+        return this.write(this.directory, this.file, new Object[]{data});
+    }
+
+    public boolean write(Object[] lines) {
+        return this.write(this.directory, this.file, lines);
+    }
+
+    public boolean write(String file, Object data) {
+        return this.write(this.directory, file, new Object[]{data});
+    }
+
+    public boolean write(String file, String[] lines) {
+        return this.write(this.directory, file, lines);
+    }
+
+    public boolean write(String directory, String file, Object data) {
+        return this.write(directory, file, new Object[]{data});
+    }
+
+    public boolean write(String directory, String file, Object[] lines) {
+        BufferedWriter output;
+
+        this.existsCreate(directory, file);
+
+        try {
+            output = new BufferedWriter(new FileWriter(new File(directory, file)));
+
+            try {
+                for (Object line : lines) {
+                    output.write(String.valueOf(line));
+                }
+            } catch (IOException ex) {
+                this.log(Level.SEVERE, ex);
+                output.close();
+                return false;
+            }
+
+            output.close();
+            return true;
+        } catch (FileNotFoundException ex) {
+            this.log(Level.SEVERE, ex);
+        } catch (IOException ex) {
+            this.log(Level.SEVERE, ex);
+        }
+
+        return false;
+    }
+}
