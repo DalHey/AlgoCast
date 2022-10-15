@@ -10,4 +10,5 @@ import org.bukkit.ChatColor;
  * Copyright (C) 2011  Nijikokun <nijikokun@gmail.com>
  *
  * This program is free software: you can redistribute it and/or modify
- * it under th
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either versi
