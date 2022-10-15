@@ -7,4 +7,7 @@ import com.iConomy.iConomy;
 import org.bukkit.ChatColor;
 
 /**
- * Copyright (C) 2011  Nijikokun <ni
+ * Copyright (C) 2011  Nijikokun <nijikokun@gmail.com>
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under th
