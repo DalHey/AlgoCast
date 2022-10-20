@@ -24,4 +24,9 @@ import org.bukkit.ChatColor;
  */
 public class Messaging {
 
-    private s
+    private static CommandSender sender = null;
+
+    /**
+     * Converts a list of arguments into points.
+     *
+     * @p
