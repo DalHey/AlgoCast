@@ -29,4 +29,5 @@ public class Messaging {
     /**
      * Converts a list of arguments into points.
      *
-     * @p
+     * @param original The original string necessary to convert inside of.
+     * @param arguments The list of argumen
