@@ -31,4 +31,6 @@ public class Messaging {
      *
      * @param original The original string necessary to convert inside of.
      * @param arguments The list of arguments, multiple arguments are seperated by commas for a single point.
-     * @param points The point 
+     * @param points The point used to alter the argument.
+     *
+     * @return <code>String</code> - The parsed string after
