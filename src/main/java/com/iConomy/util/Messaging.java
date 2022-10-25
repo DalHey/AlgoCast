@@ -33,4 +33,6 @@ public class Messaging {
      * @param arguments The list of arguments, multiple arguments are seperated by commas for a single point.
      * @param points The point used to alter the argument.
      *
-     * @return <code>String</code> - The parsed string after
+     * @return <code>String</code> - The parsed string after converting arguments to variables (points)
+     */
+    public static String argumen
