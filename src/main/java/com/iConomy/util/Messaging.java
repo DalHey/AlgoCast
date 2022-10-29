@@ -35,4 +35,5 @@ public class Messaging {
      *
      * @return <code>String</code> - The parsed string after converting arguments to variables (points)
      */
-    public static String argumen
+    public static String argument(String original, Object[] arguments, Object[] points) {
+        for (int i = 0; i < arguments.length; i+
