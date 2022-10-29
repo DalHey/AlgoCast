@@ -36,4 +36,6 @@ public class Messaging {
      * @return <code>String</code> - The parsed string after converting arguments to variables (points)
      */
     public static String argument(String original, Object[] arguments, Object[] points) {
-        for (int i = 0; i < arguments.length; i+
+        for (int i = 0; i < arguments.length; i++) {
+            if (String.valueOf(arguments[i]).contains(",")) {
+                for (String arg : S
