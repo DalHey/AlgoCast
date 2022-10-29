@@ -38,4 +38,5 @@ public class Messaging {
     public static String argument(String original, Object[] arguments, Object[] points) {
         for (int i = 0; i < arguments.length; i++) {
             if (String.valueOf(arguments[i]).contains(",")) {
-                for (String arg : S
+                for (String arg : String.valueOf(arguments[i]).split(",")) {
+                    original = original.replace(arg, String.valueOf(points[i]));
