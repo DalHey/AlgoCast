@@ -40,3 +40,6 @@ public class Messaging {
             if (String.valueOf(arguments[i]).contains(",")) {
                 for (String arg : String.valueOf(arguments[i]).split(",")) {
                     original = original.replace(arg, String.valueOf(points[i]));
+                }
+            } else {
+                original = original.replace(String.valueOf(argumen
