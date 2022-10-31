@@ -42,4 +42,11 @@ public class Messaging {
                     original = original.replace(arg, String.valueOf(points[i]));
                 }
             } else {
-                original = original.replace(String.valueOf(argumen
+                original = original.replace(String.valueOf(arguments[i]), String.valueOf(points[i]));
+            }
+        }
+
+        return original;
+    }
+
+    
