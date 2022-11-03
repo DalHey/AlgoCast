@@ -49,4 +49,5 @@ public class Messaging {
         return original;
     }
 
-    
+    /**
+     * Parses the original string against color specific codes. This one converts &[code] to §[code]
