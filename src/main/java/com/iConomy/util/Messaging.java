@@ -51,3 +51,7 @@ public class Messaging {
 
     /**
      * Parses the original string against color specific codes. This one converts &[code] to §[code]
+     * <br /><br />
+     * Example:
+     * <blockquote><pre>
+     * Messaging.parse("He
