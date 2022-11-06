@@ -54,4 +54,7 @@ public class Messaging {
      * <br /><br />
      * Example:
      * <blockquote><pre>
-     * Messaging.parse("He
+     * Messaging.parse("Hello &2world!"); // returns: Hello §2world!
+     * </pre></blockquote>
+     *
+     * @param original The orig
