@@ -57,4 +57,6 @@ public class Messaging {
      * Messaging.parse("Hello &2world!"); // returns: Hello §2world!
      * </pre></blockquote>
      *
-     * @param original The orig
+     * @param original The original string used for conversions.
+     *
+     * @return <code>String</code> - The parsed string after 
