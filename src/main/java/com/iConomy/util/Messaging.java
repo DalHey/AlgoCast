@@ -59,4 +59,7 @@ public class Messaging {
      *
      * @param original The original string used for conversions.
      *
-     * @return <code>String</code> - The parsed string after 
+     * @return <code>String</code> - The parsed string after conversion.
+     */
+    public static String parse(String original) {
+        original = colorize(origin
