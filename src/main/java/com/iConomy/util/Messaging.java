@@ -64,3 +64,8 @@ public class Messaging {
     public static String parse(String original) {
         original = colorize(original);
         return original.replaceAll("(&([a-z0-9]))", "\u00A7$2").replace("&&", "&");
+
+    }
+
+    /**
+     * Converts color codes into the simoleon code. Sort of a HTML format color code tag and
