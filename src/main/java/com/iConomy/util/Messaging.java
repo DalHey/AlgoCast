@@ -70,4 +70,7 @@ public class Messaging {
     /**
      * Converts color codes into the simoleon code. Sort of a HTML format color code tag and `[code]
      * <p>
-     * Color codes allowed: black, navy, green, teal, red, purple, gold, silver, gray, bl
+     * Color codes allowed: black, navy, green, teal, red, purple, gold, silver, gray, blue, lime, aqua, rose, pink, yellow, white.</p>
+     * Example:
+     * <blockquote<pre>
+  
