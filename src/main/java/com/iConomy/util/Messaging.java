@@ -73,4 +73,5 @@ public class Messaging {
      * Color codes allowed: black, navy, green, teal, red, purple, gold, silver, gray, blue, lime, aqua, rose, pink, yellow, white.</p>
      * Example:
      * <blockquote<pre>
-  
+     * Messaging.colorize("Hello &lt;green>world!"); // returns: Hello $world!
+     * </pre></b
