@@ -74,4 +74,6 @@ public class Messaging {
      * Example:
      * <blockquote<pre>
      * Messaging.colorize("Hello &lt;green>world!"); // returns: Hello $world!
-     * </pre></b
+     * </pre></blockquote>
+     *
+     * @param original Original string to be parsed against group of color n
