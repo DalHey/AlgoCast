@@ -76,4 +76,8 @@ public class Messaging {
      * Messaging.colorize("Hello &lt;green>world!"); // returns: Hello $world!
      * </pre></blockquote>
      *
-     * @param original Original string to be parsed against group of color n
+     * @param original Original string to be parsed against group of color names.
+     *
+     * @return <code>String</code> - The parsed string after conversion.
+     */
+  
