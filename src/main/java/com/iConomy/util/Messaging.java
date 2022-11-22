@@ -83,4 +83,5 @@ public class Messaging {
     public static String colorize(String original) {
         original = original.replace("`r", ChatColor.RED.toString());
         original = original.replace("`R", ChatColor.DARK_RED.toString());
-        original = ori
+        original = original.replace("`y", ChatColor.YELLOW.toString());
+        original = original.replace("`Y", ChatColor.GOLD
