@@ -81,4 +81,6 @@ public class Messaging {
      * @return <code>String</code> - The parsed string after conversion.
      */
     public static String colorize(String original) {
-        original = original.replace("`r", ChatColor
+        original = original.replace("`r", ChatColor.RED.toString());
+        original = original.replace("`R", ChatColor.DARK_RED.toString());
+        original = ori
