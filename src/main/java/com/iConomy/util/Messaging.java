@@ -85,4 +85,6 @@ public class Messaging {
         original = original.replace("`R", ChatColor.DARK_RED.toString());
         original = original.replace("`y", ChatColor.YELLOW.toString());
         original = original.replace("`Y", ChatColor.GOLD.toString());
-        original = original.replace("`g", ChatColor.GREEN.toString())
+        original = original.replace("`g", ChatColor.GREEN.toString());
+        original = original.replace("`G", ChatColor.DARK_GREEN.toString());
+        original 
