@@ -90,3 +90,5 @@ public class Messaging {
         original = original.replace("`a", ChatColor.AQUA.toString());
         original = original.replace("`A", ChatColor.DARK_AQUA.toString());
         original = original.replace("`b", ChatColor.BLUE.toString());
+        original = original.replace("`B", ChatColor.DARK_BLUE.toString());
+        original = original.rep
