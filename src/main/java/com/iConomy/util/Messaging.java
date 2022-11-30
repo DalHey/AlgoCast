@@ -95,4 +95,6 @@ public class Messaging {
         original = original.replace("`P", ChatColor.DARK_PURPLE.toString());
         original = original.replace("`k", ChatColor.BLACK.toString());
         original = original.replace("`s", ChatColor.GRAY.toString());
-        original = original.replace("`S", ChatColor.DARK_
+        original = original.replace("`S", ChatColor.DARK_GRAY.toString());
+        original = original.replace("`w", ChatColor.WHITE.toString());
+     
