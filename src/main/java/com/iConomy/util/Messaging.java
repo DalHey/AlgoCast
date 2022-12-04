@@ -97,4 +97,4 @@ public class Messaging {
         original = original.replace("`s", ChatColor.GRAY.toString());
         original = original.replace("`S", ChatColor.DARK_GRAY.toString());
         original = original.replace("`w", ChatColor.WHITE.toString());
-        return original.replace("<black>", "\u00A70").replace("<navy>", "\u00A71").replace("<green>", "\u00A72").replace
+        return original.replace("<black>", "\u00A70").replace("<navy>", "\u00A71").replace("<green>", "\u00A72").replace("<teal>", "\u00A73").replace("<red>", "\u00A74").replace("<purple>", "\u00A75").replace("<gold>", "\
