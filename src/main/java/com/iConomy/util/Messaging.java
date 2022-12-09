@@ -101,4 +101,6 @@ public class Messaging {
     }
 
     /**
-     * Helper function to assist
+     * Helper function to assist with making brackets. Why? Dunno, lazy.
+     *
+     * @param message The message inside of bracket
