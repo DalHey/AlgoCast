@@ -112,4 +112,7 @@ public class Messaging {
     }
 
     /**
-     * Save the player to be sent
+     * Save the player to be sent messages later. Ease of use sending messages.
+     * <br /><br />
+     * Example:
+     * <blockquote><
