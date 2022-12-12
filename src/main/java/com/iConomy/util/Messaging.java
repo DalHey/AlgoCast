@@ -107,4 +107,9 @@ public class Messaging {
      *
      * @return <code>String</code> - The message inside [brackets]
      */
-    public static String bracke
+    public static String bracketize(String message) {
+        return "[" + message + "]";
+    }
+
+    /**
+     * Save the player to be sent
