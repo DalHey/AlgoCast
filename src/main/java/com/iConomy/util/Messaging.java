@@ -118,4 +118,8 @@ public class Messaging {
      * <blockquote><pre>
      * Messaging.save(player);
      * Messaging.send("This will go to the player saved.");
+     * </pre></blockquote>
      *
+     * @param player The player we wish to save for later.
+     */
+    public static 
