@@ -122,4 +122,9 @@ public class Messaging {
      *
      * @param player The player we wish to save for later.
      */
-    public static 
+    public static void save(Player player) {
+        Messaging.sender = player;
+    }
+
+    /**
+     * Save the entity to be sent m
