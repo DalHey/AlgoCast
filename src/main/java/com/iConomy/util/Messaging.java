@@ -115,4 +115,7 @@ public class Messaging {
      * Save the player to be sent messages later. Ease of use sending messages.
      * <br /><br />
      * Example:
-     * <blockquote><
+     * <blockquote><pre>
+     * Messaging.save(player);
+     * Messaging.send("This will go to the player saved.");
+     *
