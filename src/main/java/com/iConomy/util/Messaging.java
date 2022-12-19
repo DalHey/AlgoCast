@@ -127,4 +127,7 @@ public class Messaging {
     }
 
     /**
-     * Save the entity to be sent m
+     * Save the entity to be sent messages later. Ease of use sending messages.
+     * <br /><br />
+     * Example:
+     * <bl
