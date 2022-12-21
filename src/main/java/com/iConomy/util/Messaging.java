@@ -130,4 +130,6 @@ public class Messaging {
      * Save the entity to be sent messages later. Ease of use sending messages.
      * <br /><br />
      * Example:
-     * <bl
+     * <blockquote><pre>
+     * Messaging.save(sender);
+     * Messaging.voice("This will go to the
