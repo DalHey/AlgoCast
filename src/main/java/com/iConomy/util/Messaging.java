@@ -132,4 +132,7 @@ public class Messaging {
      * Example:
      * <blockquote><pre>
      * Messaging.save(sender);
-     * Messaging.voice("This will go to the
+     * Messaging.voice("This will go to the entity saved.");
+     * </pre></blockquote>
+     *
+     * @param player The player we wish to sav
