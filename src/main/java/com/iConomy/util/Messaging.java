@@ -145,4 +145,6 @@ public class Messaging {
      * Sends a message to a specific player.
      * <br /><br />
      * Example:
- 
+     * <blockquote><pre>
+     * Messaging.send(player, "This will go to the player saved.");
+     * </pre>
