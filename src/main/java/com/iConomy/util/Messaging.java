@@ -135,4 +135,7 @@ public class Messaging {
      * Messaging.voice("This will go to the entity saved.");
      * </pre></blockquote>
      *
-     * @param player The player we wish to sav
+     * @param player The player we wish to save for later.
+     */
+    public static void save(CommandSender sender) {
+        Messaging.sende
