@@ -138,4 +138,11 @@ public class Messaging {
      * @param player The player we wish to save for later.
      */
     public static void save(CommandSender sender) {
-        Messaging.sende
+        Messaging.sender = sender;
+    }
+
+    /**
+     * Sends a message to a specific player.
+     * <br /><br />
+     * Example:
+ 
