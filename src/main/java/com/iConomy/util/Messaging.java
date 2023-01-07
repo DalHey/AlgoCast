@@ -153,4 +153,9 @@ public class Messaging {
      * @param message The message to be sent.
      */
     public static void send(Player player, String message) {
-        player
+        player.sendMessage(parse(message));
+    }
+
+    /**
+     * Sends a message to an entity
+     * <br /><b
