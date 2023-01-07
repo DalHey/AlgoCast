@@ -150,4 +150,7 @@ public class Messaging {
      * </pre></blockquote>
      *
      * @param player Player we are sending the message to.
-     * @param message The messa
+     * @param message The message to be sent.
+     */
+    public static void send(Player player, String message) {
+        player
