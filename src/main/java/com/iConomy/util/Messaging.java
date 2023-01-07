@@ -147,4 +147,7 @@ public class Messaging {
      * Example:
      * <blockquote><pre>
      * Messaging.send(player, "This will go to the player saved.");
-     * </pre>
+     * </pre></blockquote>
+     *
+     * @param player Player we are sending the message to.
+     * @param message The messa
