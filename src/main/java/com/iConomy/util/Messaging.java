@@ -164,4 +164,7 @@ public class Messaging {
      * Messaging.send(sender, "This will go to the entity specified.");
      * </pre></blockquote>
      *
-     * @param sender Entity we are sending
+     * @param sender Entity we are sending the message to.
+     * @param message The message to be sent.
+     */
+    public static
