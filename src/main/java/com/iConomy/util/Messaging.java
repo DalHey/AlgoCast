@@ -161,4 +161,7 @@ public class Messaging {
      * <br /><br />
      * Example:
      * <blockquote><pre>
-     * Messaging.send(sender, "This will go to the
+     * Messaging.send(sender, "This will go to the entity specified.");
+     * </pre></blockquote>
+     *
+     * @param sender Entity we are sending
