@@ -158,4 +158,7 @@ public class Messaging {
 
     /**
      * Sends a message to an entity
-     * <br /><b
+     * <br /><br />
+     * Example:
+     * <blockquote><pre>
+     * Messaging.send(sender, "This will go to the
