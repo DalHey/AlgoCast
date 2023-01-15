@@ -167,4 +167,6 @@ public class Messaging {
      * @param sender Entity we are sending the message to.
      * @param message The message to be sent.
      */
-    public static
+    public static void send(CommandSender sender, String message) {
+        sender.sendMessage(parse(message));
+  
