@@ -175,4 +175,7 @@ public class Messaging {
      * Sends a message to the stored entity.
      *
      * @param message The message to be sent.
- 
+     * @see Messaging#save(CommandSender)
+     */
+    public static void send(String message) {
+        i
