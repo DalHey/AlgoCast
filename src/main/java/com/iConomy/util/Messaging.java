@@ -178,4 +178,7 @@ public class Messaging {
      * @see Messaging#save(CommandSender)
      */
     public static void send(String message) {
-        i
+        if (Messaging.sender != null) {
+            sender.sendMessage(parse(message));
+        }
+    
