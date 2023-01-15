@@ -169,4 +169,10 @@ public class Messaging {
      */
     public static void send(CommandSender sender, String message) {
         sender.sendMessage(parse(message));
-  
+    }
+
+    /**
+     * Sends a message to the stored entity.
+     *
+     * @param message The message to be sent.
+ 
