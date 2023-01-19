@@ -181,4 +181,9 @@ public class Messaging {
         if (Messaging.sender != null) {
             sender.sendMessage(parse(message));
         }
-    
+    }
+
+    /**
+     * Broadcast a message to every player online.
+     *
+     * @param message - The message to 
