@@ -186,4 +186,7 @@ public class Messaging {
     /**
      * Broadcast a message to every player online.
      *
-     * @param message - The message to 
+     * @param message - The message to be sent.
+     */
+    public static void broadcast(String message) {
+        for (Player p : iCon
