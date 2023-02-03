@@ -189,4 +189,7 @@ public class Messaging {
      * @param message - The message to be sent.
      */
     public static void broadcast(String message) {
-        for (Player p : iCon
+        for (Player p : iConomy.getBukkitServer().getOnlinePlayers()) {
+            p.sendMessage(parse(message));
+        }
+   
