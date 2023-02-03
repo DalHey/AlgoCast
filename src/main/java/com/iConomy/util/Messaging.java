@@ -192,4 +192,5 @@ public class Messaging {
         for (Player p : iConomy.getBukkitServer().getOnlinePlayers()) {
             p.sendMessage(parse(message));
         }
-   
+    }
+}
