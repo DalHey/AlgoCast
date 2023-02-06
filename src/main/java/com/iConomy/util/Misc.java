@@ -13,4 +13,6 @@ public class Misc {
      *
      * @param text The text that we were provided with.
      * @param against The first variable that needs to be checked against
-     * @param or The s
+     * @param or The second variable that it could possibly be.
+     *
+     * @return <code>Boolean</code> - True or f
