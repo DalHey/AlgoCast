@@ -11,4 +11,6 @@ public class Misc {
     /**
      * Checks text against two variables, if it equals at least one returns true.
      *
-     * @param text The text that we were
+     * @param text The text that we were provided with.
+     * @param against The first variable that needs to be checked against
+     * @param or The s
