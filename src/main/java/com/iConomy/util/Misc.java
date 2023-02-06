@@ -9,4 +9,6 @@ import org.bukkit.command.CommandSender;
 public class Misc {
 
     /**
-     * Checks text agains
+     * Checks text against two variables, if it equals at least one returns true.
+     *
+     * @param text The text that we were
