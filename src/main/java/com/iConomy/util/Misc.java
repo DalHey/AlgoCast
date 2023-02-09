@@ -15,4 +15,7 @@ public class Misc {
      * @param against The first variable that needs to be checked against
      * @param or The second variable that it could possibly be.
      *
-     * @return <code>Boolean</code> - True or f
+     * @return <code>Boolean</code> - True or false based on text.
+     */
+    public static boolean is(String text, String[] is) {
+        for (String
