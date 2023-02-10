@@ -18,4 +18,7 @@ public class Misc {
      * @return <code>Boolean</code> - True or false based on text.
      */
     public static boolean is(String text, String[] is) {
-        for (String
+        for (String s : is) {
+            if (text.equalsIgnoreCase(s)) {
+                return true;
+     
