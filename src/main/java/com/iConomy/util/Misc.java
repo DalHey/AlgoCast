@@ -31,3 +31,7 @@ public class Misc {
     }
 
     public static int plural(Double amount) {
+        if(amount != 1 || amount != -1) {
+            return 1;
+        } else {
+            return
