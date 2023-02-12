@@ -21,4 +21,9 @@ public class Misc {
         for (String s : is) {
             if (text.equalsIgnoreCase(s)) {
                 return true;
-     
+            }
+        }
+        return false;
+    }
+
+    public static boolean isSelf(CommandSend
