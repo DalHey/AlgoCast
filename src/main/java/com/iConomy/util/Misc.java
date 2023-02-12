@@ -26,4 +26,5 @@ public class Misc {
         return false;
     }
 
-    public static boolean isSelf(CommandSend
+    public static boolean isSelf(CommandSender sender, String name) {
+        return (sender instanceof Player) ? (((Player)sender).getName().equalsIgnore
