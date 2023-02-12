@@ -27,4 +27,7 @@ public class Misc {
     }
 
     public static boolean isSelf(CommandSender sender, String name) {
-        return (sender instanceof Player) ? (((Player)sender).getName().equalsIgnore
+        return (sender instanceof Player) ? (((Player)sender).getName().equalsIgnoreCase(name)) ? true : false : false;
+    }
+
+    public static int plural(Double amount) {
