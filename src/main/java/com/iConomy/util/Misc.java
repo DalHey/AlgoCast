@@ -46,4 +46,7 @@ public class Misc {
         }
     }
 
-    public static Str
+    public static String BankCurrency(int which, String denom) {
+        String[] denoms = denom.split(",");
+
+        re
