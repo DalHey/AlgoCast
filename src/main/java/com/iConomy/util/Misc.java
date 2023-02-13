@@ -34,4 +34,9 @@ public class Misc {
         if(amount != 1 || amount != -1) {
             return 1;
         } else {
-            return
+            return 0;
+        }
+    }
+    
+    public static int plural(Integer amount) {
+        if(amount != 1 || amount !
