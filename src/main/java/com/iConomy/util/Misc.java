@@ -49,4 +49,7 @@ public class Misc {
     public static String BankCurrency(int which, String denom) {
         String[] denoms = denom.split(",");
 
-        re
+        return denoms[which];
+    }
+
+    public static String formatted(String amount, List<String> ma
