@@ -56,4 +56,6 @@ public class Misc {
         String formatted = "";
         String famount = amount.replace(",", "");
 
- 
+        if(Constants.FormatMinor) {
+            String[] pieces = null;
+            String[] f
