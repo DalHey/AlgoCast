@@ -52,4 +52,8 @@ public class Misc {
         return denoms[which];
     }
 
-    public static String formatted(String amount, List<String> ma
+    public static String formatted(String amount, List<String> maj, List<String> min) {
+        String formatted = "";
+        String famount = amount.replace(",", "");
+
+ 
