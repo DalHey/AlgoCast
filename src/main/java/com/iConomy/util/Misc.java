@@ -58,4 +58,8 @@ public class Misc {
 
         if(Constants.FormatMinor) {
             String[] pieces = null;
-            String[] f
+            String[] fpieces = null;
+
+            if(amount.contains(".")) {
+                pieces = amount.split("\\.");
+      
