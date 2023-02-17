@@ -65,4 +65,8 @@ public class Misc {
                 fpieces = new String[] { pieces[0].replace(",", ""), pieces[1] };
             } else {
                 pieces = new String[] { amount, "0" };
-                fpieces = new String[] { amount.replace(",", ""
+                fpieces = new String[] { amount.replace(",", ""), "0" };
+            }
+
+            if(Constants.FormatSeperated) {
+                String
