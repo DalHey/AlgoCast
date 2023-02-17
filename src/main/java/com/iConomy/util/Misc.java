@@ -62,4 +62,6 @@ public class Misc {
 
             if(amount.contains(".")) {
                 pieces = amount.split("\\.");
-      
+                fpieces = new String[] { pieces[0].replace(",", ""), pieces[1] };
+            } else {
+                pieces = 
