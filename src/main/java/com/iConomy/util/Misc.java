@@ -64,4 +64,5 @@ public class Misc {
                 pieces = amount.split("\\.");
                 fpieces = new String[] { pieces[0].replace(",", ""), pieces[1] };
             } else {
-                pieces = 
+                pieces = new String[] { amount, "0" };
+                fpieces = new String[] { amount.replace(",", ""
