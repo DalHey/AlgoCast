@@ -69,4 +69,5 @@ public class Misc {
             }
 
             if(Constants.FormatSeperated) {
-                String
+                String major = maj.get(plural(Integer.valueOf(fpieces[0])));
+                String minor = min.get(plural(Integer.val
