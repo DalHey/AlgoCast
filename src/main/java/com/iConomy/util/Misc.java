@@ -72,4 +72,5 @@ public class Misc {
                 String major = maj.get(plural(Integer.valueOf(fpieces[0])));
                 String minor = min.get(plural(Integer.valueOf(fpieces[1])));
 
-                if(pieces[1].startsWith("0") && !pieces[1].equals("0")) pieces[1] = piec
+                if(pieces[1].startsWith("0") && !pieces[1].equals("0")) pieces[1] = pieces[1].substring(1, pieces[1].length());
+                if(pieces[0].startsWith("0") && !pieces[0].equals("
