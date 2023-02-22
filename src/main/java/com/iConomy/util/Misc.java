@@ -75,4 +75,5 @@ public class Misc {
                 if(pieces[1].startsWith("0") && !pieces[1].equals("0")) pieces[1] = pieces[1].substring(1, pieces[1].length());
                 if(pieces[0].startsWith("0") && !pieces[0].equals("0")) pieces[0] = pieces[0].substring(1, pieces[0].length());
 
-                if(Integer.valueOf(fpieces
+                if(Integer.valueOf(fpieces[1]) != 0 && Integer.valueOf(fpieces[0]) != 0) {
+                    formatted = pieces[0] + " " + major + ", " + p
