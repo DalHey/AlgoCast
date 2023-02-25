@@ -78,4 +78,6 @@ public class Misc {
                 if(Integer.valueOf(fpieces[1]) != 0 && Integer.valueOf(fpieces[0]) != 0) {
                     formatted = pieces[0] + " " + major + ", " + pieces[1] + " " + minor;
                 } else if(Integer.valueOf(fpieces[0]) != 0) {
-             
+                    formatted = pieces[0] + " " + major;
+                } else {
+                    formatted =
