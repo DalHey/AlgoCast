@@ -83,4 +83,7 @@ public class Misc {
                     formatted = pieces[1] + " " + minor;
                 }
             } else {
-                String cu
+                String currency = "";
+
+                if(Double.valueOf(famount) < 1 || Double.valueOf(famount) > -1) {
+    
