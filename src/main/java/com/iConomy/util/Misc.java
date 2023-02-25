@@ -80,4 +80,7 @@ public class Misc {
                 } else if(Integer.valueOf(fpieces[0]) != 0) {
                     formatted = pieces[0] + " " + major;
                 } else {
-                    formatted =
+                    formatted = pieces[1] + " " + minor;
+                }
+            } else {
+                String cu
