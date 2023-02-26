@@ -88,4 +88,7 @@ public class Misc {
                 if(Double.valueOf(famount) < 1 || Double.valueOf(famount) > -1) {
                     currency = min.get(plural(Integer.valueOf(fpieces[1])));
                 } else {
-         
+                    currency = maj.get(1);
+                }
+
+                formatted = amount + " " + cu
