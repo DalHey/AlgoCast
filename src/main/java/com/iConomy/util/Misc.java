@@ -86,4 +86,6 @@ public class Misc {
                 String currency = "";
 
                 if(Double.valueOf(famount) < 1 || Double.valueOf(famount) > -1) {
-    
+                    currency = min.get(plural(Integer.valueOf(fpieces[1])));
+                } else {
+         
