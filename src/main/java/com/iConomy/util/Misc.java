@@ -95,4 +95,6 @@ public class Misc {
             }
         } else {
                 int plural = plural(Double.valueOf(famount));
-              
+                String currency = maj.get(plural);
+
+                formatted = amount + " " + curren
