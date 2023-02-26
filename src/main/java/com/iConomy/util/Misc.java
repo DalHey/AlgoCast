@@ -91,4 +91,8 @@ public class Misc {
                     currency = maj.get(1);
                 }
 
-                formatted = amount + " " + cu
+                formatted = amount + " " + currency;
+            }
+        } else {
+                int plural = plural(Double.valueOf(famount));
+              
