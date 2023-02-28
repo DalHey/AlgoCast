@@ -97,4 +97,11 @@ public class Misc {
                 int plural = plural(Double.valueOf(famount));
                 String currency = maj.get(plural);
 
-                formatted = amount + " " + curren
+                formatted = amount + " " + currency;
+        }
+
+        return formatted;
+    }
+
+    /**
+     * Get the player from the server (match
