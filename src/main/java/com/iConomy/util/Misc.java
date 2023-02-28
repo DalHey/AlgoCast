@@ -104,4 +104,7 @@ public class Misc {
     }
 
     /**
-     * Get the player from the server (match
+     * Get the player from the server (matched)
+     */
+    public static Player playerMatch(String name) {
+        Player[] online = iCon
