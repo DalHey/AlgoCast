@@ -107,4 +107,7 @@ public class Misc {
      * Get the player from the server (matched)
      */
     public static Player playerMatch(String name) {
-        Player[] online = iCon
+        Player[] online = iConomy.getBukkitServer().getOnlinePlayers();
+        Player lastPlayer = null;
+
+        for (Pla
