@@ -110,4 +110,7 @@ public class Misc {
         Player[] online = iConomy.getBukkitServer().getOnlinePlayers();
         Player lastPlayer = null;
 
-        for (Pla
+        for (Player player : online) {
+            String playerName = player.getName();
+
+            if (pl
