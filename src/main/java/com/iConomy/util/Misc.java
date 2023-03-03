@@ -113,4 +113,7 @@ public class Misc {
         for (Player player : online) {
             String playerName = player.getName();
 
-            if (pl
+            if (playerName.equalsIgnoreCase(name)) {
+                lastPlayer = player;
+                break;
+  
