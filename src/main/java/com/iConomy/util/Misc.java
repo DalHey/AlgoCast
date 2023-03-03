@@ -116,4 +116,7 @@ public class Misc {
             if (playerName.equalsIgnoreCase(name)) {
                 lastPlayer = player;
                 break;
-  
+            }
+
+            if (playerName.toLowerCase().indexOf(name.toLowerCase()) != -1) {
+                if (
