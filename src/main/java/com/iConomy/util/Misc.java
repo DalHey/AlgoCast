@@ -123,4 +123,10 @@ public class Misc {
                     return null;
                 }
 
-                lastPlaye
+                lastPlayer = player;
+            }
+        }
+
+        return lastPlayer;
+    }
+}
