@@ -119,4 +119,8 @@ public class Misc {
             }
 
             if (playerName.toLowerCase().indexOf(name.toLowerCase()) != -1) {
-                if (
+                if (lastPlayer != null) {
+                    return null;
+                }
+
+                lastPlaye
