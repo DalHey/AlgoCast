@@ -118,3 +118,21 @@ public class Template {
 	public void save(String key, String line) {
 		this.tpl.set(key, line);
 		try {
+			this.tpl.save(f);
+		} catch (IOException ex) {
+			Logger.getLogger(Template.class.getName()).log(Level.SEVERE, null, ex);
+		}
+	}
+
+	public String color(String key) {
+		return Messaging.parse(Messaging.colorize(this.raw(key)));
+	}
+
+	public String parse(String key, Object[] argument, Object[] points) {
+		return Messaging.parse(Messaging.colorize(Messaging.argument(this.raw(key), argument, points)));
+	}
+
+	public String parse(String key, String line, Object[] argument, Object[] points) {
+		return Messaging.parse(Messaging.colorize(Messaging.argument(this.raw(key, line), argument, points)));
+	}
+}
