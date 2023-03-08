@@ -105,3 +105,37 @@ list:
 
 interest:
     announcement: "+amount <green>gained from interest."
+
+accounts:
+    empty: "<rose>Deleted <white>all<rose> accounts."
+    purge: "<rose>All inactive accounts were purged."
+    create: "<green>Created account with the name <white>+name<green>."
+    remove: "<green>Deleted account: <white>+name<green>."
+    remove-total: "<green>Fully deleted: <white>+name<green>."
+    status: "<green>Account status is now <white>+status<green>."
+    bank:
+        create: "<green>Created account for <white>+name<green> with <white>+bank<green>."
+        remove: "<green>Deleted account <white>+name<green> from <white>+bank<green>."
+
+top:
+    opening: "<green>Top <white>+amount<green> Richest Players:"
+    empty: "<white>   Nobody yet!"
+    line: "<white>   +i.<green> +name <white>(<green>+balance<white>)"
+
+error:
+    online: "<rose>Sorry, nobody else is online."
+    exists: "<rose>Account already exists."
+    account: "<rose>Player <white>+name<rose> does not have account."
+    funds: "<rose>Sorry, you do not have enough funds to do that."
+    bank:
+        fee: "<rose>Sorry, this banks fee is more than you are holding."
+        exists: "<rose>Sorry, that bank already exists."
+        doesnt: "<rose>Sorry, bank <white>+name <rose>doesn't exist."
+        couldnt: "<rose>Sorry, bank <white>+name <rose>couldn't be created."
+        account:
+            funds: "<rose>Sorry, your account doesn't have the funds."
+            maxed: "<rose>Sorry, you already have a bank account."
+            none: "<rose>Sorry, no accounts found."
+            doesnt: "<rose>Sorry, no account with the name <white>+name<rose> exists."
+            exists: "<rose>Sorry, an account like that already exists with us."
+            failed: "<rose>Sorry, failed to create account. Try again..."
