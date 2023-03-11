@@ -20,4 +20,6 @@
 #           be altered upon plugin specifictions in iConomy 5.0
 #   - Interest amount is done in seconds.
 #     - Online
-#       If only true, only one bank / account will recieve money for th
+#       If only true, only one bank / account will recieve money for that player.
+#       If only false, it will go through each bank / account and deposit money.
+# 
