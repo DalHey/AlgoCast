@@ -16,4 +16,6 @@
 #       Allows users to create multiple accounts with banks
 #     - Q & A
 #       Q: Why?
-#       A: Money on hand can be lost, money in banks shoul
+#       A: Money on hand can be lost, money in banks should not
+#           be altered upon plugin specifictions in iConomy 5.0
+#   - Interest amount is d
