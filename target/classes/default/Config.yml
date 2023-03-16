@@ -22,4 +22,7 @@
 #     - Online
 #       If only true, only one bank / account will recieve money for that player.
 #       If only false, it will go through each bank / account and deposit money.
-# 
+#     - Announce
+#       Sends message each time a player recieves money.
+#     - Amount
+#   
