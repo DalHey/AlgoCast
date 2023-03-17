@@ -31,4 +31,6 @@
 #     - Interval
 #       - Seconds
 #         Basic Table:
-#
+#           1 minute = 60 seconds
+#           1 hour = 1 minute * 60 = 3600 seconds
+#       
