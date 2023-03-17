@@ -25,4 +25,6 @@
 #     - Announce
 #       Sends message each time a player recieves money.
 #     - Amount
-#   
+#       - On
+#         Each time interest runs you can either deposit the money into a bank (Interest)
+#  
