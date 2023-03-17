@@ -27,4 +27,8 @@
 #     - Amount
 #       - On
 #         Each time interest runs you can either deposit the money into a bank (Interest)
-#  
+#         or directly into a players holdings (Wage).
+#     - Interval
+#       - Seconds
+#         Basic Table:
+#
