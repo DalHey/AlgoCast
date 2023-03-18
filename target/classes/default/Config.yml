@@ -35,4 +35,7 @@
 #           1 hour = 1 minute * 60 = 3600 seconds
 #           1 day = 1 hour * 24 = 86400 seconds
 #           1 week = 1 day * 7 = 604800 seconds
-#   - Datab
+#   - Database
+#     - Type
+#       Can only be h2 or MySQL, no longer supports SQLite.
+#     - Settings
