@@ -43,4 +43,9 @@
 #       - MySQL
 #         Do not use remote databases from free sites, please use either a
 #          remote database from a personal hosted VPS or DEDI or a local
-#          database. This will prevent any 'timeout' or 
+#          database. This will prevent any 'timeout' or 'invalid settings'
+#          or 'cannot connect to database' issues. Thank you :)!
+##
+
+System:
+    Defa
