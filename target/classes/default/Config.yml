@@ -48,4 +48,6 @@
 ##
 
 System:
-    Defa
+    Default:
+        Currency:
+            Major: [ 'Dollar', 'Dollars' ]                # Major ([Major].Minor) 1.
