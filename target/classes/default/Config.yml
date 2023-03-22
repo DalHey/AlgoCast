@@ -50,4 +50,5 @@
 System:
     Default:
         Currency:
-            Major: [ 'Dollar', 'Dollars' ]                # Major ([Major].Minor) 1.
+            Major: [ 'Dollar', 'Dollars' ]                # Major ([Major].Minor) 1.00 Dollar (With Seperate 1 Dollar)
+            Minor: [ 'Coin', 'Coins' ]                    # Minor (Major.[Mi
