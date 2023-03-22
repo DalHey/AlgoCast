@@ -51,4 +51,6 @@ System:
     Default:
         Currency:
             Major: [ 'Dollar', 'Dollars' ]                # Major ([Major].Minor) 1.00 Dollar (With Seperate 1 Dollar)
-            Minor: [ 'Coin', 'Coins' ]                    # Minor (Major.[Mi
+            Minor: [ 'Coin', 'Coins' ]                    # Minor (Major.[Minor]) 0.23 Coins  (With Seperate 0 Dollars, 23 Coins)
+        Account:
+            Holdings: 30.0 
