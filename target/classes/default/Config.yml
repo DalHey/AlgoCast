@@ -55,4 +55,6 @@ System:
         Account:
             Holdings: 30.0                            # Default holdings on hand upon join / creation.
         Bank:
-            
+            Name: iConomy                             # Default Bank Name
+            Currency:
+                Major: [
