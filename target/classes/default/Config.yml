@@ -60,4 +60,5 @@ System:
                 Major: [ 'Dollar', 'Dollars' ]
                 Minor: [ 'Coin', 'Coins' ]
             Account:
-               
+                Fee: 20.0                             # Default cost to register an account
+                Holdings: 30.0       
