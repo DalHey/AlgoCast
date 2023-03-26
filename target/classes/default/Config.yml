@@ -61,4 +61,6 @@ System:
                 Minor: [ 'Coin', 'Coins' ]
             Account:
                 Fee: 20.0                             # Default cost to register an account
-                Holdings: 30.0       
+                Holdings: 30.0                        # Default initial account holdings
+    Formatting:
+        Minor: false 
