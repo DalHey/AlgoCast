@@ -63,4 +63,5 @@ System:
                 Fee: 20.0                             # Default cost to register an account
                 Holdings: 30.0                        # Default initial account holdings
     Formatting:
-        Minor: false 
+        Minor: false                                  # Example (true) 0.23 Coins and 1.23 Dollars (false) 0.23 Dollars and 1.23 Dollars
+        Sep
