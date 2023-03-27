@@ -64,4 +64,6 @@ System:
                 Holdings: 30.0                        # Default initial account holdings
     Formatting:
         Minor: false                                  # Example (true) 0.23 Coins and 1.23 Dollars (false) 0.23 Dollars and 1.23 Dollars
-        Seperate: false                               # Example (true) 1 Dollar, 23 Coins (false) 1.23 Dollars
+        Seperate: false                               # Example (true) 1 Dollar, 23 Coins (false) 1.23 Dollars (Only if Minor is true)
+    Logging:
+        Enabled: false                                # Logs transactions 
