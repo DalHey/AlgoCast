@@ -66,4 +66,5 @@ System:
         Minor: false                                  # Example (true) 0.23 Coins and 1.23 Dollars (false) 0.23 Dollars and 1.23 Dollars
         Seperate: false                               # Example (true) 1 Dollar, 23 Coins (false) 1.23 Dollars (Only if Minor is true)
     Logging:
-        Enabled: false                                # Logs transactions 
+        Enabled: false                                # Logs transactions done inside iConomy only, other plugins must utilize the api. (Logs to SQL)
+    Ba
