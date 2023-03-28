@@ -67,4 +67,9 @@ System:
         Seperate: false                               # Example (true) 1 Dollar, 23 Coins (false) 1.23 Dollars (Only if Minor is true)
     Logging:
         Enabled: false                                # Logs transactions done inside iConomy only, other plugins must utilize the api. (Logs to SQL)
-    Ba
+    Banking:
+        Enabled: false
+        Accounts:
+            Multiple: true
+    Interest:
+  
