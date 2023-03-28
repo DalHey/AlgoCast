@@ -72,4 +72,5 @@ System:
         Accounts:
             Multiple: true
     Interest:
-  
+        Enabled: false
+        Online: true                                  # Only give to playe
