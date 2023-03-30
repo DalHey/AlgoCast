@@ -73,4 +73,8 @@ System:
             Multiple: true
     Interest:
         Enabled: false
-        Online: true                                  # Only give to playe
+        Online: true                                  # Only give to players who are online?
+        Announce:
+            Enabled: false
+        Interval:
+        
