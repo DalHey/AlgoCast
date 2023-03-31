@@ -79,4 +79,5 @@ System:
         Interval:
             Seconds: 60
         Amount:
-            Cutoff: 0.0                               #
+            Cutoff: 0.0                               # Amount limit to be met until we stop giving interest. (0.0 for no limit)
+            On: 'Players'                   
