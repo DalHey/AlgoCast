@@ -80,4 +80,5 @@ System:
             Seconds: 60
         Amount:
             Cutoff: 0.0                               # Amount limit to be met until we stop giving interest. (0.0 for no limit)
-            On: 'Players'                   
+            On: 'Players'                             # Banks or Players
+            Percent: 0.0                              # Percent of holdings to give / take 
