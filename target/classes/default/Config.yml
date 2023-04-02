@@ -82,4 +82,5 @@ System:
             Cutoff: 0.0                               # Amount limit to be met until we stop giving interest. (0.0 for no limit)
             On: 'Players'                             # Banks or Players
             Percent: 0.0                              # Percent of holdings to give / take (Negative to take) (Overrides Min/Max)
-            Maximum: 1                                
+            Maximum: 1                                # (Range) Maximum amount for random in between. (Make Max/Min equal for a flat-rate amount ie: 5/5)
+            
