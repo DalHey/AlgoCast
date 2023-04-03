@@ -91,4 +91,6 @@ System:
           Table: 'iConomy'
           MySQL:
               Username: 'root'
-              Pas
+              Password: 'pass'
+              Hostname: 'localhost'
+              Port: 3306
