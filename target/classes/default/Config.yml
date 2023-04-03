@@ -83,4 +83,6 @@ System:
             On: 'Players'                             # Banks or Players
             Percent: 0.0                              # Percent of holdings to give / take (Negative to take) (Overrides Min/Max)
             Maximum: 1                                # (Range) Maximum amount for random in between. (Make Max/Min equal for a flat-rate amount ie: 5/5)
-            
+            Minimum: 2                                # (Range) Minimum amount for random in between.
+    Database:
+   
