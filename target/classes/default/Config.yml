@@ -87,4 +87,8 @@ System:
     Database:
         Type: 'H2SQL'                                 # H2 or MySQL
         Settings:
-          Name: 
+          Name: 'minecraft'
+          Table: 'iConomy'
+          MySQL:
+              Username: 'root'
+              Pas
